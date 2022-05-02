@@ -9,7 +9,7 @@ http://eprints.lse.ac.uk/104341/1/Ruf_Wang_Literature_Review.pdf
 
 ## Neural Americans
 
-Lapeyre, Bernard; Lelong, J ́erˆome. Neural network regression for Bermudan option pricing.
+Bernard Lapeyre, Jérôme Lelong. Neural network regression for Bermudan option pricing.
 Monte Carlo Methods Appl. 27 (2021), no. 3, 227–247.
 
 https://arxiv.org/pdf/1907.06474.pdf
@@ -34,14 +34,18 @@ using the Stochastic Grid Bundling Method https://www.nag.com/doc/techrep/pdf/tr
 + Evaluating Sensitivities of Bermudan Swaptions https://www.maths.ox.ac.uk/system/files/legacy/12804/Schlenkrich_20.3.11.pdf
 + https://arxiv.org/abs/2201.02587
 
-Deep Learning-Based BSDE Solver for Libor
-Market Model with Application to Bermudan
-Swaption Pricing and Hedging
+Deep Learning-Based BSDE Solver for LiborMarket Model with Application to Bermudan Swaption Pricing and Hedging
 
 + https://www.cefpro.com/wp-content/uploads/2019/07/1807.06622.pdf
 
 + Valuation of Bermudan swaptions with a one-factor
 Hull-White model https://essay.utwente.nl/61747/1/MSc_P_Nikolopoulos.pdf
+
++ Pricing and Hedging American-Style Options with Deep Learning https://mdpi-res.com/d_attachment/jrfm/jrfm-13-00158/article_deploy/jrfm-13-00158-v2.pdf?version=1595308716
+
++ Deep Optimal Stopping https://jmlr.org/papers/volume20/18-232/18-232.pdf
+
++ Learning Bermudans https://arxiv.org/abs/2105.00655	
 
 ## Neural SDE
 
@@ -50,12 +54,19 @@ Hull-White model https://essay.utwente.nl/61747/1/MSc_P_Nikolopoulos.pdf
 + Samuel N. Cohen, Christoph Reisinger, Sheng Wang, Detecting and repairing arbitrage in traded option prices https://arxiv.org/abs/2008.09454
 + https://github.com/vicaws/arbitragerepair
 + Samuel N. Cohen, Christoph Reisinger, Sheng Wang, Estimating risks of option books using neural-SDE market models (2022) https://arxiv.org/abs/2202.07148
-+ Timothy DeLise https://arxiv.org/abs/2105.13320
++ Timothy DeLise Neural Options Pricing https://arxiv.org/abs/2105.13320
++ Neural SDEs as Infinite-Dimensional GANs http://proceedings.mlr.press/v139/kidger21b/kidger21b.pdf
++ Neural Stochastic Partial Differential Equations https://arxiv.org/abs/2110.10249
 
 ## Neural PDEs
 
-+ Sirignano Deep PDEs
++ Sirignano Deep PDEs DGM: A deep learning algorithm for solving partial differential equations https://arxiv.org/abs/1708.07469
 + Neural Q-learning for solving elliptic PDEs (2022) https://arxiv.org/abs/2203.17128
++ The Deep Parametric PDE Method: Application to Option Pricing https://arxiv.org/pdf/2012.06211.pdf https://github.com/LWunderlich/DeepPDE/blob/main/TwoAssetsExample/DeepParametricPDEExample.ipynb
++ DNN Expression Rate Analysis of High-Dimensional PDEs: Application to Option Pricing https://link.springer.com/article/10.1007/s00365-021-09541-6
++ Physics-Informed Neural Networks and Option Pricing Andreas Louskos https://math.dartmouth.edu/theses/undergrad/2021/Louskos-thesis.pdf
++ Deep Learning of High-dimensional Partial Differential Equations
++ https://medium.com/data-analysis-center/solving-differential-equations-using-neural-networks-with-pydens-e831f1a115f
 
 
 ## No Arbitrage
@@ -97,12 +108,14 @@ credit risk management framework http://dse.univr.it/home/workingpapers/wp2020n7
 
 
 MC 
-Learn strategy directly from data
-Use NN to generate MC paths via GANs
-Neural SDEs
++ Obtain all payoffs (T, K) for one set of parameters (e.g. (S0, r, sigma))
++ with Deep Hedging, Learn strategy directly from data
++ Use NN to generate MC paths via GANs, Neural SDEs
 
 PDE
-Use NN to solve PDE (Neural PDEs)
++ Solution only available at gridpoints, need some interpolation between
++ Does not scale well to large dimensions
++ Use NN to solve PDE (Neural PDEs)
 
 Calibration
 Use NNs (Horvath, Deep Learning Volatility)
@@ -164,3 +177,98 @@ and Randomized Neural Networks
 Optimal Stopping via Randomized Neural Networks
 + https://arxiv.org/pdf/2104.13669.pdf
 https://www.research-collection.ethz.ch/bitstream/handle/20.500.11850/529739/3/thesis_calypso_herrera_20220128_withoutCV.pdf
+
+
+https://people.maths.ox.ac.uk/hambly/PDF/Papers/RL-finance.pdf
+
+Distributional Reinforcement Learning
+
+
+https://www.imperial.ac.uk/mathematics/postgraduate/msc/mathematical-finance/project-and-thesis/	
+
+
+https://www.imperial.ac.uk/media/imperial-college/faculty-of-natural-sciences/department-of-mathematics/math-finance/TOMAS_MEHDI_01390785.pdf
+
+
+https://www.mathematik.hu-berlin.de/~perkowsk/files/bsde.pdf
+
+
+https://www.imperial.ac.uk/media/imperial-college/faculty-of-natural-sciences/department-of-mathematics/math-finance/Qingxin_Geng_Thesis.pdf
+
+
+https://www.imperial.ac.uk/media/imperial-college/faculty-of-natural-sciences/department-of-mathematics/math-finance/SHI-WINTER_01256799.pdf
+
+https://scholar.google.com/citations?hl=en&user=LGkKGsAAAAAJ&view_op=list_works&sortby=pubdate
+
+
+https://www.imperial.ac.uk/media/imperial-college/faculty-of-natural-sciences/department-of-mathematics/math-finance/Tang-Xiaofu_01904015.pdf
+
+https://www.imperial.ac.uk/media/imperial-college/faculty-of-natural-sciences/department-of-mathematics/math-finance/Cheng_Luo-thesis.pdf
+
+
+Pricing Options using Deep Neural Networks from a Practical Perspective: A Compr
+https://www.imperial.ac.uk/media/imperial-college/faculty-of-natural-sciences/department-of-mathematics/math-finance/Pu-Viola_Ruo_Han_01977026.pdf
+https://github.com/violapu/OPNN
+https://github.com/violapu/Optimally-Weighted-PINNs
+
+CORNELIS OOSTERLEE
+
+
+https://ipythonquant.wordpress.com/2015/05/02/exposure-simulation-pfe-and-cva-for-multi-callable-swaps-bermudan-swaptions-part-1-of-3/
+
+
+Riskfuel
++ https://riskfuel.com/riskfuels-new-pricing-demo-the-bermudan-swaption/
++ 
+
+
+https://quantlib.wordpress.com/tag/bermudan-swaption/
+
+https://github.com/lballabio/QuantLib-SWIG/blob/master/Python/examples/bermudan-swaption.py
+
+Deeply Learning Derivatives
+https://arxiv.org/pdf/1809.02233.pdf
+
+
+LIBOR PROMPTS QUANTILE LEAP:
+MACHINE LEARNING FOR QUANTILE DERIVATIVES
+
+
+Deep Learning for Exotic Option Valuation
++ https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3776322
+
+Accuracy of deep learning in calibrating HJM forward curves
+https://link.springer.com/article/10.1007/s42521-021-00030-w	
+
+Extensive networks would eliminate the demand for pricing formulas
++ https://www.sciencedirect.com/science/article/pii/S0950705121010698?casa_token=cIYxKlLBGzUAAAAA:Q6zidLH9WwxIWd4XcoRM70uFo1FScABAzKiKDHT85jcO_U2wFg2yWYtVofFK74W-1V93PMhB-mU
+
+Option Pricing With Machine Learning
+Daniel Alexandre Bloch
+https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3486224
+
+Black-Box Model Risk in Finance
++ https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3782412	
+
+
+Deep MVA: Deep Learning for Margin Valuation Adjustment of Callable Products
+https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3634059
+
+
+Differential Deep Learning for Pricing Exotic Financial Derivatives
+https://www.diva-portal.org/smash/get/diva2:1591933/FULLTEXT01.pdf
+
+Machine Learning and Option Implied Information
++ https://spiral.imperial.ac.uk/bitstream/10044/1/57953/5/Yu-Z-2018-PhD-Thesis.pdf
+
+
+Dalvir Singh Mandara https://www.datasim.nl/application/files/8115/7045/4929/1423101.pdf
+
+The Performance of Artificial Neural Networks on Rough Heston Model https://www.datasim.nl/application/files/3516/0614/0758/Finalthesis.pdf
+
+The Swap Market Model with Local Stochastic Volatility
+https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2912558
+
+
+The Co-Terminal Swap Market Model with Bergomi Stochastic Volatility
+https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3237914
