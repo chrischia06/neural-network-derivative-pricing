@@ -1,0 +1,32 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+
+**Gated Neural Networks for Option Pricing: Rationality by Design**
+
+https://www.pure.ed.ac.uk/ws/portalfiles/portal/29546775/yang_yu.pdf
+
+Option valuation under no-arbitrage constraints with neural networks
+
+http://eprints.nottingham.ac.uk/65405/1/Combine.pdf
+
+
+Black-Box Model Risk in Finance
++ https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3782412	
+
+
+Differentiable Convex Optimization Layers
+
++ https://arxiv.org/pdf/1910.12430.pdf
++ https://github.com/cvxgrp/cvxpylayers
+
+
+Automatic repair of convex optimization problems
+
++ https://web.stanford.edu/~boyd/papers/pdf/auto_repair_cvx.pdf
+
+On the Selection of Initialization and Activation Function for Deep Neural Networks
+
++ https://arxiv.org/abs/1805.08266

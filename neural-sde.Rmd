@@ -1,0 +1,51 @@
+---
+title: "Neural SDE"
+output: html_notebook
+---
+
+Robust Neural SDE
+
++ https://github.com/msabvid/robust_nsde
+
+
+Arbitrage-free neural-SDE market models
+
++ https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3851998
++ https://github.com/vicaws/neuralSDE-marketmodel
+
+Efficient and Accurate Gradients for Neural SDEs
+
++ https://proceedings.neurips.cc/paper/2021/hash/9ba196c7a6e89eafd0954de80fc1b224-Abstract.html
+
+Neural SDEs as Infinite-Dimensional GANs
+
++ http://proceedings.mlr.press/v139/kidger21b.html
+
+Estimating risks of option books using neural-SDE market models
+
++ https://arxiv.org/pdf/2202.07148v1.pdf
+
+## Neural SDE
+
++ Samuel N. Cohen, Christoph Reisinger, Sheng Wang, Arbitrage-free neural-SDE market models https://arxiv.org/abs/2105.11053
++ https://github.com/vicaws/neuralSDE-marketmodel
++ Samuel N. Cohen, Christoph Reisinger, Sheng Wang, Detecting and repairing arbitrage in traded option prices https://arxiv.org/abs/2008.09454
++ https://github.com/vicaws/arbitragerepair
++ Samuel N. Cohen, Christoph Reisinger, Sheng Wang, Estimating risks of option books using neural-SDE market models (2022) https://arxiv.org/abs/2202.07148
++ Timothy DeLise Neural Options Pricing https://arxiv.org/abs/2105.13320
++ Neural SDEs as Infinite-Dimensional GANs http://proceedings.mlr.press/v139/kidger21b/kidger21b.pdf
++ Neural Stochastic Partial Differential Equations https://arxiv.org/abs/2110.10249
+
+# Signatures
+
+Derivatives pricing using signature payoffs
+
++ https://arxiv.org/pdf/1809.09466.pdf
+
+Numerical Method for Model-free Pricing of Exotic Derivatives in Discrete Time Using Rough Path Signatures
+ 
++ https://arxiv.org/abs/1905.01720
+
+Sig-SDEs model for quantitative finance
+
++ https://dl.acm.org/doi/abs/10.1145/3383455.3422553?casa_token=0CHZ7t7JnKEAAAAA:kQhkxgr62C0ESS9BR68j-IUt_fcn5b7Mmt5iG7H0X3g_Cyml9piw2a0ws_qF-3-vDxT9eGNKNK4

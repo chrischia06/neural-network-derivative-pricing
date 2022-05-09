@@ -1,0 +1,79 @@
+---
+title: "Neural Calibration"
+output: html_notebook
+---
+
+
+**Andres Hernandez (2016), Model Calibration with Neural Networks**
+**Andres Hernandez (2017) Model Calibration: Global Optimizer vs. Neural Network**
+
+
+
++ Paper: https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2812140
++ https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2996930
++ slides: https://www.quantlib.org/slides/qlum17/hernandez.pdf
++ Hull white, bermudan swaptions, compared vs Quantlib
++ Code: https://github.com/Andres-Hernandez/CalibrationNN
+
+Accuracy of deep learning in calibrating HJM forward curves
+https://link.springer.com/article/10.1007/s42521-021-00030-w	
+
+ 
+ Deep Arbitrage-Free Learning in a Generalized HJM Framework via Arbitrage-Regularization
+
++ https://mdpi-res.com/d_attachment/risks/risks-08-00040/article_deploy/risks-08-00040-v2.pdf?version=1587701662
+
+**Pricing and calibration of stochastic models via neural networks**
+https://www.imperial.ac.uk/media/imperial-college/faculty-of-natural-sciences/department-of-mathematics/math-finance/TOMAS_MEHDI_01390785.pdf
+
+# Local Volatility
+
+Deep Local Volatility
+
+Deep self-consistent learning of local volatility
+
+# Stochastic Local Volatility
+
+A Generative Adversarial Network Approach to Calibration of Local Stochastic Volatility Models 
+
+
+**Christa Cuchiero, Wahid Khosrawi, Josef Teichmann**
+
+https://www.mdpi.com/2227-9091/8/4/101/htm
+
+https://mdpi-res.com/d_attachment/risks/risks-08-00101/article_deploy/risks-08-00101-v2.pdf?version=1602225298
+
+
+**Katia Babbar, William McGhee, A DEEP LEARNING APPROACH TO EXOTIC OPTION PRICING UNDER LSVOL**
+
++ https://www.bayes.city.ac.uk/__data/assets/pdf_file/0007/494080/DeepLearningExoticOptionPricingLSVOL_KB_CassBusinessSchool_2019.pdf
+
+
+Applied Machine Learning for Stochastic Local Volatility Calibration
++ https://www.frontiersin.org/articles/10.3389/frai.2019.00004/full#h4
+
+
+
+Liu, Shuaiqiang, Anastasia Borovykh, Lech Grzelak, and Cornelis Oosterlee. 2019a. A neural network-based framework for financial model calibration
+  
+Liu, Shuaiqiang, Cornelis Oosterlee, and Sander Bohte. 2019b. Pricing options and computing implied volatilities using neural networks. 
+
+
+
+Dalvir Singh Mandara https://www.datasim.nl/application/files/8115/7045/4929/1423101.pdf
+
+The Performance of Artificial Neural Networks on Rough Heston Model https://www.datasim.nl/application/files/3516/0614/0758/Finalthesis.pdf
+
+ON DEEP LEARNING FOR OPTION PRICING IN LOCAL VOLATILITY MODELS
++ http://ceur-ws.org/Vol-3041/381-386-paper-70.pdf
+
+Deep PPDEs for rough local stochastic volatility
++ https://www.arxiv-vanity.com/papers/1906.02551/
+
+Supervised Deep Neural Networks (DNNs) for Pricing/Calibration of Vanilla/Exotic Options Under Various Different Processes
++ https://arxiv.org/abs/1902.05810
+
+Deep learning calibration of option pricing models: some pitfalls and solutions
++ https://arxiv.org/pdf/1906.03507.pdf
+
+https://alexrachnog.medium.com/meta-learning-in-finance-boosting-models-calibration-with-deep-learning-47c98d0d158c
