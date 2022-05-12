@@ -30,6 +30,10 @@ https://www.imperial.ac.uk/media/imperial-college/faculty-of-natural-sciences/de
 
 Deep Local Volatility
 
+M. Dixon, S. Crépey, and M. Chataigner. Deep local volatility.
+
++ 
+
 Deep self-consistent learning of local volatility
 
 # Stochastic Local Volatility
@@ -77,3 +81,6 @@ Deep learning calibration of option pricing models: some pitfalls and solutions
 + https://arxiv.org/pdf/1906.03507.pdf
 
 https://alexrachnog.medium.com/meta-learning-in-finance-boosting-models-calibration-with-deep-learning-47c98d0d158c
+
+Pricing options with exponential Lévy neural network
++ https://www.sciencedirect.com/science/article/pii/S0957417419301617?casa_token=p7WT2ISZSnIAAAAA:oXRy_4e04IPSb5DMWvenQ8jt8RXdXR1Bl2niLTuXeH_sRuwzO6RJ2OAykmFejE48YEM6AGRR

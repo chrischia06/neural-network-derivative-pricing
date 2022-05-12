@@ -215,11 +215,38 @@ pre code {
 
 
 <!-- rnb-text-begin -->
-<p><strong>Gated Neural Networks for Option Pricing: Rationality by Design</strong></p>
-<p><a href="https://www.pure.ed.ac.uk/ws/portalfiles/portal/29546775/yang_yu.pdf" class="uri">https://www.pure.ed.ac.uk/ws/portalfiles/portal/29546775/yang_yu.pdf</a></p>
-<p>Option valuation under no-arbitrage constraints with neural networks</p>
-<p><a href="http://eprints.nottingham.ac.uk/65405/1/Combine.pdf" class="uri">http://eprints.nottingham.ac.uk/65405/1/Combine.pdf</a></p>
-<p>Black-Box Model Risk in Finance + <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3782412" class="uri">https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3782412</a></p>
+<div id="risk-neutral-implied-distribution" class="section level2">
+<h2>Risk Neutral Implied Distribution</h2>
+<p><strong>Gated Neural Networks for Option Pricing: Rationality by Design (2017)</strong></p>
+<ul>
+<li><a href="https://www.pure.ed.ac.uk/ws/portalfiles/portal/29546775/yang_yu.pdf" class="uri">https://www.pure.ed.ac.uk/ws/portalfiles/portal/29546775/yang_yu.pdf</a></li>
+<li><a href="https://github.com/arraystream/fftoptionlib" class="uri">https://github.com/arraystream/fftoptionlib</a></li>
+<li>“for deep out-of-money options or those with long maturity, NN methods perform very badly (Bennell and Sutcliffe 2004)”</li>
+<li>“(Gradojevic, Gencay, and Kukolj 2009) tried to address this issue by categorising options based on their moneyness and time to maturity, and training independent NNs for each class of options.”</li>
+<li>6 no-arbitrage call constraints from Follmer, Schied, Stochastic Finance</li>
+<li>Softplus * sigmoid <span class="math inline">\(C(K/S, 1, T - t) = \sum_{j = 1}^{J}\sigma_{1}(b_{1, j} - me^{w_{1, j}})\sigma_{2}(b_{2, j}-\tau e^{w_{2, j}})e^{w_{3, j}}\)</span>, <span class="math inline">\(J\)</span> number of hidden units<br />
+</li>
+<li>they verify asymptotics and no-arb conditions</li>
+<li>Then <span class="math inline">\(\sum_{i = 1}^{I} y_{i}(m, \tau)w_{i}(m, \tau)\)</span> - <span class="math inline">\(I\)</span> number of single pricing models</li>
+<li>Solution to no-arb bounds and asymptotics is to generate more edge examples</li>
+<li>Gated Neural Network - Sigaud, O.; Masson, C.; Filliat, D.; and Stulp, F. 2015. Gated networks: an inventory. CoRR abs/1512.03201</li>
+<li>learn-ing from hints trick (Abu-Mostafa 1993)</li>
+</ul>
+</div>
+<div id="architecture" class="section level2">
+<h2>Architecture</h2>
+<p><strong>Dugas, C.; Bengio, Y.; Belisle, F.; Nadeau, C.; and Garcia, R. 2000. Incorporating second-order functional knowledge for better option pricing. In Neural Information Processing Systems (NIPS)</strong></p>
+<ul>
+<li>specific activation functions and positive weight parameter constraints such that second-order derivatives positive. “These studies suggested that introducing econometric constraints produces better option pricing models compared to vanilla feed-forward NNs”</li>
+<li><a href="https://proceedings.neurips.cc/paper/2000/file/44968aece94f667e4095002d140b5896-Paper.pdf" class="uri">https://proceedings.neurips.cc/paper/2000/file/44968aece94f667e4095002d140b5896-Paper.pdf</a></li>
+<li>Estimate on S&amp;P Options</li>
+</ul>
+<p><strong>Garcia, R. and Gençay, R. (2000). Pricing and hedging derivative securities with neural networks and a homogeneity hint.</strong></p>
+<p><strong>Option valuation under no-arbitrage constraints with neural networks</strong></p>
+<ul>
+<li><a href="http://eprints.nottingham.ac.uk/65405/1/Combine.pdf" class="uri">http://eprints.nottingham.ac.uk/65405/1/Combine.pdf</a></li>
+</ul>
+<p>Black-Box Model Risk in Finance + <a href="https://arxiv.org/pdf/2102.04757.pdf" class="uri">https://arxiv.org/pdf/2102.04757.pdf</a></p>
 <p>Differentiable Convex Optimization Layers</p>
 <ul>
 <li><a href="https://arxiv.org/pdf/1910.12430.pdf" class="uri">https://arxiv.org/pdf/1910.12430.pdf</a></li>
@@ -233,9 +260,15 @@ pre code {
 <ul>
 <li><a href="https://arxiv.org/abs/1805.08266" class="uri">https://arxiv.org/abs/1805.08266</a></li>
 </ul>
+<p><strong>Garcia, R.; Ghysels, E.; and Renault, E. 2010. The Econometrics of Option Pricing. Elsevier Inc. 479–552.</strong></p>
+</div>
+<div id="nn-theory" class="section level1">
+<h1>NN Theory</h1>
+<p><strong>Testing the Manifold Hypothesis (2013)</strong> + <a href="https://arxiv.org/abs/1310.0425" class="uri">https://arxiv.org/abs/1310.0425</a></p>
 <!-- rnb-text-end -->
+</div>
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiUiBOb3RlYm9vayIKb3V0cHV0OiBodG1sX25vdGVib29rCi0tLQoKCioqR2F0ZWQgTmV1cmFsIE5ldHdvcmtzIGZvciBPcHRpb24gUHJpY2luZzogUmF0aW9uYWxpdHkgYnkgRGVzaWduKioKCmh0dHBzOi8vd3d3LnB1cmUuZWQuYWMudWsvd3MvcG9ydGFsZmlsZXMvcG9ydGFsLzI5NTQ2Nzc1L3lhbmdfeXUucGRmCgpPcHRpb24gdmFsdWF0aW9uIHVuZGVyIG5vLWFyYml0cmFnZSBjb25zdHJhaW50cyB3aXRoIG5ldXJhbCBuZXR3b3JrcwoKaHR0cDovL2VwcmludHMubm90dGluZ2hhbS5hYy51ay82NTQwNS8xL0NvbWJpbmUucGRmCgoKQmxhY2stQm94IE1vZGVsIFJpc2sgaW4gRmluYW5jZQorIGh0dHBzOi8vcGFwZXJzLnNzcm4uY29tL3NvbDMvcGFwZXJzLmNmbT9hYnN0cmFjdF9pZD0zNzgyNDEyCQoKCkRpZmZlcmVudGlhYmxlIENvbnZleCBPcHRpbWl6YXRpb24gTGF5ZXJzCgorIGh0dHBzOi8vYXJ4aXYub3JnL3BkZi8xOTEwLjEyNDMwLnBkZgorIGh0dHBzOi8vZ2l0aHViLmNvbS9jdnhncnAvY3Z4cHlsYXllcnMKCgpBdXRvbWF0aWMgcmVwYWlyIG9mIGNvbnZleCBvcHRpbWl6YXRpb24gcHJvYmxlbXMKCisgaHR0cHM6Ly93ZWIuc3RhbmZvcmQuZWR1L35ib3lkL3BhcGVycy9wZGYvYXV0b19yZXBhaXJfY3Z4LnBkZgoKT24gdGhlIFNlbGVjdGlvbiBvZiBJbml0aWFsaXphdGlvbiBhbmQgQWN0aXZhdGlvbiBGdW5jdGlvbiBmb3IgRGVlcCBOZXVyYWwgTmV0d29ya3MKCisgaHR0cHM6Ly9hcnhpdi5vcmcvYWJzLzE4MDUuMDgyNjY=</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiUiBOb3RlYm9vayIKb3V0cHV0OiBodG1sX25vdGVib29rCi0tLQoKIyMgUmlzayBOZXV0cmFsIEltcGxpZWQgRGlzdHJpYnV0aW9uCgoqKkdhdGVkIE5ldXJhbCBOZXR3b3JrcyBmb3IgT3B0aW9uIFByaWNpbmc6IFJhdGlvbmFsaXR5IGJ5IERlc2lnbiAoMjAxNykqKgoKKyBodHRwczovL3d3dy5wdXJlLmVkLmFjLnVrL3dzL3BvcnRhbGZpbGVzL3BvcnRhbC8yOTU0Njc3NS95YW5nX3l1LnBkZgorIGh0dHBzOi8vZ2l0aHViLmNvbS9hcnJheXN0cmVhbS9mZnRvcHRpb25saWIKKyAiZm9yIGRlZXAgb3V0LW9mLW1vbmV5IG9wdGlvbnMgb3IgdGhvc2Ugd2l0aCBsb25nIG1hdHVyaXR5LCBOTiBtZXRob2RzIHBlcmZvcm0gdmVyeSBiYWRseSAoQmVubmVsbCBhbmQgU3V0Y2xpZmZlIDIwMDQpIgorICIoR3JhZG9qZXZpYywgR2VuY2F5LCBhbmQgS3Vrb2xqIDIwMDkpIHRyaWVkIHRvIGFkZHJlc3MgdGhpcyBpc3N1ZSBieSBjYXRlZ29yaXNpbmcgb3B0aW9ucyBiYXNlZCBvbiB0aGVpciBtb25leW5lc3MgYW5kIHRpbWUgdG8gbWF0dXJpdHksIGFuZCB0cmFpbmluZyBpbmRlcGVuZGVudCBOTnMgZm9yIGVhY2ggY2xhc3Mgb2Ygb3B0aW9ucy4iCisgNiBuby1hcmJpdHJhZ2UgY2FsbCBjb25zdHJhaW50cyBmcm9tIEZvbGxtZXIsIFNjaGllZCwgU3RvY2hhc3RpYyBGaW5hbmNlCisgU29mdHBsdXMgKiBzaWdtb2lkICRDKEsvUywgMSwgVCAtIHQpID0gXHN1bV97aiA9IDF9XntKfVxzaWdtYV97MX0oYl97MSwgan0gLSBtZV57d197MSwgan19KVxzaWdtYV97Mn0oYl97Miwgan0tXHRhdSBlXnt3X3syLCBqfX0pZV57d197Mywgan19JCwgJEokIG51bWJlciBvZiBoaWRkZW4gdW5pdHMgICAKKyB0aGV5IHZlcmlmeSBhc3ltcHRvdGljcyBhbmQgbm8tYXJiIGNvbmRpdGlvbnMKKyBUaGVuICRcc3VtX3tpID0gMX1ee0l9IHlfe2l9KG0sIFx0YXUpd197aX0obSwgXHRhdSkkIC0gJEkkIG51bWJlciBvZiBzaW5nbGUgcHJpY2luZyBtb2RlbHMKKyBTb2x1dGlvbiB0byBuby1hcmIgYm91bmRzIGFuZCBhc3ltcHRvdGljcyBpcyB0byBnZW5lcmF0ZSBtb3JlIGVkZ2UgZXhhbXBsZXMKKyBHYXRlZCBOZXVyYWwgTmV0d29yayAtIFNpZ2F1ZCwgTy47IE1hc3NvbiwgQy47IEZpbGxpYXQsIEQuOyBhbmQgU3R1bHAsIEYuIDIwMTUuIEdhdGVkCm5ldHdvcmtzOiBhbiBpbnZlbnRvcnkuIENvUlIgYWJzLzE1MTIuMDMyMDEKKyBsZWFybi1pbmcgZnJvbSBoaW50cyB0cmljayAoQWJ1LU1vc3RhZmEgMTk5MykKCiMjIEFyY2hpdGVjdHVyZQoKKipEdWdhcywgQy47IEJlbmdpbywgWS47IEJlbGlzbGUsIEYuOyBOYWRlYXUsIEMuOyBhbmQgR2FyY2lhLCBSLiAyMDAwLiBJbmNvcnBvcmF0aW5nIHNlY29uZC1vcmRlciBmdW5jdGlvbmFsIGtub3dsZWRnZSBmb3IgYmV0dGVyIG9wdGlvbiBwcmljaW5nLiBJbiBOZXVyYWwgSW5mb3JtYXRpb24gUHJvY2Vzc2luZyBTeXN0ZW1zIChOSVBTKSoqCgorICBzcGVjaWZpYyBhY3RpdmF0aW9uIGZ1bmN0aW9ucyBhbmQgcG9zaXRpdmUgd2VpZ2h0IHBhcmFtZXRlciBjb25zdHJhaW50cyBzdWNoIHRoYXQKc2Vjb25kLW9yZGVyIGRlcml2YXRpdmVzIHBvc2l0aXZlLiAiVGhlc2Ugc3R1ZGllcyBzdWdnZXN0ZWQgdGhhdCBpbnRyb2R1Y2luZyBlY29ub21ldHJpYyBjb25zdHJhaW50cyBwcm9kdWNlcyBiZXR0ZXIgb3B0aW9uIHByaWNpbmcgbW9kZWxzIGNvbXBhcmVkIHRvIHZhbmlsbGEgZmVlZC1mb3J3YXJkIE5OcyIKKyBodHRwczovL3Byb2NlZWRpbmdzLm5ldXJpcHMuY2MvcGFwZXIvMjAwMC9maWxlLzQ0OTY4YWVjZTk0ZjY2N2U0MDk1MDAyZDE0MGI1ODk2LVBhcGVyLnBkZgorIEVzdGltYXRlIG9uIFMmUCBPcHRpb25zCgoKKipHYXJjaWEsIFIuIGFuZCBHZW7Dp2F5LCBSLiAoMjAwMCkuIFByaWNpbmcgYW5kIGhlZGdpbmcgZGVyaXZhdGl2ZSBzZWN1cml0aWVzIHdpdGggbmV1cmFsCm5ldHdvcmtzIGFuZCBhIGhvbW9nZW5laXR5IGhpbnQuKioKCgoKKipPcHRpb24gdmFsdWF0aW9uIHVuZGVyIG5vLWFyYml0cmFnZSBjb25zdHJhaW50cyB3aXRoIG5ldXJhbCBuZXR3b3JrcyoqCgorIGh0dHA6Ly9lcHJpbnRzLm5vdHRpbmdoYW0uYWMudWsvNjU0MDUvMS9Db21iaW5lLnBkZgoKCkJsYWNrLUJveCBNb2RlbCBSaXNrIGluIEZpbmFuY2UKKyBodHRwczovL2FyeGl2Lm9yZy9wZGYvMjEwMi4wNDc1Ny5wZGYJCgoKRGlmZmVyZW50aWFibGUgQ29udmV4IE9wdGltaXphdGlvbiBMYXllcnMKCisgaHR0cHM6Ly9hcnhpdi5vcmcvcGRmLzE5MTAuMTI0MzAucGRmCisgaHR0cHM6Ly9naXRodWIuY29tL2N2eGdycC9jdnhweWxheWVycwoKCkF1dG9tYXRpYyByZXBhaXIgb2YgY29udmV4IG9wdGltaXphdGlvbiBwcm9ibGVtcwoKKyBodHRwczovL3dlYi5zdGFuZm9yZC5lZHUvfmJveWQvcGFwZXJzL3BkZi9hdXRvX3JlcGFpcl9jdngucGRmCgpPbiB0aGUgU2VsZWN0aW9uIG9mIEluaXRpYWxpemF0aW9uIGFuZCBBY3RpdmF0aW9uIEZ1bmN0aW9uIGZvciBEZWVwIE5ldXJhbCBOZXR3b3JrcwoKKyBodHRwczovL2FyeGl2Lm9yZy9hYnMvMTgwNS4wODI2NgoKKipHYXJjaWEsIFIuOyBHaHlzZWxzLCBFLjsgYW5kIFJlbmF1bHQsIEUuIDIwMTAuIFRoZSBFY29ub21ldHJpY3Mgb2YgT3B0aW9uIFByaWNpbmcuIEVsc2V2aWVyIEluYy4gNDc54oCTNTUyLioqCgojIE5OIFRoZW9yeQoKKipUZXN0aW5nIHRoZSBNYW5pZm9sZCBIeXBvdGhlc2lzICgyMDEzKSoqCisgaHR0cHM6Ly9hcnhpdi5vcmcvYWJzLzEzMTAuMDQyNQo=</div>
 
 
 

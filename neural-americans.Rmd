@@ -69,3 +69,10 @@ https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3237914
 
 Solving high-dimensional optimal stopping problems using deep learning
 + https://www.cambridge.org/core/journals/european-journal-of-applied-mathematics/article/solving-highdimensional-optimastopping-problems-using-deep-learning/A632772461C859353E6F8A7DAB8A1769
+
+
+Pricing and hedging American-style options with deep learning
++ https://arxiv.org/abs/1912.11060
+
+Dual Valuation and Hedging of Bermudan Options
++ http://www.statslab.cam.ac.uk/~chris/papers/MCamerDual.pdf

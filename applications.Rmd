@@ -20,3 +20,6 @@ https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3634059
 
 **Balance Sheet XVA by Deep Learning and GPU**
 + https://math.maths.univ-evry.fr/crepey/papers/Deep-XVA-Analysis-SHORT.pdf
+
+Deep learning for CVA computations of large portfolios of financial derivatives
++ https://www.sciencedirect.com/science/article/pii/S0096300321004884

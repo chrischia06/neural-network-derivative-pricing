@@ -58,3 +58,10 @@ Pricing and Hedging of Derivatives by Unsupervised Deep Learning
 
 Equal risk pricing of derivatives with deep hedgingOpen Data
 + https://www.tandfonline.com/doi/full/10.1080/14697688.2020.1806343?casa_token=P8sk_uBGcKEAAAAA%3A-qVUFHsp9jQIOKrVBIRMVz4wao8veOeNVoSfr2moTOK9WHkGngUl8trV2Csxj94JeJ4k0xTyohg 
+
+# Reinforcement Learning
+
+Kolm, P. N. and Ritter, G. (2019). Dynamic replication and hedging: A reinforcement
+learning approach.
+
+Mikkilä, O. (2020). Optimal hedging with continuous action reinforcement learning.

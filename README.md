@@ -127,3 +127,29 @@ Deep learning exotic derivatives
 
 Exotic Derivatives and Deep Learning
 + https://www.diva-portal.org/smash/record.jsf?pid=diva2%3A1210175&dswid=775
+
+
+A machine learning approach to portfolio pricing and risk management for high-dimensional problems
++ https://arxiv.org/pdf/2004.14149v4.pdf
+
+ Evolutionary Algorithms and Computational Methods for Derivatives Pricing 
+ + https://discovery.ucl.ac.uk/id/eprint/10068568/
+
+ Multi-Asset Spot and Option Market Simulation
+ + https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3980817	
+
+
+ Risk-Neutral Market Simulation
+ + https://arxiv.org/abs/2202.13996
+
+Simulating spot and equity option markets using rough path signatures
++ https://gateway.newton.ac.uk/presentation/2021-03-16/29953
+
+Deep Hedging: Learning Risk-Neutral Implied Volatility Dynamics
++ https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3808555
+
+Deep hedging: learning to simulate equity option markets
++ https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3470756
+
+Deep Hedging: Learning to Remove the Drift under Trading Frictions with Minimal Equivalent Near-Martingale Measures
++ https://arxiv.org/abs/2111.07844
