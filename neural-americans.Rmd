@@ -27,10 +27,25 @@ Applications of Continuous Depth
 and Randomized Neural Networks
 	
 
+Deep Optimal Stopping
++ Sebastian Becker, Patrick Cheridito, Arnulf Jentzen
++ https://arxiv.org/abs/1804.05394
++ Multidimensional Black-Scholes for high dimension, d is the number of assets
++ 1D fractional Brownian Motion
++ 
+
+E, W., J. Han, and A. Jentzen (2017, June). Deep learning-based numerical methods for high-
+dimensional parabolic partial differential equations and backward stochastic differential
+equations
+
+Henry-Labordere, P. (2017). Deep Primal-Dual Algorithm for BSDEs: Applications of Ma-
+chine Learning to CVA and IM
+
 
 Optimal Stopping via Randomized Neural Networks
 + https://arxiv.org/pdf/2104.13669.pdf
-https://www.research-collection.ethz.ch/bitstream/handle/20.500.11850/529739/3/thesis_calypso_herrera_20220128_withoutCV.pdf
++ https://www.research-collection.ethz.ch/bitstream/handle/20.500.11850/529739/3/thesis_calypso_herrera_20220128_withoutCV.pdf
++ https://github.com/HeKrRuTe/OptStopRandNN
 
 ## Bermudans
  
@@ -47,7 +62,8 @@ Deep Learning-Based BSDE Solver for LiborMarket Model with Application to Bermud
 + Valuation of Bermudan swaptions with a one-factor
 Hull-White model https://essay.utwente.nl/61747/1/MSc_P_Nikolopoulos.pdf
 
-+ Pricing and Hedging American-Style Options with Deep Learning https://mdpi-res.com/d_attachment/jrfm/jrfm-13-00158/article_deploy/jrfm-13-00158-v2.pdf?version=1595308716
+Pricing and Hedging American-Style Options with Deep Learning 
++ https://mdpi-res.com/d_attachment/jrfm/jrfm-13-00158/article_deploy/jrfm-13-00158-v2.pdf?version=1595308716
 
 + Deep Optimal Stopping https://jmlr.org/papers/volume20/18-232/18-232.pdf
 
@@ -76,3 +92,39 @@ Pricing and hedging American-style options with deep learning
 
 Dual Valuation and Hedging of Bermudan Options
 + http://www.statslab.cam.ac.uk/~chris/papers/MCamerDual.pdf
+
+Neural Network Pricing of American Put Options	Raquel M. Gaspar, Sara D. Lopes, Bernardo Sequeira	2020
+
++ Market data American put, option market prices, for four large U.S. companies—Procter and Gamble Company (PG), Coca-Cola, Company (KO), General Motors (GM), and Bank of America Corp (BAC). Our dataset is composed of all options traded within the period December 2018 until March 2019
++ 
+
+Deep Neural Network Framework Based on Backward Stochastic Differential Equations for Pricing and Hedging American Options in High Dimensions Yangang Chen, Justin W. L. Wan 2019
++ https://arxiv.org/abs/1909.11532
++ https://github.com/yangangchen/Amer_Op_Neural_Net
+
+NUMERICAL METHODS FOR HIGH-DIMENSIONAL OPTION PRICING PROBLEMS Zewen Shen
++ Based on the Sirignano Deep Galerkin Method paper
++ https://zewenshen.github.io/files/HDP_ZewenShen.pdf
+
+
+DGM: A deep learning algorithm for solving partial differential equations	Justin Sirignano, Konstantinos Spiliopoulos	2018	https://arxiv.org/abs/1708.07469
+
+
+Solving path dependent PDEs with LSTM networks and path signatures Marc Sabate-Vidales, David Šiška, Lukasz Szpruch (2020)
++ https://arxiv.org/abs/2011.10630
++ https://github.com/msabvid/Deep-PPDE
+
+PRICING OF HIGH-DIMENSIONAL AMERICAN OPTIONS BY NEURAL NETWORKS (2010) Michael Kohler, Adam Krzyżak, Nebojsa Todorovic
++ https://github.com/dbischof90/american_option_pricing_neural_nets
+
+Numerical valuation of Bermudan basket options via partial differential equations
++  Karel J. in 't Hout & Jacob Snoeijer
++ https://www.tandfonline.com/doi/abs/10.1080/00207160.2020.1786542
+
+ Deep learning-based least squares forward-backward stochastic differential equation solver for high-dimensional derivative pricing
+
+ + Jian Liang, Zhe Xu,  Peter Li
+
+ A deep learning approach for computations of exposure profiles for high-dimensional Bermudan options
+
+ + 2021 https://www.sciencedirect.com/science/article/pii/S0096300321004215

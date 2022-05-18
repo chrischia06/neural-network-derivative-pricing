@@ -65,3 +65,6 @@ Kolm, P. N. and Ritter, G. (2019). Dynamic replication and hedging: A reinforcem
 learning approach.
 
 Mikkilä, O. (2020). Optimal hedging with continuous action reinforcement learning.
+
+
+Optimal Option Hedging with Policy Gradient	Bo Xiao, Wuguannan Yao, Xiang Zhou	2021	https://ieeexplore.ieee.org/abstract/document/9679868?casa_token=dg7OXWH65U8AAAAA:UuoGeEqiHOFnnvRxpSeeMnw9zf1S9hDyeFlzo7KRjCrbEyWKHcS4U4CH05kh8EwlAN6rCGothkmbhA

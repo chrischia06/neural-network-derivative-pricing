@@ -153,3 +153,19 @@ Deep hedging: learning to simulate equity option markets
 
 Deep Hedging: Learning to Remove the Drift under Trading Frictions with Minimal Equivalent Near-Martingale Measures
 + https://arxiv.org/abs/2111.07844
+
+
+Ruf, Wang
+
+• Homogeneity hint. Garcia and Genc ̧ay [1998, 2000] incorporate a homogeneity hint by considering
+an ANN consisting of two parts, one controlled by moneyness and the other controlled by time-to-
+maturity.
+• Shape-restricted outputs. Dugas et al. [2001, 2009], Lajbcygier [2004], Yang et al. [2017], Huh
+[2019], and Zheng et al. [2019] enforce certain no-arbitrage conditions such as monotonicity and
+convexity of the ANN pricing function by fixing an appropriate architecture
+
+ Data augmentation. Yang et al. [2017] and Zheng et al. [2019] create additional synthetic options to
+help with the training of ANNs.
+• Loss penalty. Itkin [2019] and Ackerer et al. [2019] add various penalty terms to the loss function.
+Those terms present no-arbitrage conditions. For example, parameter configurations that allow for
+calendar arbitrage are being penalise

@@ -54,5 +54,9 @@ Option Pricing by Neural Stochastic Differential Equations: A Simulation-Optimiz
 + https://ieeexplore.ieee.org/abstract/document/9715493?casa_token=4lhAPjJbRPsAAAAA:TBm6r04u-9zvxwjHPZGpKYZLIw63GH9JvbxCz4B0Sq0LOWHxlsxMVCLapKgzrX0VkOFS2zdgp6E
 
 Neural Q-learning for solving elliptic PDEs
++ Samuel N. Cohen, Deqing Jiang, Justin Sirignano
 + https://arxiv.org/pdf/2203.17128.pdf
++ Arthur Jacot, Franck Gabriel, and Cl ́ement Hongler. Neural tangent ker-
+nel: Convergence and generalization in neural networks. 
+
 

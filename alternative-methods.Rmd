@@ -53,7 +53,14 @@ CodPy: A Python Library for Machine Learning, Mathematical Finance, and Statisti
 
 **Dynamically Controlled Kernel Estimation for XVA Pricing and Options Replication**
 + https://www.imperial.ac.uk/media/imperial-college/faculty-of-natural-sciences/department-of-mathematics/math-finance/Qingxin_Geng_Thesis.pdf
++ https://www.risk.net/cutting-edge/7929776/podcast-ubss-gordon-lee-on-conditional-expectations-and-xvas
 
 Machine Learning for Quantitative Finance: Fast Derivative Pricing, Hedging and Fitting
 + Gaussian Process
 + https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3191050
+
+
+
+Dynamic Initial Margin via Chebyshev Tensors
++ Ignacio Ruiz, Mariano Zeron
++ https://arxiv.org/abs/1808.08221

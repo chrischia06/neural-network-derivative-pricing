@@ -23,3 +23,15 @@ https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3634059
 
 Deep learning for CVA computations of large portfolios of financial derivatives
 + https://www.sciencedirect.com/science/article/pii/S0096300321004884
+
+
+Gaussian Process Regression for Derivative Portfolio Modeling and Application to CVA Computations, Stéphane Crépey, Matthew Dixon, 2019
++ https://arxiv.org/abs/1901.11081
+
+Deep learning for CVA computations of large portfolios of financial derivatives Kristoffer Andersson, Cornelis W. Oosterlee (2021)
+https://www.sciencedirect.com/science/article/pii/S0096300321004884
+
+
+Speed-up credit exposure calculations for pricing and risk management
+
+Kathrin Glau, Ricardo Pachon, Christian Potz
