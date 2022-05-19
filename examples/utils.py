@@ -1,6 +1,8 @@
 import numpy as np
 from scipy.integrate import quad
 from typing import Callable
+import matplotlib.pyplot as plt
+import seaborn as sns
 
 def diagnosis_pred(true, pred, lower_bound = None) -> dict:
     """
@@ -13,7 +15,7 @@ def diagnosis_pred(true, pred, lower_bound = None) -> dict:
         
     }
     if lower_bound is not None:
-        results["lower_bound_violation"] = np.mean((pred < lower_bound)),
+        results["lower_bound_violation"] = np.mean((pred < lower_bound))
     return results
 
 def PDE_calc(model, f_to_i:Callable, **kwargs):
@@ -69,14 +71,36 @@ def diagnosis_pde(PDE_err):
     }
 
 
-def diagnosis_grads(hessian, grads, f_to_i: Callable) -> dict:
+def diagnosis_grads(hessian, grads, f_to_i: Callable, var_ttm:str, var_money: str) -> dict:
     """
     Errors in gradients for call
     """
     return {
-        "monotonicity_error": np.mean(grads[:, f_to_i("S/K")].numpy() < 0),
-        "time_value_error": np.mean(grads[:, f_to_i("ttm")].numpy() < 0),
-        "convex_error": np.mean(hessian[:, f_to_i("S/K")].numpy() < 0)
+        "monotonicity_error": np.mean(grads[:, f_to_i(var_money)].numpy() < 0),
+        "time_value_error": np.mean(grads[:, f_to_i(var_ttm)].numpy() < 0),
+        "convex_error": np.mean(hessian[:, f_to_i(var_money)].numpy() < 0)
      }
 
+# def sigmoid(a, x):
+#     return 1 / (1 + np.exp(-a * x))
+# xs = np.linspace(-3, 3)
+# fig, ax = plt.subplots()
+# for a in [1, 2, 3, 10, 20, 999]:
+#     ax.plot(xs, sigmoid(a, xs), label=f"{a}")
+# ax.legend()
 
+def plot_preds(moneyness, ttm, lower_bound, true, preds):
+    # plot predictions vs lower bound
+    fig, ax = plt.subplots(ncols = 2)
+    sns.scatterplot(moneyness, preds, hue = ttm, label=None, ax = ax[0])
+    sns.scatterplot(x = moneyness, y = lower_bound, label = "No-arb-bound", ax = ax[0]);
+    sns.scatterplot(moneyness, true - preds, ax = ax[1])
+    ax[1].set_title("Error v Moneyness")
+
+def visualise_surface(moneyness, ttm, preds):
+    fig = plt.figure(figsize=(20,10))
+    ax = fig.add_subplot(111, projection='3d')
+
+    a,b = np.meshgrid(moneyness, ttm)
+    preds = preds.reshape((moneyness.shape[0], ttm.shape[0]))
+    ax.plot_surface(a, b, preds)

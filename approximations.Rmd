@@ -134,3 +134,78 @@ On Multilevel and Control Variate Monte Carlo Methods for Option Pricing under t
 
 
 Stacked Monte Carlo for option pricing
++ https://www.arxiv-vanity.com/papers/1903.10795/
+
+Deep calibration of the quadratic rough Heston model
++ https://arxiv.org/abs/2107.01611
+
+the Performance of Artificial Neural Networks on Rough Heston Model
++ https://www.datasim.nl/application/files/3516/0614/0758/Finalthesis.pdf
+
+LSM Reloaded - Differentiate xVA on your iPad Mini
++ https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2966155
+
+Optimally weighted loss functions for solving PDEs with Neural Networks
++ https://arxiv.org/abs/2002.06269
+
+Deep Hedging: Learning Risk-Neutral Implied Volatility Dynamics
++ https://arxiv.org/pdf/2103.11948.pdf
+
+Piecewise-Linear Activations or Analytic Activation Functions: Which Produce More Expressive Neural Networks?
++ https://www.researchgate.net/publication/360137104_Piecewise-Linear_Activations_or_Analytic_Activation_Functions_Which_Produce_More_Expressive_Neural_Networks
+
+The Swap Market Model with Local Stochastic Volatility
++ https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2912558
++ https://www.risk.net/our-take/5747001/swaptions-vol-modelling-tweak-opens-up-pricing-possibilities
+
+Pricing Swaptions under the LIBOR Market Model
+of Interest Rates with Local-Stochastic Volatility Models
++ https://core.ac.uk/download/pdf/6420484.pdf
+
+ Code for the paper "Effective Markovian Projection: Application to CMS Spread Options and Mid-Curve Swaptions", Felpel, Kienitz, McWalter 
+
+ A machine learning approach to portfolio pricing and risk
+management for high-dimensional problems
++ https://arxiv.org/pdf/2004.14149v4.pdf
+
+Introduction to Solving Quant Finance Problems with Time-Stepped FBSDE and Deep Learning
++ https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3494359
+
+Machine learning
+techniques in interest
+rate modelling
++ https://www.duo.uio.no/bitstream/handle/10852/78735/1/LIBOR.pdf
+
+GP regression for arbitrage-free construction of the swaption
+cube.
++ https://www.nexialog.com/wp-content/uploads/2022/03/Article-Kriging-swaption-cube.pdf
+
+Deep Learning-Based BSDE Solver for Libor Market Model with Application to Bermudan Swaption Pricing and Hedging
++ https://arxiv.org/abs/1807.06622
+
+The CV Makes the Difference – Control Variates for Neural Networks
++ https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3527314
+https://github.com/Lapsilago/EffectiveMarkovianProjection	
+
+
+Learning Bermudans
++ https://arxiv.org/abs/2105.00655
+
+Deep calibration of financial models: turning theory into practice
++ https://link.springer.com/article/10.1007/s11147-021-09183-7
+
+Computing Sensitivities of CVA Using
+Adjoint Algorithmic Differentiation
++ https://www.nag.com/market/articles/computing-sensitivities-of-cva-using-aad.pdf
+
+Turbo Charging the Cheyette Model
++ https://papers.ssrn.com/sol3/papers.cfm?abstract_id=1719142
+
+Swaption Pricing Approximations for
+LIBOR Market Models
++ 
+
+https://uk.mathworks.com/help/fininst/price-bermudan-swaptions-with-different-interest-rate-models.html
+	
+
+http://www.columbia.edu/~mh2078/market_models.pdf
