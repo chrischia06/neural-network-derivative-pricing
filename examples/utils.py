@@ -4,7 +4,7 @@ from typing import Callable
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-def diagnosis_pred(true, pred, lower_bound = None) -> dict:
+def diagnosis_pred(true, pred, lower_bound = None, upper_bound = None) -> dict:
     """
     L1, L2, and L_inf errors
     """
@@ -15,6 +15,8 @@ def diagnosis_pred(true, pred, lower_bound = None) -> dict:
         
     }
     if lower_bound is not None:
+        results["lower_bound_violation"] = np.mean((pred < lower_bound))
+    if upper_bound is not None:
         results["lower_bound_violation"] = np.mean((pred < lower_bound))
     return results
 
@@ -76,9 +78,9 @@ def diagnosis_grads(hessian, grads, f_to_i: Callable, var_ttm:str, var_money: st
     Errors in gradients for call
     """
     return {
-        "monotonicity_error": np.mean(grads[:, f_to_i(var_money)].numpy() < 0),
-        "time_value_error": np.mean(grads[:, f_to_i(var_ttm)].numpy() < 0),
-        "convex_error": np.mean(hessian[:, f_to_i(var_money)].numpy() < 0)
+        "monotonicity_error": np.mean(grads[:, f_to_i(var_money)] < 0),
+        "time_value_error": np.mean(grads[:, f_to_i(var_ttm)] < 0),
+        "convex_error": np.mean(hessian[:, f_to_i(var_money)] < 0)
      }
 
 # def sigmoid(a, x):
@@ -89,11 +91,17 @@ def diagnosis_grads(hessian, grads, f_to_i: Callable, var_ttm:str, var_money: st
 #     ax.plot(xs, sigmoid(a, xs), label=f"{a}")
 # ax.legend()
 
-def plot_preds(moneyness, ttm, lower_bound, true, preds):
+"""
+Plotting utilitiies
+"""
+def plot_preds(moneyness, ttm, true, preds, lower_bound = None, upper_bound = None):
     # plot predictions vs lower bound
     fig, ax = plt.subplots(ncols = 2)
     sns.scatterplot(moneyness, preds, hue = ttm, label=None, ax = ax[0])
-    sns.scatterplot(x = moneyness, y = lower_bound, label = "No-arb-bound", ax = ax[0]);
+    if lower_bound is not None:
+        sns.scatterplot(x = moneyness, y = lower_bound, label = "No-arb-bound", ax = ax[0]);
+    if upper_bound is not None:
+        sns.scatterplot(x = moneyness, y = upper_bound, label = "No-arb-bound", ax = ax[0]);
     sns.scatterplot(moneyness, true - preds, ax = ax[1])
     ax[1].set_title("Error v Moneyness")
 

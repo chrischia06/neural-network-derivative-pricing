@@ -83,37 +83,49 @@ def ensemble_model(models: List, N_SEEDS:int) -> tf.keras.Model:
 def rbf(x):
     return tf.math.exp(-0.5 * x ** 2)
 
-
-def homogeneity_network(N_FEATS):
-    input_moneyness = Input(1)
-    input_ttm = Input(1)
-    
-    x1 = Dense(1, activation='sigmoid', kernel_constraint='non_neg')(input_ttm)
-    x2 = Dense(1, activation=rbf, kernel_constraint='non_neg')(input_moneyness)
-    input_layers = [input_ttm, input_moneyness]
+def homogeneity_network(N_FEATS:int, HIDDEN_UNITS:int = 100, seed:int = 42):
+    tf.random.set_seed(seed)
+    input_moneyness = Input(1, name='moneyness')
+    input_ttm = Input(1, name='ttm') 
+    x1 = Dense(HIDDEN_UNITS, activation='sigmoid', kernel_constraint='non_neg')(input_ttm)
+    x2 = Dense(HIDDEN_UNITS, activation='softplus', kernel_constraint='non_neg')(input_moneyness)
+    input_layers = [input_moneyness, input_ttm]
     interaction_layers = [x1, x2]
-    if N_FEATS > 2:
-        input_other = Input(N_FEATS - 2)
-        input_layers += [input_other]
-        x3 = Dense(100, 'swish')(input_layers[-1])
-        x3 = Dense(1, activation='sigmoid')(x3)
-        x3 = Dense(1, kernel_constraint='non_neg', use_bias=False)(x3)
-        interaction_layers += [x3]
-
     x = Multiply()(interaction_layers)
     output_layer = Dense(1, kernel_constraint='non_neg', use_bias=False)(x)
     model = Model(input_layers, output_layer)
-    # x3 = Dense(1, activation='softplus', kernel_constraint='non_neg')(input_moneyness)
-    # x4 = Multiply()([x2, x3])
-
-    # x2 = Dense(1, activation='exponential', name='intrinsic')(input_layer)
-    # x3 = Lambda(lambda x: tf.keras.activations.relu(x - 1))(x2)
-    # x = Dense(32, activation='softplus', kernel_constraint='non_neg')(x)
-    # x = Dense(32, activation='softplus', kernel_constraint='non_neg')(x)
-    # output_layer = Add()([x3, Dense(1, activation='softplus')(x)])
-
-    # model.layers
-
-    # model.layers[1].trainable = False
-    # model.layers[1].set_weights([np.array([[1], [0]]), np.array([0.0])])
     return model
+
+# def homogeneity_network(N_FEATS):
+#     input_moneyness = Input(1)
+#     input_ttm = Input(1)
+    
+#     x1 = Dense(1, activation='sigmoid', kernel_constraint='non_neg')(input_ttm)
+#     x2 = Dense(1, activation='softplus', kernel_constraint='non_neg')(input_moneyness)
+#     input_layers = [input_ttm, input_moneyness]
+#     interaction_layers = [x1, x2]
+#     if N_FEATS > 2:
+#         input_other = Input(N_FEATS - 2)
+#         input_layers += [input_other]
+#         x3 = Dense(100, 'softplus')(input_layers[-1])
+#         x3 = Dense(1, activation='sigmoid')(x3)
+#         x3 = Dense(1, kernel_constraint='non_neg', use_bias=False)(x3)
+#         interaction_layers += [x3]
+
+#     x = Multiply()(interaction_layers)
+#     output_layer = Dense(1, kernel_constraint='non_neg', use_bias=False)(x)
+#     model = Model(input_layers, output_layer)
+#     # x3 = Dense(1, activation='softplus', kernel_constraint='non_neg')(input_moneyness)
+#     # x4 = Multiply()([x2, x3])
+
+#     # x2 = Dense(1, activation='exponential', name='intrinsic')(input_layer)
+#     # x3 = Lambda(lambda x: tf.keras.activations.relu(x - 1))(x2)
+#     # x = Dense(32, activation='softplus', kernel_constraint='non_neg')(x)
+#     # x = Dense(32, activation='softplus', kernel_constraint='non_neg')(x)
+#     # output_layer = Add()([x3, Dense(1, activation='softplus')(x)])
+
+#     # model.layers
+
+#     # model.layers[1].trainable = False
+#     # model.layers[1].set_weights([np.array([[1], [0]]), np.array([0.0])])
+#     return model

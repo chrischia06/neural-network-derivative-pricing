@@ -221,3 +221,25 @@ https://github.com/pooyasf/DGM
 https://github.com/suriyadeepan/neural-pde
 
 https://github.com/YihaoHu/Neural_PDE
+
+
+
+Application of Quasi Monte Carlo and Global Sensitivity Analysis to Option Pricing and Greeks: Finite Differences vs. AAD
++ https://onlinelibrary.wiley.com/doi/abs/10.1002/wilm.10972
++ https://www.broda.co.uk/gsa/Pricing%20and%20Hedging%20Multi-Asset%20Options.pdf
+
+Efficient pricing of Bermudan options using recombining quadratures
+
++ https://yonsei.pure.elsevier.com/en/publications/efficient-pricing-of-bermudan-options-using-recombining-quadratur
+
+Pricing options on flow forwards by neural networks in Hilbert space (2022)
+https://arxiv.org/abs/2202.11606
+https://www.youtube.com/watch?v=jOye0mznjqc
+
+Gradient Boosting for Quantitative Finance
++ https://staff.fnwi.uva.nl/p.j.c.spreij/winterschool/19ReynersPaper.pdf
+
+
+
+CodPy: A Python Library for Machine Learning, Mathematical Finance, and Statistics (RKHS)
++ https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4077158
