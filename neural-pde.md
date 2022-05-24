@@ -54,3 +54,9 @@ Neural Q-learning for solving elliptic PDEs
 nel: Convergence and generalization in neural networks. 
 
 
+C. Beck, M. Hutzenthaler, A. Jentzen, and B. Kuckuck. An overview on deep learning-based approximation methods for partial differential equations, 2021.
+
+J. Han, A. Jentzen, and W. E. Solving high-dimensional partial differential equations using deep learning. 
+
+M. Hutzenthaler, A. Jentzen, T. Kruse, and T. A. Nguyen. A proof that rectified deep neural networks
+overcome the curse of dimensionality in the numerical approximation of semilinear heat equations.

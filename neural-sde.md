@@ -1,7 +1,7 @@
 
+**Robust Neural SDE**
 
-
-
++ https://github.com/msabvid/robust_nsde
 
 **Timothy DeLise, Neural Options Pricing**
 
@@ -17,9 +17,7 @@
 
 + https://arxiv.org/abs/2110.10249
 
-**Robust Neural SDE**
 
-+ https://github.com/msabvid/robust_nsde
 
 
 
