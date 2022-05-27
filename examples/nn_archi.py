@@ -8,7 +8,7 @@ from tensorflow.keras.optimizers import Adam, SGD
 
 from tensorflow.keras.callbacks import EarlyStopping
 from typing import List, Union, Callable
-
+import tensorflow_probability as tfp
 
 
 def make_model(N_FEATS:int, 
@@ -84,13 +84,26 @@ def rbf(x):
     return tf.math.exp(-0.5 * x ** 2)
 
 def homogeneity_network(N_FEATS:int, HIDDEN_UNITS:int = 100, seed:int = 42):
+    """
+    N_FEATS: No. of inputs, at least moneyness and time-to-maturity are required
+    HIDDEN_UNITS: No. of hidden units
+    SEED: Hidden Seed
+    
+    Constrains the moneyness and time-to-maturity variables to have positive weights, and no constraints for the other paramters
+    """
+    assert N_FEATS >= 2
     tf.random.set_seed(seed)
     input_moneyness = Input(1, name='moneyness')
     input_ttm = Input(1, name='ttm') 
     x1 = Dense(HIDDEN_UNITS, activation='sigmoid', kernel_constraint='non_neg')(input_ttm)
     x2 = Dense(HIDDEN_UNITS, activation='softplus', kernel_constraint='non_neg')(input_moneyness)
-    input_layers = [input_moneyness, input_ttm]
     interaction_layers = [x1, x2]
+    input_layers = [input_moneyness, input_ttm]
+    if N_FEATS > 2:
+        input_other = Input(N_FEATS - 2)
+        input_layers += [input_other]
+        x3 = Dense(HIDDEN_UNITS, activation='softplus', name='other_features')(input_other)
+        interaction_layers += [x3]
     x = Multiply()(interaction_layers)
     output_layer = Dense(1, kernel_constraint='non_neg', use_bias=False)(x)
     model = Model(input_layers, output_layer)
@@ -129,3 +142,49 @@ def homogeneity_network(N_FEATS:int, HIDDEN_UNITS:int = 100, seed:int = 42):
 #     # model.layers[1].trainable = False
 #     # model.layers[1].set_weights([np.array([[1], [0]]), np.array([0.0])])
 #     return model
+
+
+
+
+
+# def create_model(n_feats:int = 1, 
+#                  activation_func:Union[Callable, str] = 'elu',
+#                  kernel_init:Union[Callable,str] = 'glorot_normal',
+#                  n_layers:int = 1, 
+#                  N_UNITS:int = 100,
+#                 SEED = 42):
+#     tf.random.set_seed(42)
+#     input_layer = Input(n_feats, name="input_layer")
+#     layers = [Dense(N_UNITS, 
+#                     activation=activation_func,
+#                     kernel_initializer = kernel_init
+#                    )(input_layer)]
+    
+#     for i in range(1, n_layers):
+#         layers += [Dense(N_UNITS, 
+#                     activation=activation_func,
+#                     kernel_initializer = kernel_init
+#                    )(layers[-1])]
+#     output_layer = Dense(1, name="output_layer")(layers[-1])
+
+#     model = Model(input_layer, output_layer)
+#     return model
+
+# model = create_model(n_feats = 10, N_UNITS = 30, n_layers = 5)
+# opt = tf.keras.optimizers.Adam(learning_rate = 1e-2)
+
+# def custom_loss_pass(model, x_tensor):
+#     def custom_loss(y_true,y_pred):
+#         with tf.GradientTape() as t:
+#             t.watch(x_tensor)
+#             output = model(x_tensor)
+#         grad = t.gradient(output, x_tensor)
+#         # loss_data = tf.reduce_mean(tf.square(yTrue - yPred), axis=-1)
+#         loss = tf.reduce_mean(tf.square(output - y_true[:, :1])) + l * tf.reduce_mean(tf.square(y_true[:, 1:] - grad))
+#         return loss
+#     return custom_loss
+
+
+# model.compile(loss=custom_loss_pass(model, tf.convert_to_tensor(S0.numpy(), dtype=tf.float32)), optimizer=opt)
+# model.fit(tf.convert_to_tensor(S0.numpy(), dtype=tf.float32), 
+#           tf.convert_to_tensor(np.hstack([y.numpy(), grads]), dtype=tf.float32), batch_size=1024, epochs=100, shuffle=False)

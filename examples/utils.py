@@ -50,14 +50,8 @@ def PDE_calc(model, f_to_i:Callable, **kwargs):
                 + 0.5 * Xs[:, f_to_i("V")] * (Xs[:, f_to_i("vol_of_vol")] ** 2) * hessian2[:, f_to_i("V")]
                 ))
         
-    if model == "SABR":
-        PDE_err = (
-        grads[:, f_to_i("ttm")]
-        - (grads[:, f_to_i("V")] * Xs[:, f_to_i("kappa")] * (Xs[:, f_to_i("vbar")] - Xs[:, f_to_i("V")])
-        + Xs[:, f_to_i("rho")] * Xs[:, f_to_i("vol_of_vol")] * Xs[:, f_to_i("V")] * hessian1[:, f_to_i("V")]
-        + 0.5 * (Xs[:, f_to_i("S/K")] ** 2) * Xs[:, f_to_i("V")] * hessian1[:, f_to_i("S/K")]
-        + 0.5 * Xs[:, f_to_i("V")] * (Xs[:, f_to_i("vol_of_vol")] ** 2) * hessian2[:, f_to_i("V")]
-        ))
+    
+        
     return PDE_err
 
 def diagnosis_pde(PDE_err):
@@ -105,10 +99,28 @@ def plot_preds(moneyness, ttm, true, preds, lower_bound = None, upper_bound = No
     sns.scatterplot(moneyness, true - preds, ax = ax[1])
     ax[1].set_title("Error v Moneyness")
 
-def visualise_surface(moneyness, ttm, preds):
-    fig = plt.figure(figsize=(20,10))
+def visualise_surface(moneyness:np.array, 
+                      ttm:np.array, 
+                      preds:np.array, 
+                      x_label:str = 'Moneyness', 
+                      y_label:str = 'ttm', 
+                      title:str = 'Surface'):
+    """
+    Utility Function to plot a vanilla surface
+    
+    moneyness: numpy array containing sample moneyness (e.g. S/K, log(S/K)) grid points
+    ttm: numpy array containing sample maturities (e.g. $\tau = T - t$) grid points
+    x_label: label for x-axis
+    """
+    fig = plt.figure(figsize=(25,10))
     ax = fig.add_subplot(111, projection='3d')
 
     a,b = np.meshgrid(moneyness, ttm)
     preds = preds.reshape((moneyness.shape[0], ttm.shape[0]))
     ax.plot_surface(a, b, preds)
+    ax.set_xlabel(x_label)
+    ax.set_ylabel(y_label)
+    ax.set_zlabel("Price")
+    ax.set_title(title)
+    return ax
+    

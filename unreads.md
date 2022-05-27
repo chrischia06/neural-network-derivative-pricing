@@ -621,3 +621,145 @@ help with the training of ANNs.
 • Loss penalty. Itkin [2019] and Ackerer et al. [2019] add various penalty terms to the loss function.
 Those terms present no-arbitrage conditions. For example, parameter configurations that allow for
 calendar arbitrage are being penalise
+
+
+Variance Reduction Applied to Machine Learning for Pricing Bermudan/American Options in High Dimension
+
+ Artificial neural network for option pricing with and without asymptotic correction
+
+ + https://www.tandfonline.com/doi/pdf/10.1080/14697688.2020.1812702?needAccess=true
+
+
+ https://github.com/ynouri/pysabr/blob/master/notebooks/Lognormal%20SABR%20vs%20Normal%20SABR.ipynb
+
+ https://github.com/t-vi/interesting-rates/blob/master/interest-rate-models/Hull-White-1f.ipynb
+
+ file:///Users/chris/Downloads/differential-machine-learning-masterclass.pdf
+
+ https://drive.google.com/file/d/1t1aGONTJRc35JWieeE8ZlPxz88ZesoMm/view
+
+ https://www.tandfonline.com/doi/pdf/10.1080/14697688.2018.1490807?needAccess=true
+
+
+ https://arxiv.org/pdf/2003.05708.pdf
+
+ Multilevel Monte Carlo Combined with Numerical Smoothing for
+Robust and Efficient Option Pricing and Density Estimation
+https://arxiv.org/abs/1903.11275
+
+
+
+Deep Learning Credit Risk Modeling
++ https://jfi.pm-research.com/content/31/2/101
+
+Function approximation for option
+pricing and risk management
+Methods, theory and applications
+by
+Christian P ̈otz
+
+https://hpcquantlib.wordpress.com/2011/12/19/bermudan-swaption-pricing-based-on-finite-difference-methods/
+
+https://www.wbstraining.com/wp-content/uploads/2020/06/Neural-Networks-with-Asymptotics-Control-Antonov.pdf
+
+https://arxiv.org/pdf/1901.09647.pdf
+
+https://parleyyang.github.io/Cam/LT2021/Slide.pdf
+
+https://hpcquantlib.wordpress.com/2020/08/30/a-novel-control-variate-for-the-heston-model/
+
+https://arxiv.org/abs/2203.01160
+
+https://www.iam.uni-bonn.de/fileadmin/user_upload/ywip2014/Talks/Santiago.pdf
+
+Differential learning methods for solving fully nonlinear PDEs
+
+https://www.iam.uni-bonn.de/fileadmin/user_upload/ywip2014/Talks/Santiago.pdf
+
+Deep Smoothing of the Implied Volatility Surface
+
+https://bookdown.org/maxime_debellefroid/MyBook/the-greeks.html
+
+
+https://arxiv.org/pdf/2006.15823v1.pdf
+
+Financial Option Valuation by Unsupervised Learning with
+Artificial Neural Networks
+
+https://mdpi-res.com/d_attachment/mathematics/mathematics-09-00046/article_deploy/mathematics-09-00046.pdf?version=1609146794
+
+https://github.com/christiangruener/MasterThesis
+
+https://zewenshen.github.io/files/HDP_ZewenShen.pdf
+
+https://machine-learning-finance.herokuapp.com/voila/render/dynamically_controlled_kernel_estimation/dynamically_controlled_kernel_estimation.ipynb
+
+https://github.com/silvialava/HJM_calibration_with_NN/blob/master/forward_curve_new_tools.ipynb
+
+https://arxiv.org/pdf/2006.01911.pdf
+
+Deep Learning-Based BSDE Solver for Libor
+Market Model with Application to Bermudan
+Swaption Pricing and Hedging
+
+A Fourier interpolation method for numerical solution of FBSDEs: Global convergence, stability, and higher order discretizations
++ https://arxiv.org/abs/1410.8595v3
+
+DEEP PPDES FOR ROUGH (LOCAL) STOCHASTIC VOLATILITY
++ https://www.ma.imperial.ac.uk/~ajacquie/index_files/JO%20-%20RoughVolPPDE_Final.pdf
+
+https://tel.archives-ouvertes.fr/tel-02372962/document
+
+https://github.com/sapphire921/NN-Option-Pricing/blob/master/HybridMNN.ipynb    
+
+https://canopee-group.com/wp-content/uploads/2020/12/Machine-Learning-methods-Coperneec.pdf
+
+https://cs230.stanford.edu/projects_fall_2019/reports/26260984.pdf
+
+https://uk.mathworks.com/help/fininst/deep-learning-to-approximate-barrier-option-pricing.html
+
+https://ieeexplore.ieee.org/abstract/document/8119142?casa_token=Mlicc9cRHCwAAAAA:ltUYF1ULsgckbiOvZch2MqCZNME2f_9EAInES16JavIIwFcSDXZrZ_7PtJoM3rJgyKZC2trbw0Mozw
+
+https://link.springer.com/article/10.1007/s42521-021-00041-7
+
+https://www.tandfonline.com/doi/abs/10.1080/14697688.2018.1495335?casa_token=i9utDQFh5G8AAAAA%3AJrmh20X25rwJtmckHXepi3zAL4ZIddnGDiBkuy4QIrTNrXrfuRwQXcshxFggujBlleJc-EwAVvmipw&journalCode=rquf20
+
+https://www.scirp.org/journal/paperinformation.aspx?paperid=100148
+
+https://www.researchgate.net/publication/332049058_Initial_Margin_Simulation_with_Deep_Learning
+
+https://arxiv.org/pdf/1808.08221.pdf
+
+https://arxiv.org/pdf/1902.05810.pdf
+
+https://arxiv.org/abs/2005.02347
+
+https://arxiv.org/pdf/2105.05359.pdf
+
+https://colab.research.google.com/github/differential-machine-learning/notebooks/blob/master/Bermudan5F.ipynb#scrollTo=extensive-liver
+
+https://arxiv.org/pdf/1901.08943.pdf
+
+https://people.math.ethz.ch/~hjfurrer/teaching/LongstaffSchwartzAmericanOptionsLeastSquareMonteCarlo.pdf
+
+https://people.maths.ox.ac.uk/gilesm/mc/module_6/american.pdf
+
+file:///Users/chris/Downloads/Pu-Viola_Ruo_Han_01977026.pdf
+
+https://papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id=1025723
+
+https://spiral.imperial.ac.uk/bitstream/10044/1/57953/5/Yu-Z-2018-PhD-Thesis.pdf
+
+https://arxiv.org/abs/1806.06850v2
+
+https://www.imperial.ac.uk/media/imperial-college/faculty-of-natural-sciences/department-of-mathematics/math-finance/Thorin_MSc_Thesis_NN_SABR.pdf
+
+https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3829701
+
+https://www.math.kth.se/matstat/seminarier/reports/M-exjobb18/180525c.pdf
+
+https://zewenshen.github.io/files/HDP_ZewenShen.pdf
+
+https://courses-archive.maths.ox.ac.uk/system/files/courses/87/107/MFin2016Module5Materials.pdf
+
+https://arxiv.org/pdf/2205.09815v1.pdf

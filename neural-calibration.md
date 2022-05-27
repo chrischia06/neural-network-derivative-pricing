@@ -80,6 +80,7 @@ for the CNN the data is scaled to have a mean of 0 and a variance of 1
 **Dirk Roeder, Georgi Dimitroff, Volatility model calibration with neural networks a comparison between direct and indirect methods (2020)**
 
 + https://github.com/roederd/volatility_model_calibration_with_nn
++ Strike-Maturity grid is fixed (so interpolation through grid points)
 
 
 # HJM
