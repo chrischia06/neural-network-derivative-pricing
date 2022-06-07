@@ -18,6 +18,14 @@
 + https://epubs.siam.org/doi/10.1137/18M1193001
 
 
+Gaß, M., K. Glau, M. Mahlstedt, and M. Mair (2018) Chebyshev interpolation for parametric option pricing
+
+
+Glau, K., P. Herold, D. B. Madan, and C. P ̈otz (2019). The Chebyshev method for the implied
+volatility.
+
+Glau, K. and M. Mahlstedt (2019). Improved error bound for multivariate Chebyshev polynomial
+interpolation
 
 **Dynamic Initial Margin via Chebyshev Tensors**
 + Ignacio Ruiz, Mariano Zeron

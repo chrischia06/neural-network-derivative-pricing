@@ -763,3 +763,185 @@ https://zewenshen.github.io/files/HDP_ZewenShen.pdf
 https://courses-archive.maths.ox.ac.uk/system/files/courses/87/107/MFin2016Module5Materials.pdf
 
 https://arxiv.org/pdf/2205.09815v1.pdf
+
+
+
+Reconstructing the Joint Probability Distribution From Basket Prices: A Mildly Ill-Posed Problem
+
++ https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2766054
++ Shuren Tan
+
+https://ipythonquant.wordpress.com/
+
+Fast Monte-Carlo Pricing and Greeks for Barrier Options using GPU computing on Google Cloud Platform in Python
+
+
+https://ipythonquant.wordpress.com/2018/11/18/fast-monte-carlo-pricing-and-greeks-for-barrier-options-using-gpu-computing-on-google-cloud-platform-in-python/
+
+
+Changwei Xiong (熊昌炜)
+https://modelmania.github.io/main/
+
+Dual-Hybrid Modeling for Option Pricing of CSI 300ETF
+
+Asymptotic Expansion prior knowledge FBSDE
+
+Generative Bayesian neural network model for
+risk-neutral pricing of American index options
+
+https://github.com/cantaro86/Financial-Models-Numerical-Methods/blob/master/2.3%20American%20Options.ipynb
+
+https://github.com/cantaro86/Financial-Models-Numerical-Methods/blob/master/2.2%20Exotic%20options.ipynb
+
+https://github.com/cantaro86/Financial-Models-Numerical-Methods/blob/master/2.1%20Black-Scholes%20PDE%20and%20sparse%20matrices.ipynb
+
+https://github.com/cantaro86/Financial-Models-Numerical-Methods/blob/master/1.4%20SDE%20-%20Heston%20model.ipynb
+
+https://github.com/cantaro86/Financial-Models-Numerical-Methods/blob/master/1.3%20Fourier%20transform%20methods.ipynb
+
+https://github.com/cantaro86/Financial-Models-Numerical-Methods/blob/master/1.1%20Black-Scholes%20numerical%20methods.ipynb
+
+https://github.com/cantaro86/Financial-Models-Numerical-Methods/blob/master/4.2%20Volatility%20smile%20and%20model%20calibration.ipynb
+
+https://github.com/cantaro86/Financial-Models-Numerical-Methods/blob/master/6.1%20Ornstein-Uhlenbeck%20process%20and%20applications.ipynb
+
+https://github.com/muru-raj10/SABR-Model-Swaptions
+
+https://github.com/raoul-pietersz/cash_settled_swaptions
+
+
+
+https://github.com/dpicone1/LiborMarketModel
+
+https://github.com/nathansimonis1612/NN-swaptionPricing
+
+https://github.com/zhoutingting2019/Bermudan_Swaption_NN
+
+https://github.com/nhiananto/LMM_SABR
+
+https://github.com/kangbw702/Default-swaption-pricing-and-counterparty-credit-risk-valuation
+
+https://github.com/dbischof90/american_option_pricing_neural_nets
+
+https://www.math.nyu.edu/~avellane/albaneseslides.pdf
+
+https://www.datasim.nl/application/files/5915/7045/5027/Matt_Robinson_Thesis_.pdf
+
+https://arxiv.org/abs/1806.06850v2
+
+https://valstat.elte.hu/conf2018/T.pdf
+
+https://quantlib.wordpress.com/tag/bermudan-swaption/
+
+https://hpcquantlib.wordpress.com/2011/12/19/bermudan-swaption-pricing-based-on-finite-difference-methods/
+
+https://mfe.baruch.cuny.edu/wp-content/uploads/2019/12/IRC_Lecture11_2019.pdf
+
+https://amslaurea.unibo.it/23052/1/Calibration%20of%20local%20stochastic%20volatility%20models%20with%20neural%20networks%20-%20Tiziano%20todeschi.pdf
+
+https://hpcquantlib.wordpress.com/2019/10/12/almost-exact-sabr-interpolation-using-neural-networks-and-gradient-boosted-trees/
+
+https://hpcquantlib.wordpress.com/2019/01/11/finite-difference-solver-for-the-sabr-model/
+
+https://hpcquantlib.wordpress.com/2021/05/25/heston-pde-grid-how-small-can-we-make-it/
+
+https://hpcquantlib.wordpress.com/2020/08/30/a-novel-control-variate-for-the-heston-model/
+
+https://hpcquantlib.wordpress.com/2019/11/26/moment-matching-option-pricing-a-case-study/
+
+https://hpcquantlib.wordpress.com/2018/06/05/arbitrary-number-of-stencil-points/
+
+https://github.com/nburgessx/QuantResearch/blob/main/LongstaffSchwartz/Least-Squares-MC.pdf
+
+https://github.com/nburgessx/QuantResearch/tree/main/InterestRates
+
+https://link.springer.com/article/10.1007/s11118-022-10005-0
+
+https://tel.archives-ouvertes.fr/tel-00658766/document
+
+Arbitrage free implied vol surfaces 
+
+Stochastic PDEs for large portfolios with general mean-reverting volatility processes
+https://arxiv.org/abs/1906.05898
+
+Arbitrage-free SVI volatility surfaces
+https://arxiv.org/pdf/1204.0646.pdf
+
+Robust Product Markovian Quantization
++ https://arxiv.org/abs/2006.15823v1
+
+Solving Fokker-Planck equation using deep learning
++ https://arxiv.org/abs/1910.10503
+
+DeepSets and Their Derivative Networks for Solving Symmetric PDEs
++ https://www.researchgate.net/publication/357527895_DeepSets_and_Their_Derivative_Networks_for_Solving_Symmetric_PDEs
+
+Learning time-dependent data with the signature
+transform
++ https://tel.archives-ouvertes.fr/tel-03507274/document
+
+Deep Signature models for Financial Equity Time Series prediction
++ https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4107756
+
+
+Deep Signature FBSDE Algorithm
++ https://ideas.repec.org/p/arx/papers/2108.10504.html
+
+Deep Signature Transforms
++ https://proceedings.neurips.cc/paper/2019/file/d2cdf047a6674cef251d56544a3cf029-Paper.pdf
+
+Derivatives pricing using signature payoffs
++ https://arxiv.org/pdf/1809.09466.pdf
+
+Model-free pricing and hedging in discrete
+time using rough path signatures
++ https://www.arxiv-vanity.com/papers/1905.01720/
+
+https://ora.ox.ac.uk/objects/uuid:464f58ce-8634-45cb-a68e-795eca66f1de/download_file?safe_filename=Lyons-et-al-2020-Numerical-method-for-model-free-pricing--.pdf&type_of_work=Journal+article
+
+Learning to price and hedge path-dependent derivatives
++ https://www.maths.ed.ac.uk/~dsiska/talks/MachineLearn-PathDependent-Oxford-20190917.pdf
++ https://www.maths.ed.ac.uk/~dsiska/talks/MachineLearn-PathDependent-Oxford-20190917.pdf
+https://talus.maths.usyd.edu.au/u/pubs/publist/preprints/2010/roper-9.pdf
+
+
+Markov Functional Model
++ https://www.quantlib.org/slides/qlws13/caspers.pdf
+
+Justin SIrignano
+Christopher Reisenger
+
+Robust Product Markovian Quantization
++ 
+
+Applications - Dynamic Sensitivities and Initial Margin simulation (webinar)
++ https://www.youtube.com/watch?v=ft-ythncOLo
+
+https://machine-learning-finance.herokuapp.com/
+
+Application of Effective Markovian Projection to
+SABR and Heston Models
+
+Dynamically Controlled Kernel Estimation
++ https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3829701
+
+GMM-DCKE
++ https://media-exp1.licdn.com/dms/document/C561FAQFryBA7neyFSw/feedshare-document-pdf-analyzed/0/1639157154173?e=1654128000&v=beta&t=CDqEu_KqHynG1E5oBCED264ms3mOflQWiPPJSRPStrY
+
+Polynomial Regression — An Alternative For Neural Networks?
++ https://towardsdatascience.com/polynomial-regression-an-alternative-for-neural-networks-c4bd30fa6cf6
+
+Deep-PPDE
++ https://github.com/msabvid/Deep-PPDE
+
+Signature SDEs as affine and polynomial processes
++ https://staff.fnwi.uva.nl/p.j.c.spreij/winterschool/20(online)slidesCuchiero.pdf
+
+
+https://github.com/msabvid/Deep-PDE-Solvers 
+
+Signatures in machine learning
+and finance
+https://ora.ox.ac.uk/catalog/uuid:2f2896cf-3821-4f34-92f0-48eac50b20fc/download_file?file_format=&safe_filename=thesis.pdf
+
+https://github.com/ArthurBook?tab=overview&from=2022-03-01&to=2022-03-31

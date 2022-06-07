@@ -1,4 +1,4 @@
-**Das and Culkin (2017)**
+**Machine Learning in Finance: The Case of Deep Learning for Option Pricing (2017), Das and Culkin (2017)**
 
 
 + Stock price (S) $10 – $500, Strike price (K) $7 – $650, Maturity (T ) 1 day to 3 years,, Dividend rate (q) 0% – 3%, Risk free rate (r) 1% – 3%, Volatility (σ) 5% – 90% (annualised?)
@@ -96,14 +96,52 @@ Pricing and Hedging Derivative Securities with Neural Networks: Bayesian Regular
 
 
 **Daniel Bloch Option Pricing With Machine Learning (2019)**
++ https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3486224
 
-+ 
+
+Differential Deep Learning for Pricing Exotic Financial Derivatives
++ https://www.diva-portal.org/smash/get/diva2:1591933/FULLTEXT01.pdf
+
+**Differential Machine Learning, Huge, Savine (2020)**
++ https://arxiv.org/pdf/2005.02347.pdf
+
+
+The CV Makes the Difference – Control Variates for Neural Networks
++ https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3527314
+
+Neural Networks with Asymptotics Control
++ https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3544698
+
+Supervised deep learning in computational finance
++ S Liu PHd Thesis
++ https://pure.tudelft.nl/ws/portalfiles/portal/87037282/Thesis_Liu_final_upload.pdf
+
 
 Karatas T., Oskoui A., Hirsa A., Supervised deep neural networks for pricing/calibration of vanilla/exotic
 options under various different processes
+
+**Deep Learning for Exotic Option Valuation (2021)**
+
++ https://arxiv.org/abs/2103.12551
++ Get parameters of market (volatility) model and use it to price exotics
++ Prices (or vol surface) of exotics need to be consistent with vanillas
++ "We create a neural network where the inputs are the volatility surface points and the exotic option parameters and the target is the price."
++ **Neural Network**: *Optimizer*: Adam, *Loss*: Mean Absolute Error, EarlyStopping with patience 50
++ https://www.cqfinstitute.org/sites/default/files/Talk%209_John%20Hull_Valuing%20Exotic%20Options%20and%20Estimating%20Model%20Risk%20Quant%20Insights.pdf
+
+
+
+
 
 # Asymptotics
 
 **Hideharu Funahashi, Artificial neural network for option pricing with and without asymptotic correction (2020)**
 + https://www.tandfonline.com/doi/abs/10.1080/14697688.2020.1812702?journalCode=rquf20
 + Funahashi, H., A chaos expansion approach under hybrid volatility models. Quant. Finance, 2014, "The residual term, D, is a smooth and infinitely differentiable function, which is a sum of the multiplication of polynomials by a CDF and PDF of the standard Brownian motion."
+
+
+A neural network-based framework for financial model calibration
++ https://mathematicsinindustry.springeropen.com/articles/10.1186/s13362-019-0066-7
+
+Option Pricing
++ https://link.springer.com/chapter/10.1007/978-3-319-51668-4_7

@@ -127,3 +127,18 @@ Numerical valuation of Bermudan basket options via partial differential equation
  Randomized Optimal Stopping Algorithms and Their Convergence Analysis
 + 
 
+Optimized radial basis function neural network for improving approximate dynamic programming in pricing high dimensional options
++ https://link.springer.com/article/10.1007/s00521-016-2802-x
+
+Robust Pricing and Hedging of Options on Multiple Assets and Its Numerics
++ https://epubs.siam.org/doi/abs/10.1137/19M1286256?casa_token=zEA06WEWz-IAAAAA:M-qX6nyNxQOInNXCT7l4H3_z2L4diXkV3zTTqzdAFOROmYDCb670ubwRazhxtXDqieiH4DmK98E
+
+Generative Bayesian neural network model for risk-neutral pricing of American index options
++ https://www.tandfonline.com/doi/pdf/10.1080/14697688.2018.1490807
+
+
+Pricing Barrier Options with DeepBSDEs
++ https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3607626
+
+ Neural Network Pricing of American Put Options 
+ + https://www.mdpi.com/2227-9091/8/3/73

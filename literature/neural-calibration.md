@@ -83,6 +83,20 @@ for the CNN the data is scaled to have a mean of 0 and a variance of 1
 + Strike-Maturity grid is fixed (so interpolation through grid points)
 
 
+**Interpretability in Deep Learning for Heston Smile Modeling Calibration**
++ https://www.imperial.ac.uk/media/imperial-college/faculty-of-natural-sciences/department-of-mathematics/math-finance/Xiaoshan_Huang_Thesis.pdf
+
+**Deep learning calibration of option pricing models: some pitfalls and solutions**
+
++ Andrey Itkin
++ https://arxiv.org/pdf/1906.03507.pdf
+
+
+
+Deep learning volatility: a deep neural network perspective on pricing and calibration in (rough) volatility models
+
++ https://www.tandfonline.com/doi/abs/10.1080/14697688.2020.1817974?casa_token=D8Rma9PRVBEAAAAA%3AfAhvc8rCvbq9O8qORcIibtAr4TKTqzfot-G73C96ZYSVC_vJCF3gaJHSd9y-ZRiJW22KXfcQZKU&journalCode=rquf20
+
 # HJM
 
 **Accuracy of Deep Learning in Calibrating HJM Forward Curves (2021)**

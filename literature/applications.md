@@ -27,3 +27,23 @@ https://www.sciencedirect.com/science/article/pii/S0096300321004884
 Speed-up credit exposure calculations for pricing and risk management
 
 Kathrin Glau, Ricardo Pachon, Christian Potz
+
+
+Neural Network for CVA: Learning Future Values
++ https://arxiv.org/abs/1811.08726
+
+Applications of neural networks in market risk
++ https://espace.curtin.edu.au/handle/20.500.11937/2548
+
+Estimating Value-at-Risk Using Neural Networks
++ https://link.springer.com/chapter/10.1007/978-3-642-60327-3_28
+
+Deep xVA solver -- A neural network based counterparty credit risk management framework
++ https://arxiv.org/abs/2005.02633
+
+
+Learning Value-at-Risk and Expected Shortfall
++ https://perso.lpsm.paris/~crepey/papers/learning-var-es.pdf
+
+Neural Networks and Value at Risk
++ https://arxiv.org/abs/2005.01686
