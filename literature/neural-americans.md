@@ -1,3 +1,14 @@
+# BSDE
+
+Derivatives Pricing via Machine Learning    Tingting Ye, Liangliang Zhang (2019)
++ https://www.scirp.org/journal/paperinformation.aspx?paperid=94637
++ https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3352688
++  BSDEs, PIDEs
++ Hilbert space formulation
++ Does a plot of prediction v price
++ Experiments: Heston for a single set of parameters
+
+
 ## Neural Americans
 
 Bernard Lapeyre, Jérôme Lelong. Neural network regression for Bermudan option pricing.

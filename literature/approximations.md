@@ -30,24 +30,9 @@ vation functions" K. Kawaguchi, Deep learning without poor local minima, arXiv:1
 + Discussion of width vs depth
 
 
-Derivatives Pricing via Machine Learning 	Tingting Ye, Liangliang Zhang (2019)
-+ https://www.scirp.org/journal/paperinformation.aspx?paperid=94637
-+ https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3352688
-+  BSDEs, PIDEs
-+ Hilbert space formulation
-+ Does a plot of prediction v price
-+ Experiments: Heston for a single set of parameters
-
-Function approximation for option pricing and risk management Methods, theory and applications.	Christian Potz	2020	https://qmro.qmul.ac.uk/xmlui/handle/123456789/71039
-
-+ Chebyshev polynomial have certain useful properties
 
 
-Zeron, M. and I. Ruiz (2017). Chebyshev Methods for Ultra - efficient Risk Calculations.
-MoCaX Intelligence Working Paper.
 
-Gaß, M., K. Glau, M. Mahlstedt, and M. Mair (2015, May). Chebyshev Interpolation for
-Parametric Option Pricing. ArXiv e-prints
 
 Deeply Learning Derivatives
 + Ryan Ferguson, Andrew Green
@@ -60,20 +45,10 @@ Deeply Learning Derivatives
 + Basket option
 
 
-Pricing and hedging derivative securities with neural networks and a homogeneity hint, Rene Garcia, Ramazan Gencay (2000)
-+ http://yoksis.bilkent.edu.tr/doi_getpdf/articles/10.1016-S0304-4076(99)00018-4.pdf
-+ One set of parameters, GBM
-
-Pricing and Hedging Derivative Securities with Neural Networks: Bayesian Regularization, Early Stopping, and Bagging, Ramazan Gençay and Min Qi (2001)
-
-+ 
 
 
-Option Pricing with Modular Neural Networks
 
-+ http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.87.3384&rep=rep1&type=pdf
-+ Nikola Gradojevic, Ramazan Geņcay, Dragan Kukolj
-+ the modular neural network seems to be similar to a gated neural network or ensemble methods
+
 
 
 "Learning Minimum Variance Discrete Hedging Directly from Market	Ke Nian, Thomas Coleman, Yuying Li	2017
@@ -89,28 +64,12 @@ Option Pricing Using Artificial Neural Networks : an Australian Perspective	Tobi
 A neural network approach to option pricing F. Mostafa & T. Dillon
 + https://www.witpress.com/Secure/elibrary/papers/CF08/CF08008FU1.pdf
 
-Pricing and Hedging Derivative Securities with Neural Networks: Bayesian Regularization, Early Stopping, and Bagging Ramazan Gençay and Min Qi 2001
-+ https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.379.4379&rep=rep1&type=pdf
-+ "Modern" NN training techniques, but remarkable thing is the paper is dated 2001!
 
 
 
 **Daniel Bloch Option Pricing With Machine Learning (2019)**
 + https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3486224
 
-
-Differential Deep Learning for Pricing Exotic Financial Derivatives
-+ https://www.diva-portal.org/smash/get/diva2:1591933/FULLTEXT01.pdf
-
-**Differential Machine Learning, Huge, Savine (2020)**
-+ https://arxiv.org/pdf/2005.02347.pdf
-
-
-The CV Makes the Difference – Control Variates for Neural Networks
-+ https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3527314
-
-Neural Networks with Asymptotics Control
-+ https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3544698
 
 Supervised deep learning in computational finance
 + S Liu PHd Thesis
@@ -131,17 +90,14 @@ options under various different processes
 
 
 
-
-
-# Asymptotics
-
-**Hideharu Funahashi, Artificial neural network for option pricing with and without asymptotic correction (2020)**
-+ https://www.tandfonline.com/doi/abs/10.1080/14697688.2020.1812702?journalCode=rquf20
-+ Funahashi, H., A chaos expansion approach under hybrid volatility models. Quant. Finance, 2014, "The residual term, D, is a smooth and infinitely differentiable function, which is a sum of the multiplication of polynomials by a CDF and PDF of the standard Brownian motion."
-
-
 A neural network-based framework for financial model calibration
 + https://mathematicsinindustry.springeropen.com/articles/10.1186/s13362-019-0066-7
 
 Option Pricing
 + https://link.springer.com/chapter/10.1007/978-3-319-51668-4_7
+
+Pricing path-dependent exotic options with flow-based generative networks
+
+**Hyun-Gyoon Kim, Se-JinKwon, Jeong-HoonKim, Jeonggyu Huh**
+
++ https://www.sciencedirect.com/science/article/abs/pii/S1568494622003532

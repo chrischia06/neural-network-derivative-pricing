@@ -34,3 +34,14 @@ interpolation
 **Ignacio Ruiz, Mariano Zeron, Machine Learning for Risk Calculations**
 
 + 
+
+Function approximation for option pricing and risk management Methods, theory and applications.	Christian Potz	2020	https://qmro.qmul.ac.uk/xmlui/handle/123456789/71039
+
++ Chebyshev polynomial have certain useful properties
+
+
+Zeron, M. and I. Ruiz (2017). Chebyshev Methods for Ultra - efficient Risk Calculations.
+MoCaX Intelligence Working Paper.
+
+Gaß, M., K. Glau, M. Mahlstedt, and M. Mair (2015, May). Chebyshev Interpolation for
+Parametric Option Pricing. ArXiv e-prints

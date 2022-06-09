@@ -1,10 +1,18 @@
+# NN SABR
 
-+ https://github.com/ynouri/pysabr
-+ https://github.com/JackJacquier/SABR-Implied-Volatility
-+ https://github.com/RussoMarioDamiano/VanillaSABR
-+ ZABR https://papers.ssrn.com/sol3/papers.cfm?abstract_id=1980726
-+ Delta and vega hedging in the SABR and LMM-SABR models https://www.risk.net/sites/risk/files/import_unmanaged/risk.net/data/risk/pdf/technical/2008/risk_0812_technical_ird1.pdf
+**Katia Babbar, William Mcghee, You Wu, NN for Cross-Currency Options under the correlated SABR Model**
++ https://www.cqfinstitute.org/sites/default/files/3%20-%20Katia%20Babbar%20SABR_CrossSmile_NN_QuantInsights_2021_FINAL.pdf
++ https://www.cqfinstitute.org/content/cross-currency-options-and-correlated-sabr-model
++ Usually Beta is fixed (to be 0 or 1), given both beta and rho affect the smile, so only alpha (vol) , rho (corr), vol-of-vol need to be correlated
++ Their application is FX cross-asset smiles, but this could be applied to CMS spread options
++ Fixed Strikes
++ Dataset generation: They first considered a hypercube of 7 points in 8 dimensions for a total of 7^8 = 5,764,801, but only 2,825,977 of these are valid
++ Activation: Softplus, Regularisation: dropout, Optimizer: Adam, Learning Rate: Adaptive, 1 Hidden layer with 2000 units
++ Mentions that reducing max norm error is needed for production
 
+**Hugues Thorin, Artificial Neural Networks for SABR Model Calibration & Hedging**
++ MSc Thesis
++ https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3995626
 
 
 **Machine learning SABR model of stochastic volatility with lookup table**
@@ -14,6 +22,19 @@
 + one of $\beta, \rho$ is typically fixed,  given both affect the smile
 + 200 sample paths, \Delta t  = 1 / 252
 + $\beta, \delta$ set to 1/2, 0
+
+# SABR Theory
+
++ https://github.com/ynouri/pysabr
++ https://github.com/JackJacquier/SABR-Implied-Volatility
++ https://github.com/RussoMarioDamiano/VanillaSABR
++ ZABR https://papers.ssrn.com/sol3/papers.cfm?abstract_id=1980726
++ Delta and vega hedging in the SABR and LMM-SABR models https://www.risk.net/sites/risk/files/import_unmanaged/risk.net/data/risk/pdf/technical/2008/risk_0812_technical_ird1.pdf
+
+
+
+
+
 
 Shifted SABR: $dS_{t} = \sigma_{t}(S_{t} + \delta)^{\beta}, S_{0} > -\delta$
 
@@ -50,8 +71,7 @@ Arbitrage Free SABR
 
 + https://github.com/ynouri/pysabr
 
-Hugues Thorin, Artificial Neural Networks for SABR Model Calibration & Hedging
-+ https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3995626
+
 
 Candidate point selection using a self-attention mechanism for generating a smooth volatility surface under the SABR model
 

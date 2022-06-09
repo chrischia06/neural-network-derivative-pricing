@@ -1,27 +1,19 @@
+# Physics Inspired Neural Networks / Neural PDE
+
+PINN Training using Biobjective Optimization: The Trade-off between Data Loss and Residual Loss
++ https://www.researchgate.net/publication/360999986_PINN_Training_using_Biobjective_Optimization_The_Trade-off_between_Data_Loss_and_Residual_Loss
+
 + Sirignano Deep PDEs DGM: A deep learning algorithm for solving partial differential equations https://arxiv.org/abs/1708.07469
-+ Neural Q-learning for solving elliptic PDEs (2022) https://arxiv.org/abs/2203.17128
+
 + The Deep Parametric PDE Method: Application to Option Pricing https://arxiv.org/pdf/2012.06211.pdf https://github.com/LWunderlich/DeepPDE/blob/main/TwoAssetsExample/DeepParametricPDEExample.ipynb
+
 + DNN Expression Rate Analysis of High-Dimensional PDEs: Application to Option Pricing https://link.springer.com/article/10.1007/s00365-021-09541-6
 + Physics-Informed Neural Networks and Option Pricing Andreas Louskos https://math.dartmouth.edu/theses/undergrad/2021/Louskos-thesis.pdf
 + Deep Learning of High-dimensional Partial Differential Equations
 + https://medium.com/data-analysis-center/solving-differential-equations-using-neural-networks-with-pydens-e831f1a115f
 
 
-Solving high-dimensional partial differential equations using deep learning
-+ https://github.com/frankhan91/DeepBSDE
 
-Deep-learning based numerical BSDE method for barrier options
-+ https://www.arxiv-vanity.com/papers/1904.05921/
-
-Deep Learning-Based Algorithms for High-Dimensional PDEs and Control Problems
-+ https://web.math.princeton.edu/~weinan/control.pdf
-
-A new efficient approximation scheme for solving high-dimensional semilinear PDEs: control variate method for Deep BSDE solver
-+ https://arxiv.org/abs/2101.09890
-
-**Towards Robust and Stable Deep Learning Algorithms for Forward Backward Stochastic Differential Equations**
-+ https://arxiv.org/abs/1910.11623
-+ https://github.com/batuhanguler/Deep-BSDE-Solver
 
 
 Deep Learning of High-dimensional Partial Differential Equations
@@ -50,7 +42,9 @@ Option Pricing by Neural Stochastic Differential Equations: A Simulation-Optimiz
 Neural Q-learning for solving elliptic PDEs
 + Samuel N. Cohen, Deqing Jiang, Justin Sirignano
 + https://arxiv.org/pdf/2203.17128.pdf
-+ Arthur Jacot, Franck Gabriel, and Cl ́ement Hongler. Neural tangent ker-
+
+
++ Arthur Jacot, Franck Gabriel, and Clément Hongler. Neural tangent ker-
 nel: Convergence and generalization in neural networks. 
 
 

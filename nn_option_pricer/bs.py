@@ -8,7 +8,7 @@ import pandas as pd
 from utils import plot_preds, diagnosis_grads, diagnosis_pde, diagnosis_pred
 from typing import List
 
-def jax_BS_call(SK, sigma_tau):
+def jax_bs_call(SK, sigma_tau):
     """
     SK: Moneyness $log(S/K)$ , log(forward / strike)
     sigma_tau: Time-scaled implied volatility $\sigma \sqrt{\tau} = \sigma \sqrt{T - t}$
@@ -53,7 +53,19 @@ def bs_pde_err(moneyness, ttm, d_ttm, d_x, d2_x):
     ax.set_title("PDE Error")
     return PDE_err
 
-def gbm_step(F, dt, sigma, Z):
+def gbm_step(F:float, dt:float, sigma:float, Z:float) -> float:
+    """
+    Exact simulation of GBM via log-euler scheme
+    
+    Parameters
+    -------------
+    F: Current value of forward 
+    dt: Timestep increment
+    sigma: Black-Scholes implied volatility
+    Z: Standard Normal Random Variable
+    
+    :return: Next forward value
+    """
     return F - (0.5 * (sigma ** 2) * dt) + sigma * Z
 
 
@@ -76,48 +88,69 @@ def bs_eval_wrapper(X_df: pd.DataFrame,
     moneyness = X_df["log(S/K)"]
     ttm = X_df["ttm"]
     
-    plot_preds(moneyness = moneyness, 
-               ttm = ttm, 
-               lower_bound = lower_bound,
-               upper_bound = upper_bound,
-               true = true_val, 
-               preds = preds)
-    pred_stats = pd.DataFrame([diagnosis_pred(true_val, preds, lower_bound, upper_bound)], 
-                              index=[METHOD]).add_prefix("pred_")
+    all_stats = []
+    
+    try:
+        plot_preds(moneyness = moneyness, 
+                   ttm = ttm, 
+                   lower_bound = lower_bound,
+                   upper_bound = upper_bound,
+                   true = true_val, 
+                   preds = preds)
+        pred_stats = pd.DataFrame([diagnosis_pred(true_val, preds, lower_bound, upper_bound)], 
+                                  index=[METHOD]).add_prefix("pred_")
+        all_stats += [pred_stats]
+    except:
+        print("Failed to evaluate prediction errors")
 
 
 
     """
     Error in PDE operator (Dynamic Arbitrage)
     """
+    try:
+        PDE_err = bs_log_pde_err(moneyness, ttm, 
+                             grads[:, f_to_i("ttm")], 
+                             grads[:, f_to_i("log(S/K)")], 
+                             hessian_moneyness[:, f_to_i("log(S/K)")])
+        pde_stats = pd.DataFrame(diagnosis_pde(PDE_err), index = [METHOD]).add_prefix("PDE_")
+        all_stats += [pde_stats]
+    except:
+        print("Failed to compute PDE statistics")
     
-    PDE_err = bs_log_pde_err(moneyness, ttm, 
-                         grads[:, f_to_i("ttm")], 
-                         grads[:, f_to_i("log(S/K)")], 
-                         hessian_moneyness[:, f_to_i("log(S/K)")])
-    pde_stats = pd.DataFrame(diagnosis_pde(PDE_err), index = [METHOD]).add_prefix("PDE_")
-    """
-    Error in Greeks
-    """
-    N_FEATS = len(feat_names)
-    true_first_order = X_df[[f"true_d_{x}" for x in feat_names]].values
-    fig, ax = plt.subplots(ncols = N_FEATS, figsize=(5 * N_FEATS, 10), nrows=2)
-    for i in range(N_FEATS):
-        sns.scatterplot(x = X_df[feat_names[i]], y = grads[:, i], ax = ax[0, i])
-        ax[0, i].set_title(feat_names[i])
-        sns.scatterplot(x = X_df[feat_names[i]], y = true_first_order[:, i] - grads[:, i], ax = ax[1, i])
-        ax[1, i].set_title(f"Error - {feat_names[i]}")
-    
-    fig, ax = plt.subplots(ncols = 2, figsize=(10, 5))
-    true_second_order = X_df['true_d2_log(S/K)'].values
-    ax[0].scatter(X_df["log(S/K)"], hessian_moneyness[:, f_to_i("log(S/K)")])
-    ax[0].set_title("Gamma")
-    ax[1].scatter(X_df["log(S/K)"], true_second_order - hessian_moneyness[:, f_to_i("log(S/K)")])
-    ax[1].set_title(f"Error - Gamma")
+    try:
+        """
+        Error in Greeks
+        """
+        grad_stats = pd.DataFrame(diagnosis_grads(hessian_moneyness, grads, f_to_i, "ttm", "log(S/K)"), index=[METHOD])
+        all_stats += [grad_stats]
+        
+        N_FEATS = len(feat_names)
+        true_first_order = X_df[[f"true_d_{x}" for x in feat_names]].values
+        fig, ax = plt.subplots(ncols = N_FEATS, figsize=(5 * N_FEATS, 10), nrows=2)
+        for i in range(N_FEATS):
+            sns.scatterplot(x = X_df[feat_names[i]], y = grads[:, i], ax = ax[0, i])
+            ax[0, i].set_title(feat_names[i])
 
-    grad_stats = pd.DataFrame(diagnosis_grads(hessian_moneyness, grads, f_to_i, "ttm", "log(S/K)"), index=[METHOD])
+
+        fig, ax = plt.subplots(ncols = 2, figsize=(10, 5))
+        ax[0].scatter(X_df["log(S/K)"], hessian_moneyness[:, f_to_i("log(S/K)")])
+        ax[0].set_title("Gamma")
+        
+        
+        # Diagnosis function might fail if no true labels for greeks
+        for i in range(N_FEATS):
+            sns.scatterplot(x = X_df[feat_names[i]], y = true_first_order[:, i] - grads[:, i], ax = ax[1, i])
+            ax[1, i].set_title(f"Error - {feat_names[i]}")
+        
+        true_second_order = X_df['true_d2_log(S/K)'].values
+        ax[1].scatter(X_df["log(S/K)"], true_second_order - hessian_moneyness[:, f_to_i("log(S/K)")])
+        ax[1].set_title(f"Error - Gamma")
+        
+    except:
+        print("Failed to compute gradient errors")
     """
     Display Statistics
     """
-    res = pd.concat([pred_stats, pde_stats, grad_stats], axis = 1)
+    res = pd.concat(all_stats, axis = 1)
     return res

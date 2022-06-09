@@ -4,9 +4,7 @@ from tensorflow.keras.layers import (Dense, Input, Concatenate,
 from tensorflow.keras import Model
 
 from tensorflow.keras import layers
-from tensorflow.keras.optimizers import Adam, SGD
 
-from tensorflow.keras.callbacks import EarlyStopping
 from typing import List, Union, Callable
 import tensorflow_probability as tfp
 

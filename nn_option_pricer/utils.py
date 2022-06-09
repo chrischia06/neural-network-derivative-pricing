@@ -17,7 +17,7 @@ def diagnosis_pred(true, pred, lower_bound = None, upper_bound = None) -> dict:
     if lower_bound is not None:
         results["lower_bound_violation"] = np.mean((pred < lower_bound))
     if upper_bound is not None:
-        results["lower_bound_violation"] = np.mean((pred < lower_bound))
+        results["upper_bound_violation"] = np.mean((pred > upper_bound))
     return results
 
 def PDE_calc(model, f_to_i:Callable, **kwargs):

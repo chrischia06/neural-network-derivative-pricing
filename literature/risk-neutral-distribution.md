@@ -48,3 +48,9 @@ XXX-X-XXXX-XXXX-X/XX/$XX.00 ©20XX IEEE
 Deep Learning in Model Risk Neutral Distribution
 for Option Pricing
 + http://ica2019.crowdscience.org/wp-content/uploads/2019/10/Short-15-PID6153845.pdf
+
+Chou et al., Deep Learning in Model Risk Neutral Distribution for Option Pricing (2019)
+
++ Uses the gated approach of Yang
++ Uses a mixture instead of a GBM
++ Taiwan Options

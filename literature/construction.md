@@ -1,43 +1,9 @@
----
-title: "R Notebook"
-output: html_notebook
----
+**Johannes Ruf, Weiguan Wang, Neural networks for option pricing and hedging: a literature review (2020)**
 
-## Risk Neutral Implied Distribution
-
-**Gated Neural Networks for Option Pricing: Rationality by Design (2017)**
-
-+ https://www.pure.ed.ac.uk/ws/portalfiles/portal/29546775/yang_yu.pdf
-+ https://github.com/arraystream/fftoptionlib
-+ "for deep out-of-money options or those with long maturity, NN methods perform very badly (Bennell and Sutcliffe 2004)"
-+ "(Gradojevic, Gencay, and Kukolj 2009) tried to address this issue by categorising options based on their moneyness and time to maturity, and training independent NNs for each class of options."
-+ 6 no-arbitrage call constraints from Follmer, Schied, Stochastic Finance
-+ Softplus * sigmoid $C(K/S, 1, T - t) = \sum_{j = 1}^{J}\sigma_{1}(b_{1, j} - me^{w_{1, j}})\sigma_{2}(b_{2, j}-\tau e^{w_{2, j}})e^{w_{3, j}}$, $J$ number of hidden units   
-+ they verify asymptotics and no-arb conditions
-+ Then $\sum_{i = 1}^{I} y_{i}(m, \tau)w_{i}(m, \tau)$ - $I$ number of single pricing models
-+ Solution to no-arb bounds and asymptotics is to generate more edge examples
-+ Gated Neural Network - Sigaud, O.; Masson, C.; Filliat, D.; and Stulp, F. 2015. Gated
-networks: an inventory. CoRR abs/1512.03201
-+ learn-ing from hints trick (Abu-Mostafa 1993)
-+ can be calibrated to prices
-
-Chou et al., Deep Learning in Model Risk Neutral Distribution for Option Pricing (2019)
-
-+ Uses the gated approach of Yang
-+ Uses a mixture instead of a GBM
-+ Taiwan Options
++ http://eprints.lse.ac.uk/104341/1/Ruf_Wang_Literature_Review.pdf
++
 
 
-A Hybrid Approach to Modular and Gated Neural Networks for Option Pricing and Hedging
-
-+ MSc Thesis
-+ https://thesis.eur.nl/pub/53019/MSc_Thesis_Full.pdf
-
-Formulation Of A Rational Option Pricing Model using Artificial Neural Networks
-
-+ https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3724078
-
-## Architecture
 
 **Dugas, C.; Bengio, Y.; Belisle, F.; Nadeau, C.; and Garcia, R. 2000. Incorporating second-order functional knowledge for better option pricing. In Neural Information Processing Systems (NIPS)**
 
@@ -75,6 +41,8 @@ On the Selection of Initialization and Activation Function for Deep Neural Netwo
 + https://arxiv.org/abs/1805.08266
 
 **Garcia, R.; Ghysels, E.; and Renault, E. 2010. The Econometrics of Option Pricing. Elsevier Inc. 479–552.**
++ http://yoksis.bilkent.edu.tr/doi_getpdf/articles/10.1016-S0304-4076(99)00018-4.pdf
++ One set of parameters, GBM
 
 # NN Theory
 
@@ -88,6 +56,8 @@ Optimizer
 
 https://arxiv.org/abs/2204.12446
 https://old.reddit.com/r/MachineLearning/comments/un0crv/r_fullbatch_gd_generalizes_better_than_sgd/
+
+Scaling Property of Deep Neural Networks
 
 
 
@@ -140,4 +110,16 @@ Incorporating Prior Financial Domain Knowledge into Neural Networks for Implied 
 Evaluation of Deep Learning Algorithms for Quadratic Hedging
 
 + https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4062101
+
+
+
+
+Pricing and Hedging Derivative Securities with Neural Networks: Bayesian Regularization, Early Stopping, and Bagging Ramazan Gençay and Min Qi 2001
++ https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.379.4379&rep=rep1&type=pdf
++ "Modern" NN training techniques, but remarkable thing is the paper is dated 2001!
+
+
+
+
+
 
