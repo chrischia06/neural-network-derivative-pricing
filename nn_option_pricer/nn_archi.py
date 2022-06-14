@@ -21,18 +21,18 @@ def make_model(N_FEATS:int,
     input_layer = Input(N_FEATS)
     if BATCH_NORM:
         x = BatchNormalization()(input_layer)
-        x = Dense(HIDDEN_UNITS, activation=HIDDEN_ACT)(x)
+        x = Dense(HIDDEN_UNITS, activation=HIDDEN_ACT, kernel_initializer='lecun_normal')(x)
     else:
-        x = Dense(HIDDEN_UNITS, activation=HIDDEN_ACT)(input_layer)
+        x = Dense(HIDDEN_UNITS, activation=HIDDEN_ACT, kernel_initializer='lecun_normal')(input_layer)
     for i in range(LAYERS - 1):
         x = Dense(HIDDEN_UNITS, activation=HIDDEN_ACT, 
-                  kernel_initializer='glorot_uniform', 
+                  kernel_initializer='lecun_normal', 
                   kernel_constraint=None)(x)
         if BATCH_NORM:
             x = BatchNormalization()(x)
         if DROPOUT_RATIO > 0:
-            x = Dropout(dropout_ratio)(x)
-    output_layer = Dense(1, activation=OUTPUT_ACT)(x)
+            x = Dropout(dropout_tgratio)(x)
+    output_layer = Dense(1, activation=OUTPUT_ACT, kernel_initializer='lecun_normal')(x)
     ffn = Model(input_layer, output_layer)
     return ffn
 
@@ -62,9 +62,9 @@ class MeanLayer(layers.Layer):
 
 def gated_network(N_FEATS) -> tf.keras.Model:
     input_layer =  Input(N_FEATS)
-    x = Dense(100, activation='softplus', kernel_constraint='non_neg')(input_layer)
-    weights = Dense(100, activation='softmax', kernel_constraint='non_neg')(x)
-    x2 = Dense(100, activation='sigmoid', kernel_constraint='non_neg')(x)
+    x = Dense(100, activation='softplus', kernel_constraint='non_neg',kernel_initializer='lecun_normal')(input_layer)
+    weights = Dense(100, activation='softmax', kernel_constraint='non_neg',kernel_initializer='lecun_normal')(x)
+    x2 = Dense(100, activation='sigmoid', kernel_constraint='non_neg',kernel_initializer='lecun_normal')(x)
     mult = Multiply()([weights, x2])
     output_layer = SumLayer()(mult)
     model = Model(input_layer, output_layer)
@@ -93,17 +93,17 @@ def homogeneity_network(N_FEATS:int, HIDDEN_UNITS:int = 100, seed:int = 42):
     tf.random.set_seed(seed)
     input_moneyness = Input(1, name='moneyness')
     input_ttm = Input(1, name='ttm') 
-    x1 = Dense(HIDDEN_UNITS, activation='sigmoid', kernel_constraint='non_neg')(input_ttm)
-    x2 = Dense(HIDDEN_UNITS, activation='softplus', kernel_constraint='non_neg')(input_moneyness)
+    x1 = Dense(HIDDEN_UNITS, activation='sigmoid', kernel_constraint='non_neg',kernel_initializer='lecun_normal')(input_ttm)
+    x2 = Dense(HIDDEN_UNITS, activation='softplus', kernel_constraint='non_neg',kernel_initializer='lecun_normal')(input_moneyness)
     interaction_layers = [x1, x2]
     input_layers = [input_moneyness, input_ttm]
     if N_FEATS > 2:
         input_other = Input(N_FEATS - 2)
         input_layers += [input_other]
-        x3 = Dense(HIDDEN_UNITS, activation='softplus', name='other_features')(input_other)
+        x3 = Dense(HIDDEN_UNITS, activation='softplus', name='other_features',kernel_initializer='lecun_normal')(input_other)
         interaction_layers += [x3]
     x = Multiply()(interaction_layers)
-    output_layer = Dense(1, kernel_constraint='non_neg', use_bias=False)(x)
+    output_layer = Dense(1, kernel_constraint='non_neg', use_bias=False,kernel_initializer='lecun_normal')(x)
     model = Model(input_layers, output_layer)
     return model
 
