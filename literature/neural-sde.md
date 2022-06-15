@@ -1,11 +1,18 @@
+# Neural SDEs
+
+**Summary**:
+
++ They can be used as a generative model (i.e. simulate MC paths)
++ There is also a connection with GANs
 
 **Robust Neural SDE**
 
 + https://github.com/msabvid/robust_nsde
 
-**Timothy DeLise, Neural Options Pricing**
+**Timothy DeLise, Neural Options Pricing (2021)**
 
 +  https://arxiv.org/abs/2105.13320
++ Abstract: "We treat neural SDEs as universal Itô process approximators. In this way we can lift all assumptions on the form of the underlying price process, and compute theoretical option prices numerically. We propose a variation of the SDE-GAN approach by implementing the Wasserstein distance metric as a loss function for training. Furthermore, it is conjectured that the error of the option price implied by the learnt model can be bounded by the very Wasserstein distance metric that was used to fit the empirical data. "
 
 
 **Neural SDEs as Infinite-Dimensional GANs**
@@ -51,6 +58,8 @@ https://www.ideals.illinois.edu/bitstream/handle/2142/113868/FAN-DISSERTATION-20
 
 
 
+Option Pricing by Neural Stochastic Differential Equations: A Simulation-Optimization Approach
++ https://ieeexplore.ieee.org/abstract/document/9715493?casa_token=4lhAPjJbRPsAAAAA:TBm6r04u-9zvxwjHPZGpKYZLIw63GH9JvbxCz4B0Sq0LOWHxlsxMVCLapKgzrX0VkOFS2zdgp6E
 
 
 **Samuel N. Cohen, Christoph Reisinger, Sheng Wang Detecting and repairing arbitrage in traded option prices** 

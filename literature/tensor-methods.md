@@ -1,5 +1,12 @@
 # Tensor / Cheybshev
 
+**Summary**: Instead of using neural networks, several authors have propsed using tensor and chebyshev methods instead
+
+**Alexandre Antonov, Vladimir Piterbarg, Alternatives to Deep Neural Networks in Finance (2021)**
++ https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3958331
+
+
+
 **Tensoring volatility calibration Calibration of the rough Bergomi volatility model via Chebyshev Tensors**
 
 **Chebyshev Greeks Smoothing Gamma without Bias**

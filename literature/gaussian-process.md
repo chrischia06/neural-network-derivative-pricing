@@ -44,3 +44,7 @@ Use of Kernel Methods for Dynamic Hedging Incomplete Markets
 + American exercise
 + Fixed set of parameters
 
+
+**Krighedge**
+
++ https://arxiv.org/abs/2010.08407

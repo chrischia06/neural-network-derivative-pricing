@@ -8,18 +8,19 @@ from jax import grad
 from itertools import product
 import pandas as pd
 from tqdm.notebook import tqdm
+
 tqdm.pandas()
 
 
 import seaborn as sns
+
 plt.style.use("ggplot")
-
-
 
 
 from utils import diagnosis_pde, diagnosis_pred
 
 import warnings
+
 warnings.filterwarnings("ignore")
 
 import tensorflow as tf

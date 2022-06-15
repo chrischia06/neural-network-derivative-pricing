@@ -47,3 +47,6 @@ Learning Value-at-Risk and Expected Shortfall
 
 Neural Networks and Value at Risk
 + https://arxiv.org/abs/2005.01686
+
+Estimating Future VaR from Value Samples and Applications to Future Initial Margin
++ https://arxiv.org/abs/2104.11768

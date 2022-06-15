@@ -1,22 +1,25 @@
----
-title: "R Notebook"
-output: html_notebook
----
+# Deep Hedging
 
-Tobias Pedersen - A deep study of deep hedging
+**Summary**: 
+
++ Use a neural network as an approximation for a hedging strategy. Buehler et al popularised the idea in their paper "Deep Hedging". 
++ This can be thought of as semi-supervised learning, or reinforcement learning, although not in the sense of Q-learning or other RL methods. 
++ In terms of derivatives pricing, this can be viewed as pricing via replication in an incomplete, discrete time version of some volatility / market model. 
++ Sensitivities can be obtained by automatic differentiation of the neural network (i.e. MC pathwise differentials). 
++ However, both pricingn aand sensitivities these require simulation of MC paths, making it likely too slow for pricing / risk applications. 
++ However, the strategy may be more optimal than a model hedge. Furthermore, the hedging strategy can account for transaction costs, and high dimensionality.
++ In Buehler et al Deep Hedging, they provide examples for only fixed vol model parameters (e.g. rho, vol-of-vol, kappa, theta in Heston), but this approach can likely be extended to account for multiple vol model parameters
 
 
-On the Selection of Initialization and Activation Function for Deep Neural Networks
+**Tobias Pedersen - A deep study of deep hedging**
 
-+ https://arxiv.org/abs/1805.08266
-+ swish paper
+**Ziheng Chen, RLOP: RL Methods in Option Pricing from a Mathematical Perspective (2022)**
++ **Code**: https://github.com/owen8877/RLOP
 
 
-Krighedge
 
-https://arxiv.org/abs/2010.08407
 
-Evaluation of Deep Learning Algorithms for Quadratic Hedging (2022)
+**Evaluation of Deep Learning Algorithms for Quadratic Hedging (2022)**
 + https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4062101
 
 The Efficient Hedging Frontier with Deep Neural Networks
@@ -59,7 +62,9 @@ Pricing and Hedging of Derivatives by Unsupervised Deep Learning
 Equal risk pricing of derivatives with deep hedgingOpen Data
 + https://www.tandfonline.com/doi/full/10.1080/14697688.2020.1806343?casa_token=P8sk_uBGcKEAAAAA%3A-qVUFHsp9jQIOKrVBIRMVz4wao8veOeNVoSfr2moTOK9WHkGngUl8trV2Csxj94JeJ4k0xTyohg 
 
-# Reinforcement Learning
+## Reinforcement Learning
+
+Summary: These papers focus on using reinforcement learning
 
 Kolm, P. N. and Ritter, G. (2019). Dynamic replication and hedging: A reinforcement
 learning approach.

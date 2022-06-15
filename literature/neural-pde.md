@@ -1,14 +1,17 @@
-# Physics Inspired Neural Networks / Neural PDE
+# Neural PDEs
 
-PINN Training using Biobjective Optimization: The Trade-off between Data Loss and Residual Loss
-+ https://www.researchgate.net/publication/360999986_PINN_Training_using_Biobjective_Optimization_The_Trade-off_between_Data_Loss_and_Residual_Loss
+**Sirignano Deep PDEs DGM: A deep learning algorithm for solving partial differential equations(2018)**
++  https://arxiv.org/abs/1708.07469
 
-+ Sirignano Deep PDEs DGM: A deep learning algorithm for solving partial differential equations https://arxiv.org/abs/1708.07469
+**The Deep Parametric PDE Method: Application to Option Pricing**
 
-+ The Deep Parametric PDE Method: Application to Option Pricing https://arxiv.org/pdf/2012.06211.pdf https://github.com/LWunderlich/DeepPDE/blob/main/TwoAssetsExample/DeepParametricPDEExample.ipynb
++ Paper: https://arxiv.org/pdf/2012.06211.pdf 
++ Code: https://github.com/LWunderlich/DeepPDE/blob/main/TwoAssetsExample/DeepParametricPDEExample.ipynb
+
+
 
 + DNN Expression Rate Analysis of High-Dimensional PDEs: Application to Option Pricing https://link.springer.com/article/10.1007/s00365-021-09541-6
-+ Physics-Informed Neural Networks and Option Pricing Andreas Louskos https://math.dartmouth.edu/theses/undergrad/2021/Louskos-thesis.pdf
+
 + Deep Learning of High-dimensional Partial Differential Equations
 + https://medium.com/data-analysis-center/solving-differential-equations-using-neural-networks-with-pydens-e831f1a115f
 
@@ -36,8 +39,6 @@ Scaling Limit of Neural Networks with the Xavier Initialization and Convergence 
 Deep splitting method for parabolic PDEs
 + https://arxiv.org/abs/1907.03452
 
-Option Pricing by Neural Stochastic Differential Equations: A Simulation-Optimization Approach
-+ https://ieeexplore.ieee.org/abstract/document/9715493?casa_token=4lhAPjJbRPsAAAAA:TBm6r04u-9zvxwjHPZGpKYZLIw63GH9JvbxCz4B0Sq0LOWHxlsxMVCLapKgzrX0VkOFS2zdgp6E
 
 Neural Q-learning for solving elliptic PDEs
 + Samuel N. Cohen, Deqing Jiang, Justin Sirignano
@@ -54,3 +55,27 @@ J. Han, A. Jentzen, and W. E. Solving high-dimensional partial differential equa
 
 M. Hutzenthaler, A. Jentzen, T. Kruse, and T. A. Nguyen. A proof that rectified deep neural networks
 overcome the curse of dimensionality in the numerical approximation of semilinear heat equations.
+
+Tara Aghajani, Solving High-Dimensional Nonlinear Partial Differential Equations using Deep Learning
++ Link: https://2e6a04f7-0e31-4712-8506-f97601338d5a.filesusr.com/ugd/ab321b_041241ae30bd4ba6b04d480813d82999.pdf
++ MSc Thesis
+
+
+
+# Physics Inspired Neural Networks (PINNs)
+
+**Andreas Louskos, Physics-Informed Neural Networks and Option Pricing**
++ https://math.dartmouth.edu/theses/undergrad/2021/Louskos-thesis.pdf
++ Student Paper
+
+
+**PINN Training using Biobjective Optimization: The Trade-off between Data Loss and Residual Loss**
+
++ https://www.researchgate.net/publication/360999986_PINN_Training_using_Biobjective_Optimization_The_Trade-off_between_Data_Loss_and_Residual_Loss
+
+**Xiang Wang, Jessica Li, Jichun Li, A Deep Learning Based Numerical PDE Method for Option Pricing (2022)**
++ https://link.springer.com/article/10.1007/s10614-022-10279-x
++ Uses PINNs
+
+
+
