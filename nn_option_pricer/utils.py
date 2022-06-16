@@ -5,7 +5,8 @@ from typing import Callable
 import matplotlib.pyplot as plt
 import seaborn as sns
 import pandas as pd
-
+from typing import List
+import plotly.graph_objects as go
 
 def diagnosis_pred(
     true, pred, lower_bound=None, upper_bound=None, method: str = ""
@@ -162,6 +163,8 @@ def plot_preds(
     ax[1].set_title(f"Error v Moneyness - {method}")
 
 
+
+
 def visualise_surface(
     moneyness: np.array,
     ttm: np.array,
@@ -177,14 +180,34 @@ def visualise_surface(
     ttm: numpy array containing sample maturities (e.g. $\tau = T - t$) grid points
     x_label: label for x-axis
     """
-    fig = plt.figure(figsize=(25, 10))
-    ax = fig.add_subplot(111, projection="3d")
+    # fig = plt.figure(figsize=(25, 10))
+    # ax = fig.add_subplot(111, projection="3d")
 
     a, b = np.meshgrid(moneyness, ttm)
     preds = preds.reshape((moneyness.shape[0], ttm.shape[0]))
-    ax.plot_surface(a, b, preds)
-    ax.set_xlabel(x_label)
-    ax.set_ylabel(y_label)
-    ax.set_zlabel("Price")
-    ax.set_title(title)
+    fig = go.Figure(go.Surface(x = a, y = b, z = preds.T, colorbar=dict(lenmode='fraction', len=0.75, thickness=20)))
+    fig.update_scenes(xaxis_title_text=x_label,  
+                  yaxis_title_text=y_label,  
+                  zaxis_title_text=f'Price', aspectratio= {"x":1, "y":1, "z":1})
+    fig.update_layout(width = 500, height = 600, title =f"{title}")
+    
+    # fig = plt.figure(figsize=(25, 10))
+    # ax = fig.add_subplot(111, projection="3d")    
+    # ax.plot_surface(b, a, preds)
+    # ax.set_xlabel(x_label)
+    # ax.set_ylabel(y_label)
+    # ax.set_zlabel("Price")
+    # ax.set_title(title)
+    return fig
+
+def plot_loss(history, metrics:List[str], method:str = ""):
+    fig, ax = plt.subplots(figsize=(15, 5), ncols=2)
+    for i, metric in enumerate(metrics):
+        ax[i].plot(history.history[metric], label="train")
+        ax[i].plot(history.history[f"val_{metric}"], label="val")
+        ax[i].legend()
+        ax[i].set_yscale("log")
+        ax[i].set_title(f"{method} - Training Error:{metric} vs no. epochs")
+        ax[i].set_ylabel(f"{metric} (log-scale)")
+        ax[i].set_xlabel(f"Epochs")
     return ax

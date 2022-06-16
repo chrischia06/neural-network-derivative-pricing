@@ -239,3 +239,32 @@ def homogeneity_network(
 # model.compile(loss=custom_loss_pass(model, tf.convert_to_tensor(S0.numpy(), dtype=tf.float32)), optimizer=opt)
 # model.fit(tf.convert_to_tensor(S0.numpy(), dtype=tf.float32),
 #           tf.convert_to_tensor(np.hstack([y.numpy(), grads]), dtype=tf.float32), batch_size=1024, epochs=100, shuffle=False)
+
+def delta_loss(grad_true, grad_pred):
+    return tf.keras.losses.MeanSquaredError()(grad_true, grad_pred[:,0])
+
+class DifferentialModel(tf.keras.Model):
+    """
+    Wrapper to enable differential training
+    """
+    lam = 1
+    grad_loss = delta_loss
+    @tf.function
+    def train_step(self, data):
+        x_var, (y, true_grad) = data
+        # https://keras.io/guides/customizing_what_happens_in_fit/#going-lowerlevel
+        with tf.GradientTape() as model_tape:
+            with tf.GradientTape() as grad_tape:
+                grad_tape.watch(x_var)
+                model_pred = self(x_var, training=True)
+            gradients = grad_tape.gradient(model_pred, x_var)
+            grad_loss = self.grad_loss(true_grad, gradients)
+            pred_loss = self.compiled_loss(y, model_pred)
+            loss = self.lam * grad_loss + pred_loss
+        trainable_vars = self.trainable_variables
+        model_grad = model_tape.gradient(loss, trainable_vars)
+        self.optimizer.apply_gradients(zip(model_grad, trainable_vars))
+        self.compiled_metrics.update_state(y, model_pred)
+        return {
+            m.name: m.result() for m in self.metrics
+        } 
