@@ -42,8 +42,9 @@ interpolation
 
 + 
 
-Function approximation for option pricing and risk management Methods, theory and applications.	Christian Potz	2020	https://qmro.qmul.ac.uk/xmlui/handle/123456789/71039
+**Function approximation for option pricing and risk management Methods, theory and applications.	Christian Potz	(2020)**	https://qmro.qmul.ac.uk/xmlui/handle/123456789/71039
 
++ Phd Thesis
 + Chebyshev polynomial have certain useful properties
 
 
@@ -52,3 +53,15 @@ MoCaX Intelligence Working Paper.
 
 Gaß, M., K. Glau, M. Mahlstedt, and M. Mair (2015, May). Chebyshev Interpolation for
 Parametric Option Pricing. ArXiv e-prints
+
+highly efficient tensor network algorithm for multi-asset Fourier options pricing
++ https://www.researchgate.net/publication/359080456_A_highly_efficient_tensor_network_algorithm_for_multi-asset_Fourier_options_pricing
+
+Fast high-dimensional integration using tensor networks
++ https://arxiv.org/abs/2202.09780
+
+ Numerical methods for option pricing: polynomial approximation and high dimensionality 
+ + https://infoscience.epfl.ch/record/271683
+
+ Low-Rank Tensor Approximation for Chebyshev Interpolation in Parametric Option Pricing
+ + https://epubs.siam.org/doi/abs/10.1137/19M1244172

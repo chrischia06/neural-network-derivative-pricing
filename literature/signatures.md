@@ -14,3 +14,9 @@
 
 **Projection of Functionals and Fast Pricing of Exotic Options**
 + https://arxiv.org/abs/2111.03713
+
+Nonparametric pricing and hedging of exotic derivatives
+
++ https://arxiv.org/abs/1905.00711
+
+Deep signature FBSDe algorithm

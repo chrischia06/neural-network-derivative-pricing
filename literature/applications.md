@@ -11,7 +11,8 @@
 credit risk management framework http://dse.univr.it/home/workingpapers/wp2020n7.pdf
 
 Deep MVA: Deep Learning for Margin Valuation Adjustment of Callable Products
-https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3634059
++ https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3634059
++ IHS Markit
 
 **Balance Sheet XVA by Deep Learning and GPU**
 + https://math.maths.univ-evry.fr/crepey/papers/Deep-XVA-Analysis-SHORT.pdf
@@ -28,6 +29,8 @@ Speed-up credit exposure calculations for pricing and risk management
 
 Kathrin Glau, Ricardo Pachon, Christian Potz
 
+
+deep learning approach for computations of exposure profiles for high dimensional Bermudan options
 
 Neural Network for CVA: Learning Future Values
 + https://arxiv.org/abs/1811.08726
@@ -50,3 +53,12 @@ Neural Networks and Value at Risk
 
 Estimating Future VaR from Value Samples and Applications to Future Initial Margin
 + https://arxiv.org/abs/2104.11768
+
+A deep learning-based high-order operator splitting method for high-dimensional nonlinear parabolic PDEs via Malliavin calculus: application to CVA computation
++ https://ieeexplore.ieee.org/abstract/document/9776096
+
+Initial Margin Simulation with Deep Learning
++ https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3357626
+
+DeepVaR: a framework for portfolio risk assessment leveraging probabilistic deep neural networks
++ https://link.springer.com/article/10.1007/s42521-022-00050-0

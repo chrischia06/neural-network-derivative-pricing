@@ -1,8 +1,14 @@
+# Construction
+
+These papers are about incorporating domain knowledge based on the math-finance side into constraints for the neural networks. 
+
 **Johannes Ruf, Weiguan Wang, Neural networks for option pricing and hedging: a literature review (2020)**
 
 + http://eprints.lse.ac.uk/104341/1/Ruf_Wang_Literature_Review.pdf
-+
 
+
+
+# Gated / Rationality / Hard Constraints
 
 
 **Dugas, C.; Bengio, Y.; Belisle, F.; Nadeau, C.; and Garcia, R. 2000. Incorporating second-order functional knowledge for better option pricing. In Neural Information Processing Systems (NIPS)**
@@ -24,6 +30,8 @@ networks and a homogeneity hint.**
 
 
 
+Zebin Yang; Aijun Zhang; Agus Sudjianto, Enhancing Explainability of Neural Networks Through Architecture Constraints
++ https://ieeexplore.ieee.org/abstract/document/9149804
 
 
 Differentiable Convex Optimization Layers
@@ -120,6 +128,14 @@ Pricing and Hedging Derivative Securities with Neural Networks: Bayesian Regular
 
 
 
+https://www.linkedin.com/pulse/softplus-machine-learning-option-modeling-brief-giuseppe-castellacci/
+
+Akhil Gupta, Naman Shukla, Lavanya Marla, Arinbjörn Kolbeinsson, Kartik Yellepeddi, How to Incorporate Monotonicity in Deep Networks While Preserving Flexibility?
++ https://arxiv.org/abs/1909.10662
+
+Weightwatcher
+https://www.rebellionresearch.com/is-your-layer-over-trained
 
 
-
+**Short Communication: Beyond Surrogate Modeling: Learning the Local Volatility via Shape Constraints**
++ https://epubs.siam.org/doi/abs/10.1137/20M1381538

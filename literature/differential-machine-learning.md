@@ -1,9 +1,14 @@
+# Differential Machine Learning
+
+These papers center around incorporating differentials (first order or higher) in the loss function of a neural network. Brian Huge and Antoine Savine described in the context of derivatives modelling for pricing risks.
+
+
 **Huge, Savine, Differential Machine Learning (2020)**
 + https://arxiv.org/pdf/2005.02347.pdf
 + 
 
 
-**ERIK ALEXANDER Aslaksen Jonasson, Differential Deep Learning for Pricing Exotic Financial Derivatives (2021)**
+**ERIK ALEXANDER ASLAKSEN JONASSON, Differential Deep Learning for Pricing Exotic Financial Derivatives (2021)**
 + Student Paper
 + Based somewhat on Geirsson, “Deep learning exotic derivatives” which is also a student paper
 + Product: Autocallables

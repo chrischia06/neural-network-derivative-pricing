@@ -25,7 +25,7 @@ networks: an inventory. CoRR abs/1512.03201
 + The gated and modular networks do not actually satisfy the intrinsic value bounds and exercise value equivalence at $\tau = 0$. The author's solution is to generate more data samples with $\tau = 0, K = 0$, sort of like importance sampling
 + Experiment Methodology: NNs are trained using last 5 days , calibration for BS / vol-models are done using the last day. Pricing error between real market prices and model prices for the next day are then evaluated under all models. *Remark*: This may be in effect equivalent to evaluating the explained PNL, or 1-day hedging error of the models, given that BS / vol-models would likely be used to recalibrate every trade as opposed to per day.
 + Single gated network has the worst results in the author's own experiment, but multi-model has the best. Suggests that ensembling is effective.
-
++ Slides: http://c4dm.eecs.qmul.ac.uk/horse2016/HORSE2016_Hospedales.pdf
 
 
 
@@ -47,3 +47,11 @@ networks: an inventory. CoRR abs/1512.03201
 + https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3724078
 + Student Paper
 + Fit NN on Heston, BS, and evaluate on real data
+
+
+Generative Bayesian neural network model for risk-neutral pricing of American index options
+
++ Real market data
+
+Option valuation under no-arbitrage constraints with neural networks
++ https://www.sciencedirect.com/science/article/pii/S0377221720310134

@@ -1,3 +1,8 @@
+# Control Variates
+
+These papers are about using a control variate (such that the neural network predicts the residual, e.g. convex part of a eurpopean call / put), or alternatively, using the neural network to learn a control varite
+
+
 **The CV Makes the Difference – Control Variates for Neural Networks**
 
 + https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3527314
@@ -10,3 +15,6 @@
 **Neural Networks with Asymptotics Control**
 
 + https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3544698
+
+Automatic Control Variates for Option Pricing using Neural Networks
++ https://hal.univ-grenoble-alpes.fr/hal-02891798/file/Automatic_Control_variates_for_option_pricing__using_neural_networks_.pdf

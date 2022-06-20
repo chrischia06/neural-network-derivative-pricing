@@ -86,6 +86,7 @@ options under various different processes
 + Prices (or vol surface) of exotics need to be consistent with vanillas
 + "We create a neural network where the inputs are the volatility surface points and the exotic option parameters and the target is the price."
 + **Neural Network**: *Optimizer*: Adam, *Loss*: Mean Absolute Error, EarlyStopping with patience 50
+
 + https://www.cqfinstitute.org/sites/default/files/Talk%209_John%20Hull_Valuing%20Exotic%20Options%20and%20Estimating%20Model%20Risk%20Quant%20Insights.pdf
 
 
@@ -96,8 +97,45 @@ A neural network-based framework for financial model calibration
 Option Pricing
 + https://link.springer.com/chapter/10.1007/978-3-319-51668-4_7
 
+
+
+
 Pricing path-dependent exotic options with flow-based generative networks
 
 **Hyun-Gyoon Kim, Se-JinKwon, Jeong-HoonKim, Jeonggyu Huh**
 
 + https://www.sciencedirect.com/science/article/abs/pii/S1568494622003532
+
+**Pricing options with exponential Lévy neural network**
+
++ https://www.sciencedirect.com/science/article/pii/S0957417419301617
+
+ Evolutionary Algorithms and Computational Methods for Derivatives Pricing 
+ + https://discovery.ucl.ac.uk/id/eprint/10068568/
+
+
+Bounds on multi asset derivatives via neural networks (2020)
++ European Gaussian basket options under copulas
+
+Pricing options on flow forwards by neural networks in Hilbert space
+
++ https://arxiv.org/abs/2202.11606
+
+Accelerating Python for Exotic Option Pricing (NVIDIA)
++ Asian Barrier Options
++ mostly consider speedups, no mention of the accuracy 
+
+Deep Structural Estimation
++ Just function approximation under parameters, but under econometric name of structural estimation
++ Discussion on activation functions
++ 
+
+
+
+ Unbiased Deep Solvers for Linear Parametric PDEs
+ + https://www.tandfonline.com/doi/full/10.1080/1350486X.2022.2030773
+**Lucio Fernandez-Arjona, Damir Filipovic, A machine learning approach to portfolio pricing and risk management for high-dimensional problems (2022)**
+
+
+Deep ReLU network expression rates for option prices in high-dimensional, exponential Lévy models
++ https://link.springer.com/article/10.1007/s00780-021-00462-7

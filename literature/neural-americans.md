@@ -35,9 +35,14 @@ E, W., J. Han, and A. Jentzen (2017, June). Deep learning-based numerical method
 dimensional parabolic partial differential equations and backward stochastic differential
 equations
 
+Accelerated American Option Pricing with Deep Neural Networks
++ https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4000756
+
 Henry-Labordere, P. (2017). Deep Primal-Dual Algorithm for BSDEs: Applications of Ma-
 chine Learning to CVA and IM
 
+Optimal Stopping with Adapted Neural Networks
++ https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3491624
 
 Optimal Stopping via Randomized Neural Networks
 + https://arxiv.org/pdf/2104.13669.pdf
@@ -144,3 +149,30 @@ Pricing Barrier Options with DeepBSDEs
 
  Neural Network Pricing of American Put Options 
  + https://www.mdpi.com/2227-9091/8/3/73
+
+ Applications in Finance: Pricing and hedging American-style derivatives
+with neural networks
+Patrick Cheridito and Sebastian Becker
++ Slides: https://people.math.ethz.ch/~patrickc/mlos/Slides2.pdf
+
+
+https://ipythonquant.wordpress.com/2018/06/01/pricing-bermudan-options-in-tensorflow-learning-an-optimal-early-exercise-strategy/
+
++ https://ipythonquant.wordpress.com/2018/06/01/pricing-bermudan-options-in-tensorflow-learning-an-optimal-early-exercise-strategy/
+
+
+https://github.com/google/tf-quant-finance/blob/master/api_docs/tf_quant_finance/models/hull_white.md
+
+Neural Optimal Stopping Boundary
+
+random feature neural networks learn black scholes pde curse of dimensionality
+
+
+# Classical
+
+J.N. Tsitsiklis; B. Van Roy, Regression methods for pricing complex American-style options
+
+Longstaff, Schwartz
+
+
+

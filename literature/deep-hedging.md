@@ -73,3 +73,8 @@ Mikkilä, O. (2020). Optimal hedging with continuous action reinforcement learni
 
 
 Optimal Option Hedging with Policy Gradient	Bo Xiao, Wuguannan Yao, Xiang Zhou	2021	https://ieeexplore.ieee.org/abstract/document/9679868?casa_token=dg7OXWH65U8AAAAA:UuoGeEqiHOFnnvRxpSeeMnw9zf1S9hDyeFlzo7KRjCrbEyWKHcS4U4CH05kh8EwlAN6rCGothkmbhA
+
+Recent Advances in Reinforcement Learning in Finance
++ https://arxiv.org/abs/2112.04553
+
+deep stochastic optimisation in finance

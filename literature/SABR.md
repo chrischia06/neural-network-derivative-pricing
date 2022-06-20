@@ -78,13 +78,33 @@ Candidate point selection using a self-attention mechanism for generating a smoo
 + https://www.sciencedirect.com/science/article/abs/pii/S0957417421000816?casa_token=x10ExvheVzsAAAAA:OdrIKmcThcSjRjQTHujCiqvbVHwbce-DZ5BlOOruI_hd0QMDwIEoN0QxVIKuZVcotAUENB1N
 
 
+# NNs for SABR
 
-Jaegi Jeon, Kyunghyun Park, Jeonggyu Huh, Extensive networks would eliminate the demand for pricing formulas (2021)
+Medhi Thomas, Pricing and calibration of stochastic models via neural networks
+
+William Mcghee
+
+Huges THorin artificial neural network for the SABR Model 
+
+
+**DALVIR MANDARA, Artificial Neural Networks for Black-Scholes Option Pricing and Prediction of Implied Volatility for the SABR Stochastic Volatility Model (2019)**
+
++ MSc Thesis
++ Appliction to BS, SABR
++ Implied Vol
+
+**Jaegi Jeon, Kyunghyun Park, Jeonggyu Huh, Extensive networks would eliminate the demand for pricing formulas (2021)**
 + https://arxiv.org/pdf/2101.09064.pdf
 
+NN for Cross-Currency Options under the correlated SABR Model
++ https://www.cqfinstitute.org/sites/default/files/3%20-%20Katia%20Babbar%20SABR_CrossSmile_NN_QuantInsights_2021_FINAL.pdf
++ 2 SABR processes for FX cross-option smiles
 
 
 Analyzing the Dynamics of the Swaption Market Using Neural Networks (2021)
 + https://www.dpublication.com/wp-content/uploads/2021/10/9-3021.pdf
 
 https://www.cqfinstitute.org/sites/default/files/3%20-%20Katia%20Babbar%20SABR_CrossSmile_NN_QuantInsights_2021_FINAL.pdf
+
+On the Calibration of the SABR Model and its Extensions
++ https://www.imperial.ac.uk/media/imperial-college/faculty-of-natural-sciences/department-of-mathematics/math-finance/Cheng_Luo-thesis.pdf

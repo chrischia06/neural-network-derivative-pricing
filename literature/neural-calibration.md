@@ -30,6 +30,7 @@ for the CNN the data is scaled to have a mean of 0 and a variance of 1
 
 
 **Liu, Shuaiqiang, Anastasia Borovykh, Lech Grzelak, and Cornelis Oosterlee. 2019a. A neural network-based framework for financial model calibration**
++ https://www.researchgate.net/publication/335672074_A_neural_network-based_framework_for_financial_model_calibration
   
 **Liu, Shuaiqiang, Cornelis Oosterlee, and Sander Bohte. 2019b. Pricing options and computing implied volatilities using neural networks** 
 
@@ -92,10 +93,15 @@ for the CNN the data is scaled to have a mean of 0 and a variance of 1
 + https://arxiv.org/pdf/1906.03507.pdf
 
 
+**Tugce Karatas, Amir Oskoui, Ali Hirsa, Supervised Deep Neural Networks (DNNs) for Pricing/Calibration of Vanilla/Exotic Options Under Various Different Processes (2019)**
 
-Deep learning volatility: a deep neural network perspective on pricing and calibration in (rough) volatility models
++ https://arxiv.org/pdf/1902.05810v1.pdf
 
-+ https://www.tandfonline.com/doi/abs/10.1080/14697688.2020.1817974?casa_token=D8Rma9PRVBEAAAAA%3AfAhvc8rCvbq9O8qORcIibtAr4TKTqzfot-G73C96ZYSVC_vJCF3gaJHSd9y-ZRiJW22KXfcQZKU&journalCode=rquf20
+Deep calibration of financial models: turning theory into practice
+
+Calibration of Derivative Pricing Models: a Multi-Agent Reinforcement Learning Perspective
++ https://arxiv.org/abs/2203.06865
+
 
 # HJM
 
@@ -112,4 +118,7 @@ Deep learning volatility: a deep neural network perspective on pricing and calib
 
 + Related Work: **Deep Learning in a Generalized HJM-type Framework Through Arbitrage-Free Regularization**
 + Nelson Siegel
+
+
+applications of deep learning in option pricing and calibration
 

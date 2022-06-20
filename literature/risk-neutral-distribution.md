@@ -1,3 +1,7 @@
+Option Valuation through Deep Learning of Transition Probability Density
++ https://arxiv.org/abs/2105.10467
+
+
 A Simple and Reliable Way to Compute
 Option-Based Risk-Neutral Distributions
 + https://www.newyorkfed.org/medialibrary/media/research/staff_reports/sr677.pdf

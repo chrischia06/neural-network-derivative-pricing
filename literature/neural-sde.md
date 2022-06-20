@@ -61,6 +61,7 @@ https://www.ideals.illinois.edu/bitstream/handle/2142/113868/FAN-DISSERTATION-20
 Option Pricing by Neural Stochastic Differential Equations: A Simulation-Optimization Approach
 + https://ieeexplore.ieee.org/abstract/document/9715493?casa_token=4lhAPjJbRPsAAAAA:TBm6r04u-9zvxwjHPZGpKYZLIw63GH9JvbxCz4B0Sq0LOWHxlsxMVCLapKgzrX0VkOFS2zdgp6E
 
+Deep Learning Approach to data driven model free pricing and to martingale optimal transport
 
 **Samuel N. Cohen, Christoph Reisinger, Sheng Wang Detecting and repairing arbitrage in traded option prices** 
 
