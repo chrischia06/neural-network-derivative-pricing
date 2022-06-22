@@ -23,8 +23,7 @@ Deep calibration of interest rates model (2021)
 	
 Neural calibration of the DDSVLMM interest rates model
 
- Machine Learning Vasicek Model Calibration with Gaussian Processes
- + https://www.tandfonline.com/doi/abs/10.1080/03610918.2012.625324
+
 
 The Vasicek Credit Risk Model: A Machine Learning Approach
 + https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3836719
@@ -42,3 +41,5 @@ techniques in interest
 rate modelling
 + https://www.duo.uio.no/bitstream/handle/10852/78735/LIBOR.pdf?sequence=1
 + LMM, FBSDE
+
+

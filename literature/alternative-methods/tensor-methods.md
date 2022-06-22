@@ -65,3 +65,8 @@ Fast high-dimensional integration using tensor networks
 
  Low-Rank Tensor Approximation for Chebyshev Interpolation in Parametric Option Pricing
  + https://epubs.siam.org/doi/abs/10.1137/19M1244172
+
+ Muyang Ge, Shen Zhou, Shijun Luo, Boping Tian, 3D Tensor-based Deep Learning Models for Predicting Option Price (2021)
+ + https://arxiv.org/abs/2106.02916
+
+ 

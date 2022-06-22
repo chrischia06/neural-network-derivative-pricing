@@ -62,6 +62,7 @@ Option Pricing by Neural Stochastic Differential Equations: A Simulation-Optimiz
 + https://ieeexplore.ieee.org/abstract/document/9715493?casa_token=4lhAPjJbRPsAAAAA:TBm6r04u-9zvxwjHPZGpKYZLIw63GH9JvbxCz4B0Sq0LOWHxlsxMVCLapKgzrX0VkOFS2zdgp6E
 
 Deep Learning Approach to data driven model free pricing and to martingale optimal transport
++ use nn to obtain error bounds
 
 **Samuel N. Cohen, Christoph Reisinger, Sheng Wang Detecting and repairing arbitrage in traded option prices** 
 

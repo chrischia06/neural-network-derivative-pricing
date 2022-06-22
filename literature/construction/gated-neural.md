@@ -53,5 +53,13 @@ Generative Bayesian neural network model for risk-neutral pricing of American in
 
 + Real market data
 
-Option valuation under no-arbitrage constraints with neural networks
+**Option valuation under no-arbitrage constraints with neural networks**
 + https://www.sciencedirect.com/science/article/pii/S0377221720310134
+
+
+Markus Ludwig, Robust Estimation of Shape-Constrained State Price Density Surfaces, (2015)
+
++ https://jod.pm-research.com/content/22/3/56.short
+
+Gated Deep Neural Networks for Implied Volatility Surfaces
++ https://www.researchgate.net/profile/Bowei-Chen/publication/332778915_Incorporating_Prior_Financial_Domain_Knowledge_into_Neural_Networks_for_Implied_Volatility_Surface_Prediction/links/5d071c6792851c900442d698/Incorporating-Prior-Financial-Domain-Knowledge-into-Neural-Networks-for-Implied-Volatility-Surface-Prediction.pdf

@@ -43,6 +43,7 @@ Deeply Learning Derivatives
 + https://azure.microsoft.com/en-us/blog/azure-gpus-with-riskfuels-technology-offer-20-million-times-faster-valuation-of-derivatives/
 + https://www.youtube.com/watch?v=ewCDNokzzOU
 + Basket option
++ https://www.youtube.com/watch?v=LTADvz49ork
 
 
 

@@ -93,6 +93,8 @@ Deepopnet
 Optimally weighted loss functions for solving PDEs with Neural Networks
 
 
+
+
 # Physics Inspired Neural Networks (PINNs)
 
 The application of improved physics-informed neural network (IPINN) method in finance
@@ -175,3 +177,7 @@ Error analysis for physics informed neural networks (PINNs) approximating Kolmog
 
  Learning the solution operator of parametric partial differential equations with physics-informed DeepONets
  + https://www.science.org/doi/full/10.1126/sciadv.abi8605
+
+
+ A Deep Smoothness WENO Method with Applications in Option Pricing
+ + https://www.researchgate.net/publication/353804599_A_Deep_Smoothness_WENO_Method_with_Applications_in_Option_Pricing

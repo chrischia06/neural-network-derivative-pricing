@@ -64,3 +64,6 @@ A Probabilistic Approach to Nonparametric Local Volatility
 
  Machine learning for pricing American options in high-dimensional Markovian and non-Markovian models
  + https://www.tandfonline.com/doi/abs/10.1080/14697688.2019.1701698
+
+  Machine Learning Vasicek Model Calibration with Gaussian Processes
+ + https://www.tandfonline.com/doi/abs/10.1080/03610918.2012.625324

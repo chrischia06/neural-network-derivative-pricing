@@ -45,7 +45,7 @@ A new efficient approximation scheme for solving high-dimensional semilinear PDE
 
 
 
-**Derivatives Pricing via Machine Learning    Tingting Ye, Liangliang Zhang (2019)**
+**Tingting Ye, Liangliang Zhang, Derivatives Pricing via Machine Learning (2019)**
 + https://www.scirp.org/journal/paperinformation.aspx?paperid=94637
 + https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3352688
 +  BSDEs, PIDEs
@@ -76,3 +76,5 @@ KRISTOFFER ANDERSSON, Approximate stochastic control based on deep learning and 
 deep learning based bsde solver for libor market model with application bermudan swaption pricing
 
 numerical resolution of mckean vlasov fbsdes neural netowrks
+
+deep signature fbsde
