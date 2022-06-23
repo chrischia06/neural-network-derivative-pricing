@@ -111,7 +111,7 @@ def ensemble_model(models: List, N_SEEDS: int) -> tf.keras.Model:
 
 
 def rbf(x):
-    return tf.math.exp(-0.5 * x ** 2)
+    return tf.math.exp(-0.5 * x**2)
 
 
 def homogeneity_network(

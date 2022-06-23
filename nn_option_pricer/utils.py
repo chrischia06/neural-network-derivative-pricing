@@ -87,7 +87,7 @@ def diagnosis_pde(PDE_err: np.array, method: str = "") -> pd.DataFrame:
         {
             "mean": np.mean(PDE_err),
             "l1": np.mean(np.abs(PDE_err)),
-            "l2": np.sqrt(np.mean(PDE_err ** 2)),
+            "l2": np.sqrt(np.mean(PDE_err**2)),
             "l_inf": np.max(np.abs(PDE_err)),
         },
         index=[method],
@@ -122,7 +122,7 @@ def diagnosis_hedge(pnl: np.array, method: str) -> pd.DataFrame:
         {
             "mean_pnl": pnl.mean(),
             "l1": pnl.abs().mean(),
-            "l2": np.sqrt((pnl ** 2).mean()),
+            "l2": np.sqrt((pnl**2).mean()),
             "linf": np.max(pnl.abs()),
             "skew": skew(pnl),
             "kurtosis": kurtosis(pnl),

@@ -56,7 +56,7 @@ def bs_log_pde_err(moneyness, ttm, d_ttm, d_x, d2_x):
 
 def bs_pde_err(moneyness, ttm, d_ttm, d_x, d2_x):
     fig, ax = plt.subplots()
-    PDE_err = -d_ttm + 0.5 * ttm * (moneyness ** 2) * d2_x
+    PDE_err = -d_ttm + 0.5 * ttm * (moneyness**2) * d2_x
     ax.scatter(moneyness, PDE_err)
     ax.set_title("PDE Error")
     return PDE_err
@@ -75,7 +75,7 @@ def gbm_step(F: float, dt: float, sigma: float, Z: float) -> float:
 
     :return: Next forward value
     """
-    return F - (0.5 * (sigma ** 2) * dt) + sigma * Z
+    return F - (0.5 * (sigma**2) * dt) + sigma * Z
 
 
 def bs_eval_wrapper(

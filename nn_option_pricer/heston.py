@@ -12,15 +12,15 @@ def heston_characteristic(u, tau, v, kappa, vbar, vol_of_vol, rho):
     rho - correlation between brownians
     Gatheral - Volatility Surface pg 18 -
     """
-    alpha = -0.5 * (u ** 2) - (0.5 * u * 1j)
+    alpha = -0.5 * (u**2) - (0.5 * u * 1j)
     beta = kappa - rho * vol_of_vol * u * 1j
-    gamma = 0.5 * (vol_of_vol ** 2)
-    d = np.sqrt((beta ** 2) - 4 * alpha * gamma)
+    gamma = 0.5 * (vol_of_vol**2)
+    d = np.sqrt((beta**2) - 4 * alpha * gamma)
     rp = (beta + d) / (2 * gamma)
     rm = (beta - d) / (2 * gamma)
     g = rm / rp
     C = kappa * (
-        rm * tau - 2 / (vol_of_vol ** 2) * np.log((1 - g * np.exp(-d * tau)) / (1 - g))
+        rm * tau - 2 / (vol_of_vol**2) * np.log((1 - g * np.exp(-d * tau)) / (1 - g))
     )
     D = rm * (1 - np.exp(-d * tau)) / (1 - np.exp(-d * tau) * g)
     return C * vbar + D * v

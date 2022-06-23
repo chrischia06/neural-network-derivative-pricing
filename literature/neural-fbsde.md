@@ -4,10 +4,17 @@ These papers aim to solve the pricing problem by using a neural network to solv 
 
 + Researchers: Kristoffer Andersson, Seems like Wells Fargo has done a lot of research in this area, for example
 
-E, W., Han, J. and Jentzen, A. ‘Deep Learning-Based Numerical
+E, W., Han, J. and Jentzen, A. Deep Learning-Based Numerical
 Methods for High-Dimensional Parabolic Partial Differential Equations
 and Backward Stochastic Differential Equations (2017)
++ The orignal deep fbsde paper
 + https://github.com/frankhan91/DeepBSDE
+
+
+ PIERRE HENRY-LABORDERE, DEEP PRIMAL-DUAL ALGORITHM FOR BSDES (2017)
+ + https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3071506
+
+
 
 Deep-learning based numerical BSDE method for barrier options
 + https://www.arxiv-vanity.com/papers/1904.05921/

@@ -22,7 +22,7 @@ def cev_step(
         F0
         + V0
         * (F0 ** (beta))
-        * (jnp.sqrt(dt) * (rho * Z2 + jnp.sqrt(1 - rho ** 2) * Z1))
+        * (jnp.sqrt(dt) * (rho * Z2 + jnp.sqrt(1 - rho**2) * Z1))
     )
 
     return jnp.abs(
@@ -30,8 +30,8 @@ def cev_step(
         + V0
         * jnp.exp((beta - 1) * F0)
         * jnp.sqrt(dt)
-        * (rho * Z2 + jnp.sqrt(1 - rho ** 2) + Z1)
-        - 0.5 * (V0 ** 2) * dt * jnp.exp(2 * (beta - 1) * F0)
+        * (rho * Z2 + jnp.sqrt(1 - rho**2) + Z1)
+        - 0.5 * (V0**2) * dt * jnp.exp(2 * (beta - 1) * F0)
     )
 
 
@@ -46,15 +46,15 @@ def sabr_expansion(F, K, vol, beta, rho, vol_of_vol, ttm):
 
     F_K = (F * K) ** (1 - beta)
     mon = np.log(F / K)
-    z = (vol_of_vol / vol) * (F_K ** 0.5) * mon
-    x = np.log((np.sqrt(1 - 2 * rho * z + (z ** 2)) + z - rho) / (1 - rho))
+    z = (vol_of_vol / vol) * (F_K**0.5) * mon
+    x = np.log((np.sqrt(1 - 2 * rho * z + (z**2)) + z - rho) / (1 - rho))
     num = 1 + ttm * (
-        ((1 - beta) ** 2) * ((vol ** 2) / F_K) / 24
+        ((1 - beta) ** 2) * ((vol**2) / F_K) / 24
         + 0.25 * rho * beta * vol_of_vol * vol / (F_K * 0.5)
-        + (2 - 3 * (rho ** 2)) * ((vol_of_vol) ** 2) / 24
+        + (2 - 3 * (rho**2)) * ((vol_of_vol) ** 2) / 24
     )
-    denom = (F_K ** 0.5) * (
-        1 + ((1 - beta) ** 2) / 24 * mon ** 2 + ((1 - beta) ** 4) / 1920 * mon ** 4
+    denom = (F_K**0.5) * (
+        1 + ((1 - beta) ** 2) / 24 * mon**2 + ((1 - beta) ** 4) / 1920 * mon**4
     )
 
     return ((F == K) * vol * num / denom) + (np.nan_to_num(z / x) * vol * num / denom)
@@ -81,8 +81,8 @@ def sabr_pde_err(
     PDE_err = (
         -grads[:, f_to_i("ttm")]
         + 0.5 * (moneyness ** (2 * beta)) * vol * hessian_moneyness[:, f_to_i("V")]
-        + rho * vol_of_vol * (moneyness ** beta)
-        + 0.5 * (vol_of_vol ** 2) * vol * hessian_vol[:, f_to_i("V")]
+        + rho * vol_of_vol * (moneyness**beta)
+        + 0.5 * (vol_of_vol**2) * vol * hessian_vol[:, f_to_i("V")]
     )
 
     return PDE_err
