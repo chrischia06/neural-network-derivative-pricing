@@ -18,3 +18,9 @@ https://core.ac.uk/download/pdf/159922054.pdf
 
   A Comparison of Artificial Neural Networks and Bootstrap Aggregating Ensembles in a Modern Financial Derivative Pricing Framework 
   + https://www.mdpi.com/1911-8074/14/6/254
+
+  **Huisu Jang, Jaewook Lee, Generative Bayesian neural network model for risk-neutral pricing of American index options (2018)**
+
++ https://www.tandfonline.com/doi/full/10.1080/14697688.2018.1490807
+
+Barrier option pricing: modelling with neural nets

@@ -67,3 +67,7 @@ A Probabilistic Approach to Nonparametric Local Volatility
 
   Machine Learning Vasicek Model Calibration with Gaussian Processes
  + https://www.tandfonline.com/doi/abs/10.1080/03610918.2012.625324
+
+ GP regression for arbitrage-free construction of the swaption
+cube.
++ https://www.nexialog.com/wp-content/uploads/2022/03/Article-Kriging-swaption-cube.pdf

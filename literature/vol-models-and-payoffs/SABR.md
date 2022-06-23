@@ -12,6 +12,7 @@
 
 **Hugues Thorin, Artificial Neural Networks for SABR Model Calibration & Hedging**
 + MSc Thesis
++ Based on McGhee's paper
 + https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3995626
 
 
@@ -82,7 +83,8 @@ Candidate point selection using a self-attention mechanism for generating a smoo
 
 Medhi Thomas, Pricing and calibration of stochastic models via neural networks
 
-William Mcghee
+William Mcghee, An Artificial Neural Network Representation of the SABR Stochastic Volatility Model (2018)
++ https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3288882
 
 Huges THorin artificial neural network for the SABR Model 
 
@@ -108,3 +110,37 @@ https://www.cqfinstitute.org/sites/default/files/3%20-%20Katia%20Babbar%20SABR_C
 
 On the Calibration of the SABR Model and its Extensions
 + https://www.imperial.ac.uk/media/imperial-college/faculty-of-natural-sciences/department-of-mathematics/math-finance/Cheng_Luo-thesis.pdf
+
+
+NN for Cross-Currency Options under the correlated SABR Mode
++ https://www.cqfinstitute.org/sites/default/files/3%20-%20Katia%20Babbar%20SABR_CrossSmile_NN_QuantInsights_2021_FINAL.pdf
++ 2 SABR Processes for FX Cross smiles
+
+
+# Theory
+
+Finite Difference Techniques for Arbitrage Free SABR
++ https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2402001
+
+Decoding Hagan's Arbitrage Free SABR PDE Derivation
++ https://chasethedevil.github.io/post/decoding-hagans-arbitrage-free-sabr-pde-derivation/
+
+Almost exact SABR Interpolation using Neural Networks and Gradient Boosted Trees
++ https://hpcquantlib.wordpress.com/2019/10/12/almost-exact-sabr-interpolation-using-neural-networks-and-gradient-boosted-trees/
+
+Managing Smile Risk
+
++ https://lesniewski.us/papers/published/ManagingSmileRisk.pdf
+
+Advanced Analytics for the SABR Model
++ https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2026350
+
+FINE-TUNE YOUR SMILE CORRECTION TO HAGAN ET AL JAN OBLoJ
++ https://arxiv.org/pdf/0708.0998.pdf
+
+On the Calibration of the SABR Model and its Extensions
++ https://www.imperial.ac.uk/media/imperial-college/faculty-of-natural-sciences/department-of-mathematics/math-finance/Cheng_Luo-thesis.pdf
+
+
+Neural network approximation to the SABR option pricing model
++ Slides:https://parleyyang.github.io/Cam/LT2021/Slide.pdf

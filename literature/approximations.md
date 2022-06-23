@@ -80,20 +80,7 @@ Supervised deep learning in computational finance
 Karatas T., Oskoui A., Hirsa A., Supervised deep neural networks for pricing/calibration of vanilla/exotic
 options under various different processes
 
-**Deep Learning for Exotic Option Valuation (2021)**
 
-+ https://arxiv.org/abs/2103.12551
-+ Get parameters of market (volatility) model and use it to price exotics
-+ Prices (or vol surface) of exotics need to be consistent with vanillas
-+ "We create a neural network where the inputs are the volatility surface points and the exotic option parameters and the target is the price."
-+ **Neural Network**: *Optimizer*: Adam, *Loss*: Mean Absolute Error, EarlyStopping with patience 50
-
-+ https://www.cqfinstitute.org/sites/default/files/Talk%209_John%20Hull_Valuing%20Exotic%20Options%20and%20Estimating%20Model%20Risk%20Quant%20Insights.pdf
-
-
-
-A neural network-based framework for financial model calibration
-+ https://mathematicsinindustry.springeropen.com/articles/10.1186/s13362-019-0066-7
 
 Option Pricing
 + https://link.springer.com/chapter/10.1007/978-3-319-51668-4_7
@@ -131,12 +118,45 @@ Deep Structural Estimation
 + Discussion on activation functions
 + 
 
-
-
  Unbiased Deep Solvers for Linear Parametric PDEs
  + https://www.tandfonline.com/doi/full/10.1080/1350486X.2022.2030773
+
+
 **Lucio Fernandez-Arjona, Damir Filipovic, A machine learning approach to portfolio pricing and risk management for high-dimensional problems (2022)**
 
 
 Deep ReLU network expression rates for option prices in high-dimensional, exponential Lévy models
 + https://link.springer.com/article/10.1007/s00780-021-00462-7
+
+
+Jeonggyu Huh, Pricing options with exponential Lévy neural network (2019)
++ https://www.sciencedirect.com/science/article/pii/S0957417419301617
++ Levy Models
+
+
+Option Pricing With Machine Learning
+Daniel Alexandre Bloch
+https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3486224
+
+**Learning the random variables in Monte Carlo simulations with stochastic gradient descent** Machine learning for parametric PDEs and financial derivative pricing 
+
++ Authors present that in the BS case the Learning Random Variables (LRV) approach outperforms ANN approximation and (Q)MC methods in the L1 and Linfinity norms
++ However, the LRV approach appears to be much more slower
+
+Pricing options on flow forwards by neural networks in Hilbert space (2022)
+https://arxiv.org/abs/2202.11606
+https://www.youtube.com/watch?v=jOye0mznjqc
+
+Computations in Option Pricing Engines
++ Undergraduate paper
++ https://web.wpi.edu/Pubs/E-project/Available/E-project-050120-154222/unrestricted/Computations-in-Option-Pricing-Engines-MendoncaFilho-Phongsopa-Wotton.pdf
+
+ Financial Option Valuation by Unsupervised Learning with Artificial Neural Networks 
+ + https://www.mdpi.com/2227-7390/9/1/46
+
+ Option Pricing Using Artificial Neural Networks
+ + MSC Thesis
+ + https://research-api.cbs.dk/ws/portalfiles/portal/59791650/625879_Masters_Thesis_MHP.pdf
+
+ Using Deep Neural Networks to Price Basket and Rainbow Options
+ + https://github.com/christiangruener/MasterThesis

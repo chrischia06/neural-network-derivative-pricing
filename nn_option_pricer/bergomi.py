@@ -18,14 +18,20 @@ def bergomi_eval_wrapper(
     f_to_i = lambda x: feat_names.index(x)
     temp = pd.concat(
         [
-            diagnosis_pred(true_val, preds, lower_bound=lower_bound, upper_bound = upper_bound, method=METHOD),
+            diagnosis_pred(
+                true_val,
+                preds,
+                lower_bound=lower_bound,
+                upper_bound=upper_bound,
+                method=METHOD,
+            ),
             diagnosis_grads(
                 hessian_moneyness, grads, f_to_i, "ttm", "log-strike", method=METHOD
             ),
         ],
         axis=1,
     )
-    
+
     """
     Pricing Error
     """
@@ -36,17 +42,19 @@ def bergomi_eval_wrapper(
         hue=X_df["ttm"],
         ax=ax[1],
     )
-    sns.scatterplot(
-        X_df["log-strike"], preds, hue=X_df["ttm"], ax=ax[0]
-    )
+    sns.scatterplot(X_df["log-strike"], preds, hue=X_df["ttm"], ax=ax[0])
 
     ax[0].set_xlabel("log-moneyness")
     ax[1].set_xlabel("log-moneyness")
     ax[0].set_ylabel("Predicted Price")
     ax[1].set_ylabel("Pricing Error vs MC Price")
-    ax[0].set_title(f"{METHOD}: Predicted Price against Moneyness\nColour: time-to-maturity)")
-    ax[1].set_title(f"{METHOD}: Pricing Error against Moneyness\nColour: time-to-maturity)")
-    
+    ax[0].set_title(
+        f"{METHOD}: Predicted Price against Moneyness\nColour: time-to-maturity)"
+    )
+    ax[1].set_title(
+        f"{METHOD}: Pricing Error against Moneyness\nColour: time-to-maturity)"
+    )
+
     """
     Greeks
     """
@@ -58,7 +66,9 @@ def bergomi_eval_wrapper(
             hue=X_df["ttm"],
             ax=ax[i],
         )
-        ax[i].set_title(f"{METHOD}\nSensitivity wrt {x}\nagainst log-moneyness\nColour: time-to-maturity")
+        ax[i].set_title(
+            f"{METHOD}\nSensitivity wrt {x}\nagainst log-moneyness\nColour: time-to-maturity"
+        )
         ax[i].set_ylabel(f"Sensitivity wrt {x}")
     sns.scatterplot(
         X_df["log-strike"],
@@ -66,9 +76,12 @@ def bergomi_eval_wrapper(
         ax=ax[2],
         hue=X_df["ttm"],
     )
-    ax[2].set_title(f"{METHOD}\nHessian (Gamma) wrt log-moneyness\nagainst log-moneyness\nColour: time-to-maturity")
+    ax[2].set_title(
+        f"{METHOD}\nHessian (Gamma) wrt log-moneyness\nagainst log-moneyness\nColour: time-to-maturity"
+    )
     ax[2].set_ylabel("Gamma")
     return temp
+
 
 # """
 # Define Neural Network

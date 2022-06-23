@@ -240,15 +240,19 @@ def homogeneity_network(
 # model.fit(tf.convert_to_tensor(S0.numpy(), dtype=tf.float32),
 #           tf.convert_to_tensor(np.hstack([y.numpy(), grads]), dtype=tf.float32), batch_size=1024, epochs=100, shuffle=False)
 
+
 def delta_loss(grad_true, grad_pred):
-    return tf.keras.losses.MeanSquaredError()(grad_true, grad_pred[:,0])
+    return tf.keras.losses.MeanSquaredError()(grad_true, grad_pred[:, 0])
+
 
 class DifferentialModel(tf.keras.Model):
     """
     Wrapper to enable differential training
     """
+
     lam = 1
     grad_loss = delta_loss
+
     @tf.function
     def train_step(self, data):
         x_var, (y, true_grad) = data
@@ -265,6 +269,4 @@ class DifferentialModel(tf.keras.Model):
         model_grad = model_tape.gradient(loss, trainable_vars)
         self.optimizer.apply_gradients(zip(model_grad, trainable_vars))
         self.compiled_metrics.update_state(y, model_pred)
-        return {
-            m.name: m.result() for m in self.metrics
-        } 
+        return {m.name: m.result() for m in self.metrics}

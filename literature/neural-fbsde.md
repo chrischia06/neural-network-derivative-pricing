@@ -4,7 +4,9 @@ These papers aim to solve the pricing problem by using a neural network to solv 
 
 + Researchers: Kristoffer Andersson, Seems like Wells Fargo has done a lot of research in this area, for example
 
-Solving high-dimensional partial differential equations using deep learning
+E, W., Han, J. and Jentzen, A. ‘Deep Learning-Based Numerical
+Methods for High-Dimensional Parabolic Partial Differential Equations
+and Backward Stochastic Differential Equations (2017)
 + https://github.com/frankhan91/DeepBSDE
 
 Deep-learning based numerical BSDE method for barrier options
@@ -78,3 +80,14 @@ deep learning based bsde solver for libor market model with application bermudan
 numerical resolution of mckean vlasov fbsdes neural netowrks
 
 deep signature fbsde
+
+**Machine learning techniques in interest rate modelling**
+
++ https://www.duo.uio.no/bitstream/handle/10852/78735/LIBOR.pdf?sequence=1
++ LMM, FBSDE
++ A MSc Thesis based on the FBSDE technique by Han, J (2017)
+
+Deep Learning of High-dimensional Partial Differential Equations
++ MSc Thesis
++ https://www.imperial.ac.uk/media/imperial-college/faculty-of-engineering/computing/public/1819-pg-projects/Deep-Learning-of-High-dimensional-Partial-Differential-Equations.pdf
+ 

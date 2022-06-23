@@ -1,3 +1,2 @@
-Computations in Option Pricing Engines
-+ Undergraduate paper
-+ https://web.wpi.edu/Pubs/E-project/Available/E-project-050120-154222/unrestricted/Computations-in-Option-Pricing-Engines-MendoncaFilho-Phongsopa-Wotton.pdf
++ https://jackantoinejacquie.wixsite.com/jacquier/students-projects
++ https://www.imperial.ac.uk/mathematics/postgraduate/msc/mathematical-finance/project-and-thesis/

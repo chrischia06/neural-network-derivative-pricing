@@ -20,3 +20,20 @@ Nonparametric pricing and hedging of exotic derivatives
 + https://arxiv.org/abs/1905.00711
 
 Deep signature FBSDe algorithm
+
+
+**Signatures in machine learning and finance**
++ https://ora.ox.ac.uk/catalog/uuid:2f2896cf-3821-4f34-92f0-48eac50b20fc/download_file?file_format=&safe_filename=thesis.pdf
+
+
+Deep Signature FBSDE Algorithm
++ https://ideas.repec.org/p/arx/papers/2108.10504.html
+
+Deep Signature Transforms
++ https://proceedings.neurips.cc/paper/2019/file/d2cdf047a6674cef251d56544a3cf029-Paper.pdf
+
+Derivatives pricing using signature payoffs
++ https://arxiv.org/pdf/1809.09466.pdf
+
+Model-free pricing and hedging in discrete time using rough path signatures
++ https://www.arxiv-vanity.com/papers/1905.01720/

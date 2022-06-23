@@ -1,37 +1,21 @@
-# General
+# Calibration
 
-**Andres Hernandez (2016), Model Calibration with Neural Networks**
-**Andres Hernandez (2017) Model Calibration: Global Optimizer vs. Neural Network**
+## Black-Scholes Implied Volatility
 
-+ Paper: https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2812140
-+ https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2996930
-+ slides: https://www.quantlib.org/slides/qlum17/hernandez.pdf
-+ Hull white, bermudan swaptions, compared vs Quantlib
-+ Code: https://github.com/Andres-Hernandez/CalibrationNN
+**Tae-Kyoung Kim, Hyun-Gyoon Kim, Jeonggyu Huh, Large-scale online learning of implied volatilities (2022)**
 
-**Interpretability in deep learning for finance (2021)**
-
-+ https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3829947
-+ 10000 datapoints, parameter space from Horvath et al. (2019) and Roeder and Dimitrof, sampled uniformly in ever ydimension
-+ Uniform grid of strikes and maturities
-+ FCNN the data is scaled in a range from 0 to 1 before being inputted to the network, while
-for the CNN the data is scaled to have a mean of 0 and a variance of 1
-+ Local and global interpretability
++ Ill-posed problem  - "the problem has a fundamentally ill-posed property in the domain where Vega is too small (Stefanica & Radoičić, 2017). In the low-Vega domain, small changes in the input (option price) can result in large changes in the target value (implied volatility). The authors of these previous studies were either satisfied with low accuracy or narrowed the input domain to alleviate the problem. However, these limitations prevent the adoption of networks in practice."
++ TensorRT is a software development kit for high-performance deep learning inference.
++ Leverage pyvollib for implied volatility computations http://vollib.org/documentation/python/1.0.2/
++ Compare against Jackel 2015 formula
 
 **Andrey Itkin, Deep learning calibration of option pricing models: some pitfalls and solutions (2019)**
-+ https://arxiv.org/pdf/1906.03507.pdf
++ Link: https://arxiv.org/pdf/1906.03507.pdf
 + Use random sampling over a grid of parameters in the Black-Scholes case, and partition datasets into train and test (over the same grid of parameters)
 + Trained on true BS prices
 + 0.03 RMSE (on normalised call prices), 0.1% MAPE after only 15 epochs
 
-**Medhi Thomas, Pricing and calibration of stochastic models via neural networks**
-+ https://www.imperial.ac.uk/media/imperial-college/faculty-of-natural-sciences/department-of-mathematics/math-finance/TOMAS_MEHDI_01390785.pdf
-+ Medhi Thomas MSc Thesis
 
-
-**Liu, Shuaiqiang, Anastasia Borovykh, Lech Grzelak, and Cornelis Oosterlee. 2019a. A neural network-based framework for financial model calibration**
-+ https://www.researchgate.net/publication/335672074_A_neural_network-based_framework_for_financial_model_calibration
-  
 **Liu, Shuaiqiang, Cornelis Oosterlee, and Sander Bohte. 2019b. Pricing options and computing implied volatilities using neural networks** 
 
 + https://arxiv.org/pdf/1901.08943.pdf
@@ -49,49 +33,19 @@ for the CNN the data is scaled to have a mean of 0 and a variance of 1
 + Train on true model prices for a range of parameters
 
 
-# Local Stochastic Volatility
+**Liu, Shuaiqiang, Anastasia Borovykh, Lech Grzelak, and Cornelis Oosterlee. 2019a. A neural network-based framework for financial model calibration**
++ https://www.researchgate.net/publication/335672074_A_neural_network-based_framework_for_financial_model_calibration
++ https://link.springer.com/article/10.1186/s13362-019-0066-7
++ CaNN
 
+**Shuaiqiang Liu, Álvaro Leitao, Anastasia Borovykh, Cornelis W. Oosterlee, On Calibration Neural Networks for extracting implied information from American options (2020)**
 
-**Katia Babbar, William McGhee, A DEEP LEARNING APPROACH TO EXOTIC OPTION PRICING UNDER LSVOL**
-
-+ https://www.bayes.city.ac.uk/__data/assets/pdf_file/0007/494080/DeepLearningExoticOptionPricingLSVOL_KB_CassBusinessSchool_2019.pdf
-
-
-
-# Rough Volatility
-
-**Deep Learning (Rough) Volatility**
-
-+ Video: https://www.youtube.com/watch?v=O03erV5nYXA
-+ https://arxiv.org/abs/1901.09647
-+ Article by bocconi students https://bsic.it/rough-volatility/
-
-
-**Christian Bayer, Benjamin Stemper, Deep calibration of rough stochastic volatility models (2018)**
-
-+ Rough (Bergomi) models presents itself as opportunity, given the lack of analtyical approximations in many cases, necessitating MC
-+ https://github.com/roughstochvol
-+ https://github.com/bstemper/deep_rough_calibration  
-+ Cut up one dataset into train, val, test
-+ Sample more from dense parameter regions (can be obtained from historical data)
-+ Relu activation
-+ Feature scaling,  weight initialisation, regularisation, batch norm
-+ Bayesian approach to parameters
-
-**Dirk Roeder, Georgi Dimitroff, Volatility model calibration with neural networks a comparison between direct and indirect methods (2020)**
-
-+ https://github.com/roederd/volatility_model_calibration_with_nn
-+ Strike-Maturity grid is fixed (so interpolation through grid points)
-
-
-**Interpretability in Deep Learning for Heston Smile Modeling Calibration**
-+ https://www.imperial.ac.uk/media/imperial-college/faculty-of-natural-sciences/department-of-mathematics/math-finance/Xiaoshan_Huang_Thesis.pdf
-
-**Deep learning calibration of option pricing models: some pitfalls and solutions**
-
-+ Andrey Itkin
-+ https://arxiv.org/pdf/1906.03507.pdf
-
++ https://arxiv.org/abs/2001.11786 
++ "Generally, ANNs are not accurate when functions with steep gradients need to be approxi-
+mated. Therefore, we need to adapt the requested output function. In order to obtain the
+implied volatility from the option prices, we need to employ the gradient-squashing technique
+as proposed in [2]. We subtract the intrinsic value from the American option price to obtain the corresponding time value"
+  
 
 **Tugce Karatas, Amir Oskoui, Ali Hirsa, Supervised Deep Neural Networks (DNNs) for Pricing/Calibration of Vanilla/Exotic Options Under Various Different Processes (2019)**
 
@@ -103,22 +57,16 @@ Calibration of Derivative Pricing Models: a Multi-Agent Reinforcement Learning P
 + https://arxiv.org/abs/2203.06865
 
 
-# HJM
-
-**Accuracy of Deep Learning in Calibrating HJM Forward Curves (2021)**
-
-+ SPDEs
-+ Calibration to full HJM is very difficult
-+ Pointwise vs Grid
-+ Code: https://github.com/silvialava/HJM_calibration_with_NN
-+ Energy markets
-+ **FRED ESPEN BENTH, NILS DETERING, LUCA GALIMBERTI, NEURAL NETWORKS IN FReCHET SPACES**
-+ https://arxiv.org/abs/2109.13512
-+ Related Work: **FRED ESPEN BENTH, NILS DETERING, LUCA GALIMBERTI, PRICING OPTIONS ON FLOW FORWARDS BY NEURAL NETWORKS IN HILBERT SPACE**
-
-+ Related Work: **Deep Learning in a Generalized HJM-type Framework Through Arbitrage-Free Regularization**
-+ Nelson Siegel
-
-
 applications of deep learning in option pricing and calibration
 
+
+
+**Deep Learning for Exotic Option Valuation (2021)**
+
++ https://arxiv.org/abs/2103.12551
++ Get parameters of market (volatility) model and use it to price exotics
++ Prices (or vol surface) of exotics need to be consistent with vanillas
++ "We create a neural network where the inputs are the volatility surface points and the exotic option parameters and the target is the price."
++ **Neural Network**: *Optimizer*: Adam, *Loss*: Mean Absolute Error, EarlyStopping with patience 50
+
++ https://www.cqfinstitute.org/sites/default/files/Talk%209_John%20Hull_Valuing%20Exotic%20Options%20and%20Estimating%20Model%20Risk%20Quant%20Insights.pdf

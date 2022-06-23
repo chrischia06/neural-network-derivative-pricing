@@ -1,5 +1,11 @@
 # Neural PDEs
 
+Pricing Options using Deep Neural Networks from a Practical Perspective: A Compr
++ https://www.imperial.ac.uk/media/imperial-college/faculty-of-natural-sciences/department-of-mathematics/math-finance/Pu-Viola_Ruo_Han_01977026.pdf
++ https://github.com/violapu/OPNN
++ https://github.com/violapu/Optimally-Weighted-PINNs
++ MSc Thesis
+
 **Sirignano Deep PDEs DGM: A deep learning algorithm for solving partial differential equations(2018)**
 +  https://arxiv.org/abs/1708.07469
 
@@ -13,14 +19,21 @@ Ali Al-Aradi, Adolfo Correia, Danilo de Frietas Naiff, Gabriel Jardim, Yuri Sapo
 + 	https://arxiv.org/abs/1912.01455
 
 
+Unbiased Deep Solvers for Linear Parametric PDEs
+
++ https://www.tandfonline.com/doi/full/10.1080/1350486X.2022.2030773
+
 
 Huyên Pham, Xavier Warin & Maximilien Germain , Neural networks-based backward scheme for fully nonlinear PDEs
 + https://link.springer.com/article/10.1007/s42985-020-00062-8
 
-+ DNN Expression Rate Analysis of High-Dimensional PDEs: Application to Option Pricing https://link.springer.com/article/10.1007/s00365-021-09541-6
+**Dennis Elbrächter, Philipp Grohs, Arnulf Jentzen, Christoph Schwab, DNN Expression Rate Analysis of High-Dimensional PDEs: Application to Option Pricing (2018)**
 
-+ Deep Learning of High-dimensional Partial Differential Equations
-+ Imperial Thesis
++ https://link.springer.com/article/10.1007/s00365-021-09541-6
++ 
+
+**Deep Learning of High-dimensional Partial Differential Equations** 
++ Imperial MSc Thesis
 + https://medium.com/data-analysis-center/solving-differential-equations-using-neural-networks-with-pydens-e831f1a115f
 
 
@@ -90,7 +103,9 @@ Differential Learning Methods for solvign fully nonlinear PDEs (2022)
 
 Deepopnet
 
-Optimally weighted loss functions for solving PDEs with Neural Networks
+Remco van der Meer, Cornelis Oosterlee, Anastasia Borovykh, Optimally weighted loss functions for solving PDEs with Neural Networks (2020)
+
++ Link: https://arxiv.org/abs/2002.06269
 
 
 
@@ -181,3 +196,58 @@ Error analysis for physics informed neural networks (PINNs) approximating Kolmog
 
  A Deep Smoothness WENO Method with Applications in Option Pricing
  + https://www.researchgate.net/publication/353804599_A_Deep_Smoothness_WENO_Method_with_Applications_in_Option_Pricing
+
+Julius Berner, Markus Dablander, Philipp Grohs, Numerically Solving Parametric Families of High-Dimensional Kolmogorov Partial Differential Equations via Deep Learning
++ https://arxiv.org/abs/2011.04602
+
+Riu Naito, Toshihiro Yamada, A machine learning solver for high-dimensional integrals: Solving Kolmogorov PDEs by stochastic weighted minimization and stochastic gradient descent through a high-order weak approximation scheme of SDEs with Malliavin weights (2020)
++ https://arxiv.org/abs/2012.12346
+
+Bálint Négyesi, A Novel Method for Solving High-Dimensional Backward Stochastic Differential Equations Using Malliavin Calculus and Deep Learning (2020)
++  https://repository.tudelft.nl/islandora/object/uuid:7ddffe14-aa0d-466b-80a7-e9541468142d/datastream/OBJ/download
+
+Akihiko Takahashi, Yoshifumi Tsuchida, Toshihiro Yamada  , A new efficient approximation scheme for solving high-dimensional semilinear PDEs: Control variate method for Deep BSDE solver (2020)
++ https://dl.acm.org/doi/abs/10.1016/j.jcp.2022.110956
+
+
+Deep Learning and Nonlinear PDEs in High-Dimensional Spaces 2018
++ https://amslaurea.unibo.it/16859/1/Tesi%20Rossini%20Definitiva.pdf
+
+Asymptotic Expansion and Deep Neural Networks Overcome the Curse of Dimensionality in the Numerical Approximation of Kolmogorov Partial Differential Equations with Nonlinear Coefficients
++ http://www.cirje.e.u-tokyo.ac.jp/research/dp/2021/2021cf1167.pdf
+
+Kailai Xu and Eric Darve, Calibrating Multivariate Lévy Processes with Neural Networks
++ https://arxiv.org/pdf/1812.08883.pdf
+
+Lei Fan, MACHINE LEARNING METHODS FOR PRICING AND HEDGING FINANCIAL DERIVATIVES (2021)
++ PHD Thesis
++ Neural SDEs, Neural PDEs
+
+Deep neural network approximations for solutions of PDEs based on Monte Carlo algorithms
++ https://link.springer.com/article/10.1007/s42985-021-00100-z
+
+Full error analysis for the training of deep neural networks
++ https://www.worldscientific.com/doi/abs/10.1142/S021902572150020X
+
+William Lefebvre, Grégoire Loeper, Huyên Pham, Differential learning methods for solving fully nonlinear PDEs (2022)
+
++ https://arxiv.org/abs/2205.09815
+
+DeepSets and Their Derivative Networks for Solving Symmetric PDEs
++ https://www.researchgate.net/publication/357527895_DeepSets_and_Their_Derivative_Networks_for_Solving_Symmetric_PDEs
+
+Solving Fokker-Planck equation using deep learning
++ https://arxiv.org/abs/1910.10503
+
+Neural Q-learning for solving elliptic PDEs
++ https://arxiv.org/pdf/2203.17128.pdf
+
+A. Al-Aradi, A. Correia, D. Naiff, G. Jardim, Solving Nonlinear and High-Dimensional Partial Differential Equations via Deep Learning
+M. Andrade, P. Casgrain, L. Alvarenga, A. Schmidt, Machine Learning the Greeks
+F. Nascimento, L. Farias, H. Yan, R. Riva, Machine Learning and Stochastic Control in Algorithmic Trading
+A. Angiuli, C. Antunes, C. Paolucci, A. Sombra, A Calibration of the Lognormal Forward LIBOR Model
+
+https://bibliotecadigital.fgv.br/dspace/bitstream/handle/10438/29271/04%20artigos.pdf
+
+NUMERICAL METHODS FOR HIGH-DIMENSIONAL OPTION PRICING PROBLEMS
++ https://zewenshen.github.io/files/HDP_ZewenShen.pdf

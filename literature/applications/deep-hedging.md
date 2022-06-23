@@ -62,6 +62,9 @@ Pricing and Hedging of Derivatives by Unsupervised Deep Learning
 Equal risk pricing of derivatives with deep hedgingOpen Data
 + https://www.tandfonline.com/doi/full/10.1080/14697688.2020.1806343?casa_token=P8sk_uBGcKEAAAAA%3A-qVUFHsp9jQIOKrVBIRMVz4wao8veOeNVoSfr2moTOK9WHkGngUl8trV2Csxj94JeJ4k0xTyohg 
 
+From Stochastic to Rough Volatility: A New Deep Learning Perspective on the Hedging
++ https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4098535
+
 ## Reinforcement Learning
 
 Summary: These papers focus on using reinforcement learning
@@ -85,3 +88,31 @@ deep stochastic optimisation in finance
 Deep Reinforcement Learning For Trading - A Critical Survey
 + https://www.preprints.org/manuscript/202111.0044/v1
 
+**Haodong Zhang, Hirbod Assa, Chris Kenyon, Assessing reinforcement delta hedging (2021)**
++ https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3918375
+
+
+ Multi-Asset Spot and Option Market Simulation
+ + https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3980817  
+
+
+ Risk-Neutral Market Simulation
+ + https://arxiv.org/abs/2202.13996
+
+Simulating spot and equity option markets using rough path signatures
++ https://gateway.newton.ac.uk/presentation/2021-03-16/29953
+
+Deep Hedging: Learning Risk-Neutral Implied Volatility Dynamics
++ https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3808555
+
+Deep hedging: learning to simulate equity option markets
++ https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3470756
+
+Deep Hedging: Learning to Remove the Drift under Trading Frictions with Minimal Equivalent Near-Martingale Measures
++ https://arxiv.org/abs/2111.07844
+
+RLOP: RL Methods in Option Pricing from a Mathematical Perspective
++ https://github.com/owen8877/RLOP
+
+Gamma and Vega Hedging Using Deep Distributional Reinforcement Learning
++ https://arxiv.org/abs/2205.05614v1

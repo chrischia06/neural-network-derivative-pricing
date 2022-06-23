@@ -37,6 +37,7 @@ interpolation
 **Dynamic Initial Margin via Chebyshev Tensors**
 + Ignacio Ruiz, Mariano Zeron
 + https://arxiv.org/abs/1808.08221
++ https://www.youtube.com/watch?v=ft-ythncOLo
 
 **Ignacio Ruiz, Mariano Zeron, Machine Learning for Risk Calculations**
 
@@ -68,5 +69,11 @@ Fast high-dimensional integration using tensor networks
 
  Muyang Ge, Shen Zhou, Shijun Luo, Boping Tian, 3D Tensor-based Deep Learning Models for Predicting Option Price (2021)
  + https://arxiv.org/abs/2106.02916
+
+**Christian Bayer, Martin Eigel, Leon Sallandt, Philipp Trunschke, Pricing high-dimensional Bermudan options with hierarchical tensor formats (2021)**
++ 
+
+**Chebyshev Tensors and Machine Learning in DIM calculations**
++ https://education.wbstraining.com/pluginfile.php/7794/mod_resource/content/3/DIM%20webinar%20v5.pdf
 
  

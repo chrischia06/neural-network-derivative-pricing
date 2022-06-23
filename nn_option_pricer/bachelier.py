@@ -66,7 +66,9 @@ def bachelier_eval_wrapper(
     upper_bound = None
     lower_bound = np.maximum(X_df["basket"] - 1.0, 0)
 
-    pred_stats =  diagnosis_pred(X_df["call_analytic"].values, preds, lower_bound, upper_bound, method = METHOD).add_prefix("pred_")
+    pred_stats = diagnosis_pred(
+        X_df["call_analytic"].values, preds, lower_bound, upper_bound, method=METHOD
+    ).add_prefix("pred_")
 
     #     """
     #     Error in PDE operator (Dynamic Arbitrage)
@@ -87,7 +89,9 @@ def bachelier_eval_wrapper(
     ax[1].scatter(X_df["basket"], X_df["call_analytic_delta"] / N_ASSETS - grads)
     ax[1].set_title("Gradient Error vs Basket value")
     true_factor = X_df["call_analytic_delta"] / N_ASSETS
-    grad_stats = diagnosis_pred(true_factor, grads, lower_bound=0, method = METHOD).add_prefix("grad_")
+    grad_stats = diagnosis_pred(
+        true_factor, grads, lower_bound=0, method=METHOD
+    ).add_prefix("grad_")
     """
     Display Statistics
     """

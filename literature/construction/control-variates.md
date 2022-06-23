@@ -34,4 +34,5 @@ Stacked Monte Carlo for Option Pricing
 
 Asymptotic Expansion as prior knowledge learning in high dimensional BSDEs
 
-deep asymptotic expansion with weak approximation
+Yuga Iguchi, Riu Naito, Yusuke Okano, Toshihiro Yamada, Akihiko Takahashi, deep asymptotic expansion with weak approximation (2021)
++ http://www.cirje.e.u-tokyo.ac.jp/research/dp/2021/2021cf1168.pdf

@@ -50,6 +50,12 @@ Yiqi Gu, John Harlim, Senwei Liang, Haizhao Yang, stationary density estimation 
 Density estimation using deep generative neural networks
 + https://www.pnas.org/doi/10.1073/pnas.2101344118
 
+Option prices for risk-neutral density estimation using nonparametric methods through big data and large-scale problems
++ 
+
+
+**Pricing path-dependent exotic options with flow-based generative networks**
+
 
 ## Theory 
 

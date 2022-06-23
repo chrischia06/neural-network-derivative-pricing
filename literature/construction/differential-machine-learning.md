@@ -7,7 +7,9 @@ These papers center around incorporating differentials (first order or higher) i
 + https://arxiv.org/pdf/2005.02347.pdf
 + 
 
-delta force option pricing with  differential machine learning
+Magnus Grønnegaard Frandsen, Tobias Cramer Pedersen, Rolf Poulsen, Delta force: option pricing with differential machine learning (2021)
+
+
 
 **ERIK ALEXANDER ASLAKSEN JONASSON, Differential Deep Learning for Pricing Exotic Financial Derivatives (2021)**
 + Student Paper
