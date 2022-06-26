@@ -1,7 +1,13 @@
 import numpy as np
 import pandas as pd
 from typing import List
-from utils import diagnosis_pred, diagnosis_grads
+from utils import diagnosis_pred, diagnosis_grads, visualise_surface
+import time
+import tensorflow as tf
+import matplotlib.pyplot as plt
+import seaborn as sns
+from itertools import product
+plt.style.use("ggplot")
 
 
 def bergomi_eval_wrapper(
@@ -16,6 +22,7 @@ def bergomi_eval_wrapper(
     METHOD: str = "standard_ffn",
 ):
     f_to_i = lambda x: feat_names.index(x)
+    N_FEATS = len(feat_names) 
     temp = pd.concat(
         [
             diagnosis_pred(
@@ -38,7 +45,7 @@ def bergomi_eval_wrapper(
     fig, ax = plt.subplots(figsize=(12, 5), ncols=2)
     sns.scatterplot(
         X_df["log-strike"],
-        true - preds,
+        true_val - preds,
         hue=X_df["ttm"],
         ax=ax[1],
     )
@@ -58,82 +65,107 @@ def bergomi_eval_wrapper(
     """
     Greeks
     """
-    fig, ax = plt.subplots(ncols=3, figsize=(18, 5))
-    for i, x in enumerate(["log-strike", "ttm"]):
+    fig, ax = plt.subplots(ncols=N_FEATS, nrows = 2, figsize=((N_FEATS + 1)  * 6, 10))
+    for i, x in enumerate(feat_names):
         sns.scatterplot(
             X_df["log-strike"],
             grads[:, f_to_i(x)],
             hue=X_df["ttm"],
-            ax=ax[i],
+            ax=ax[0, i],
         )
-        ax[i].set_title(
+        ax[0, i].set_title(
             f"{METHOD}\nSensitivity wrt {x}\nagainst log-moneyness\nColour: time-to-maturity"
         )
-        ax[i].set_ylabel(f"Sensitivity wrt {x}")
+        ax[0, i].set_ylabel(f"Sensitivity wrt {x}")
+        ax[0, i].set_xlabel("log-strike")
+        try:
+            sns.scatterplot(
+                X_df["log-strike"],
+                X_df[f'MC_call_d_{x}'] - grads[:, f_to_i(x)],
+                hue=X_df["ttm"],
+                ax=ax[1, i],
+            )
+            ax[1, i].set_title(
+                f"{METHOD}\nError in Sensitivity wrt {x}\nagainst log-moneyness\nColour: time-to-maturity"
+            )
+            ax[1, i].set_ylabel(f"Error in Sensitivity wrt {x}")
+            ax[1, i].set_xlabel("log-strike")
+        except:
+            pass
+        
+    
     sns.scatterplot(
         X_df["log-strike"],
         hessian_moneyness[:, f_to_i("log-strike")],
-        ax=ax[2],
+        ax=ax[0, -1],
         hue=X_df["ttm"],
     )
-    ax[2].set_title(
+    try:
+        sns.scatterplot(
+            X_df["log-strike"],
+            X_df[f"MC_call_d2_{'log-strike'}"] - hessian_moneyness[:, f_to_i("log-strike")],
+            ax=ax[1, -1],
+            hue=X_df["ttm"],
+        )
+    except:
+        pass
+    ax[0, -1].set_title(
         f"{METHOD}\nHessian (Gamma) wrt log-moneyness\nagainst log-moneyness\nColour: time-to-maturity"
     )
-    ax[2].set_ylabel("Gamma")
+    ax[0, -1].set_title(
+        f"{METHOD}\nError in Hessian (Gamma) wrt log-moneyness\nagainst log-moneyness\nColour: time-to-maturity"
+    )
+    ax[0, -1].set_ylabel("Gamma")
+    for i in range(2):
+        ax[i, -1].set_xlabel("log-strike")
     return temp
 
 
-# """
-# Define Neural Network
-# """
-# dataset = tf.data.Dataset.from_tensor_slices((Xs_train, ys_train, true_grads_train))
-# opt = Adam(learning_rate=LR)
-# model = make_model(
-#     N_FEATS, HIDDEN_UNITS, LAYERS, DROPOUT_RATIO, HIDDEN_ACT, OUTPUT_ACT, BATCH_NORM
-# )
+def bergomi_model_inference(all_models, all_model_preds, METHOD, all_model_grads, all_model_hessian, X_df_test, Xs_test, true, feat_names, f_to_i, intrinsic_val, upper_bound, eval_batch_size = 10 ** 5):
+    start2 = time.time()
+    model = all_models[METHOD]
+    all_model_preds[METHOD] = model.predict(Xs_test, batch_size=eval_batch_size).reshape(-1)
+    X_tensor = tf.Variable(Xs_test)
+    with tf.GradientTape() as tape2:
+        with tf.GradientTape() as tape:
+            output = model(X_tensor)
+            grads = tape.gradient(output, X_tensor)
+        hessian1 = tape2.gradient(grads[:, f_to_i("log-strike")], X_tensor)
 
-# batched_dataset = dataset.batch(BATCH_SIZE)
-# METHOD = "differential"
+    all_model_grads[METHOD] = grads.numpy()
+    all_model_hessian[METHOD] = hessian1.numpy()
+    inference_time = time.time() - start2
+
+    """
+    Evaluate Predictions, Sensitivities
+    """
+    N_FEATS = len(feat_names)
+    temp = bergomi_eval_wrapper(
+        X_df_test,
+        true,
+        all_model_preds[METHOD],
+        all_model_grads[METHOD],
+        all_model_hessian[METHOD],
+        feat_names,
+        lower_bound=intrinsic_val,
+        upper_bound = upper_bound,
+        METHOD=METHOD
+    )
+
+    temp["model_parameters"] = all_models[METHOD].count_params()
+    temp["inference_time"] = inference_time
 
 
-# @tf.function
-# def train(y, true_grad, x_var):
-#     with tf.GradientTape() as model_tape:
-#         with tf.GradientTape() as grad_tape:
-#             output = model(x_var)
-#         gradients = grad_tape.gradient(output, x_var)
-#         grad_loss = tf.keras.losses.MeanSquaredError()(true_grad, gradients[:, 0])
-#         pred_loss = tf.keras.losses.MeanSquaredError()(output, y)
-#         loss = grad_loss + pred_loss
-#         model_grad = model_tape.gradient(loss, model.trainable_variables)
-#         opt.apply_gradients(zip(model_grad, model.trainable_variables))
-#     return loss, pred_loss, grad_loss
-
-
-# losses = {
-#     "grad": [None for i in range(EPOCHS)],
-#     "loss": [None for i in range(EPOCHS)],
-#     "pred": [None for i in range(EPOCHS)],
-# }
-# start = time.time()
-# for epoch in tqdm(range(EPOCHS)):
-#     temp_pred = []
-#     temp_grad = []
-#     temp_loss = []
-#     for step, (x, y_true, true_grad) in enumerate(batched_dataset):
-#         x_var = tf.Variable(x)
-#         loss, pred_loss, grad_loss = train(y_true, true_grad, x_var)
-#         temp_pred += [pred_loss.numpy()]
-#         temp_grad += [grad_loss.numpy()]
-#         temp_loss += [loss.numpy()]
-#     losses["grad"][epoch] = [np.mean(temp_grad)]
-#     losses["pred"][epoch] = [np.mean(temp_pred)]
-#     losses["loss"][epoch] = [np.mean(temp_loss)]
-# train_time = time.time() - start
-
-# all_models[METHOD] = model
-# fig, ax = plt.subplots(figsize=(15, 5), ncols=3)
-# for i, metric in enumerate(losses.keys()):
-#     ax[i].plot(losses[metric])
-#     ax[i].set_yscale("log")
-#     ax[i].set_title(metric)
+    """
+    Visualise call surface
+    """
+    N_POINTS = 128
+    SK = np.linspace(-3.0, 3, N_POINTS)
+    ts = np.linspace(0, 2.0, N_POINTS)
+    X = np.zeros((N_POINTS ** 2, N_FEATS))
+    X[:, :2] = np.array(list(product(SK, ts)))
+    sample_params = X_df_test.sample(1).iloc[0].to_dict()
+    for x in [i for i in feat_names if i not in ["ttm", "log-strike"]]:
+        X[:, f_to_i(x)] = sample_params[x] * np.ones(X.shape[0])
+    visualise_surface(SK, ts, all_models[METHOD](X).numpy(), title=f"{METHOD} -Call Surface").show()
+    return temp

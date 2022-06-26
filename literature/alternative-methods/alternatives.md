@@ -21,9 +21,6 @@ Option pricing using Machine Learning
 Valentin Tissot Daguette  Projeciton of functionals and fast pricing of exotic options
 + KL expnsion
 
-Gradient Boosting for Quantitative Finance
-+ https://staff.fnwi.uva.nl/p.j.c.spreij/winterschool/19ReynersPaper.pdf
-
 
 CodPy: A Python Library for Machine Learning, Mathematical Finance, and Statistics (RKHS)
 + https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4077158

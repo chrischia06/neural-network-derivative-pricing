@@ -7,7 +7,7 @@ import seaborn as sns
 import pandas as pd
 from typing import List
 import plotly.graph_objects as go
-
+import tensorflow as tf
 
 def diagnosis_pred(
     true, pred, lower_bound=None, upper_bound=None, method: str = ""
@@ -85,7 +85,7 @@ def diagnosis_pde(PDE_err: np.array, method: str = "") -> pd.DataFrame:
     """
     return pd.DataFrame(
         {
-            "mean": np.mean(PDE_err),
+            "mean": np.abs(np.mean(PDE_err)),
             "l1": np.mean(np.abs(PDE_err)),
             "l2": np.sqrt(np.mean(PDE_err**2)),
             "l_inf": np.max(np.abs(PDE_err)),
@@ -152,16 +152,24 @@ Plotting utilitiies
 def plot_preds(
     moneyness, ttm, true, preds, lower_bound=None, upper_bound=None, method: str = ""
 ):
+    """
+    Plot Predictions vs Moneyness and time-to-maturity, and masrk upper and lower bounds if they are known
+    """
     # plot predictions vs lower bound
-    fig, ax = plt.subplots(ncols=2, figsize=(10, 5))
-    sns.scatterplot(moneyness, preds, hue=ttm, label=None, ax=ax[0])
+    fig, ax = plt.subplots(ncols=2, figsize=(12, 5))
+    sns.scatterplot(x = moneyness, y = preds, hue=ttm, label=None, ax=ax[0])
+    idx = np.argsort(moneyness)
     if lower_bound is not None:
-        sns.scatterplot(x=moneyness, y=lower_bound, label="No-arb-bound", ax=ax[0])
+        sns.lineplot(x=moneyness[idx], y=lower_bound[idx], label="No-arb lower-bound", ax=ax[0], linestyle="--", color='red')
     if upper_bound is not None:
-        sns.scatterplot(x=moneyness, y=upper_bound, label="No-arb-bound", ax=ax[0])
-    sns.scatterplot(moneyness, true - preds, ax=ax[1])
-    ax[0].set_title(f"Predictions - {method}")
-    ax[1].set_title(f"Error v Moneyness - {method}")
+        sns.lineplot(x=moneyness[idx], y=upper_bound[idx], label="No-arb upper-bound", ax=ax[0], linestyle="--", color='blue')
+    sns.scatterplot(x = moneyness, y = true - preds, ax=ax[1], hue = ttm)
+    ax[0].set_title(f"{method} - Predictions\nColour, time-to-maturity")
+    ax[1].set_title(f"{method} Prediction Error vs Moneyness\nColour, time-to-maturity")
+    for i in range(2):
+        ax[i].set_xlabel("Moneyness")
+    ax[0].set_ylabel("Value")
+    ax[1].set_ylabel("Pricing Error")
 
 
 def visualise_surface(
@@ -221,3 +229,6 @@ def plot_loss(history, metrics: List[str], method: str = ""):
         ax[i].set_ylabel(f"{metric} (log-scale)")
         ax[i].set_xlabel(f"Epochs")
     return ax
+
+def trainable_params(model):
+    return int(np.sum([tf.keras.backend.count_params(p) for p in model.trainable_variables]))

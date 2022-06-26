@@ -25,7 +25,7 @@ warnings.filterwarnings("ignore")
 
 import tensorflow as tf
 from tensorflow.keras.optimizers import Adam, SGD
-from tensorflow.keras.callbacks import EarlyStopping, ReduceLROnPlateau
-from tensorflow_addons.callbacks import TQDMProgressBar
+from tensorflow.keras.optimizers.schedules import ExponentialDecay
+
 
 import time

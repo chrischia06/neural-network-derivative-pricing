@@ -6,8 +6,11 @@ from jax.scipy.stats import norm
 from jax import grad, hessian
 import seaborn as sns
 import pandas as pd
-from utils import plot_preds, diagnosis_grads, diagnosis_pde, diagnosis_pred
+from utils import plot_preds, diagnosis_grads, diagnosis_pde, diagnosis_pred, trainable_params, visualise_surface
 from typing import List
+import time
+import tensorflow as tf
+from itertools import product
 
 
 def jax_bs_call(SK, sigma_tau):
@@ -47,17 +50,15 @@ def second_order_greek(moneyness, ttm):
 
 
 def bs_log_pde_err(moneyness, ttm, d_ttm, d_x, d2_x):
-    fig, ax = plt.subplots()
     PDE_err = -d_ttm + ttm * (-d_x + d2_x)
-    ax.scatter(moneyness, PDE_err)
-    ax.set_title("PDE Error")
     return PDE_err
 
 
 def bs_pde_err(moneyness, ttm, d_ttm, d_x, d2_x):
     fig, ax = plt.subplots()
     PDE_err = -d_ttm + 0.5 * ttm * (moneyness**2) * d2_x
-    ax.scatter(moneyness, PDE_err)
+    fig, ax = plt.subplots()
+    sns.scatterplot(x = moneyness, y = PDE_err, alpha = 0.1, ax = ax)
     ax.set_title("PDE Error")
     return PDE_err
 
@@ -87,15 +88,15 @@ def bs_eval_wrapper(
     feat_names: List[str] = ["log(S/K)", "ttm"],
     lower_bound: np.array = None,
     upper_bound: np.array = None,
-    METHOD: str = "standard_ffn",
+    METHOD: str = "",
 ):
     """
     Prediction Error
     """
     f_to_i = lambda x: feat_names.index(x)
-
-    moneyness = X_df["log(S/K)"]
-    ttm = X_df["ttm"]
+    N_FEATS = len(feat_names)
+    moneyness = X_df["log(S/K)"].values
+    ttm = X_df["ttm"].values
 
     all_stats = []
 
@@ -127,6 +128,12 @@ def bs_eval_wrapper(
             grads[:, f_to_i("log(S/K)")],
             hessian_moneyness[:, f_to_i("log(S/K)")],
         )
+        # plot PDE errors
+        fig, ax = plt.subplots()
+        sns.scatterplot(x = moneyness, y = PDE_err, alpha = 0.1, ax = ax)
+        ax.set_title("PDE Error")
+        ax.set_ylabel("PDE error")
+        ax.set_xlabel("Moneyness")
         pde_stats = diagnosis_pde(PDE_err, METHOD).add_prefix("PDE_")
         all_stats += [pde_stats]
     except:
@@ -136,22 +143,17 @@ def bs_eval_wrapper(
         """
         Error in Greeks
         """
-        grad_stats = pd.DataFrame(
-            diagnosis_grads(hessian_moneyness, grads, f_to_i, "ttm", "log(S/K)"),
-            index=[METHOD],
-        )
+        grad_stats = diagnosis_grads(hessian_moneyness, grads, f_to_i, "ttm", "log(S/K)", method = METHOD)
         all_stats += [grad_stats]
 
-        # NN gradients
-        N_FEATS = len(feat_names)
-        fig, ax = plt.subplots(ncols=N_FEATS, figsize=(5 * N_FEATS, 10), nrows=2)
+        # Plot Gradient Errors         
+        fig, ax = plt.subplots(nrows=2, ncols=3, figsize=(18, 10))
         for i in range(N_FEATS):
-            sns.scatterplot(x=X_df[feat_names[i]], y=grads[:, i], ax=ax[0, i])
-            ax[0, i].set_title(f"Sensitivity - {feat_names[i]} - {METHOD}")
-
-        fig2, ax2 = plt.subplots(ncols=2, figsize=(10, 5))
-        ax2[0].scatter(X_df["log(S/K)"], hessian_moneyness[:, f_to_i("log(S/K)")])
-        ax2[0].set_title(f"Gamma - {METHOD}")
+            sns.scatterplot(x=X_df[feat_names[i]], y=grads[:, i], ax=ax[0, i], alpha = 0.2)
+            ax[0, i].set_title(f"{METHOD} - Sensitivity to {feat_names[i]}")
+        ## plot gamma separately
+        sns.scatterplot(x = X_df["log(S/K)"], y = hessian_moneyness[:, f_to_i("log(S/K)")], alpha = 0.2, ax = ax[0, 2])
+        ax[0, 2].set_title(f"{METHOD} - Gamma")
 
         # Diagnosis function might fail if no true labels for greeks
         true_first_order = X_df[[f"true_d_{x}" for x in feat_names]].values
@@ -159,16 +161,19 @@ def bs_eval_wrapper(
             sns.scatterplot(
                 x=X_df[feat_names[i]],
                 y=true_first_order[:, i] - grads[:, i],
+                alpha = 0.2,
                 ax=ax[1, i],
             )
             ax[1, i].set_title(f"Error - {feat_names[i]} - {METHOD}")
 
         true_second_order = X_df["true_d2_log(S/K)"].values
-        ax2[1].scatter(
-            X_df["log(S/K)"],
-            true_second_order - hessian_moneyness[:, f_to_i("log(S/K)")],
+        sns.scatterplot(
+            x = X_df["log(S/K)"],
+            y = true_second_order - hessian_moneyness[:, f_to_i("log(S/K)")],
+            ax = ax[1, 2],
+            alpha = 0.2
         )
-        ax2[1].set_title(f"Error - Gamma - {METHOD}")
+        ax[1, 2].set_title(f"Error - Gamma - {METHOD}")
 
     except:
         print("Failed to compute gradient errors")
@@ -261,3 +266,44 @@ def make_GBM_dataset(
     X_df["true_d2_log(S/K)"] = second_order_greek(moneyness=Xs[:, 0], ttm=Xs[:, 1])
     X_df["path"] = X_df.index // n_times
     return X_df
+
+def bs_model_inference(all_models, all_model_preds, METHOD, all_model_grads, all_model_hessian, X_df_test, Xs_test, true, f_to_i, intrinsic_val, upper_bound):
+    """
+    Compute all predictions, Gradients, Hessian
+    """  
+    start2 = time.time()
+    all_model_preds[METHOD] = (
+        all_models[METHOD].predict(Xs_test, batch_size=10**4).reshape(-1)
+    )
+    X_tensor = tf.Variable(Xs_test)
+    with tf.GradientTape() as tape2:
+        with tf.GradientTape() as tape:
+            output = all_models[METHOD](X_tensor)
+            grads = tape.gradient(output, X_tensor)
+        hessian1 = tape2.gradient(grads[:, f_to_i("log(S/K)")], X_tensor)
+    all_model_grads[METHOD] = grads.numpy()
+    all_model_hessian[METHOD] = hessian1.numpy()[:, [0]]
+    inference_time = time.time() - start2
+
+    temp = bs_eval_wrapper(
+        X_df_test,
+        true_val=true,
+        preds=all_model_preds[METHOD],
+        grads=all_model_grads[METHOD],
+        hessian_moneyness=all_model_hessian[METHOD],
+        lower_bound=intrinsic_val,
+        upper_bound=upper_bound,
+        METHOD=METHOD,
+    )
+
+    temp["model_parameters"] = trainable_params(all_models[METHOD])  
+    temp["inference_time"] = inference_time
+    
+    """
+    Visualise call surface
+    """
+    SK = np.linspace(-2, 3, 128)
+    ts = np.linspace(0, 4, 128)
+    X = np.array(list(product(SK, ts)))
+    visualise_surface(SK, ts, all_models[METHOD](X).numpy())
+    return temp
