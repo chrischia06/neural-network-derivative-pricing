@@ -26,6 +26,6 @@ warnings.filterwarnings("ignore")
 import tensorflow as tf
 from tensorflow.keras.optimizers import Adam, SGD
 from tensorflow.keras.optimizers.schedules import ExponentialDecay
-
+from tensorflow.keras.layers import Lambda
 
 import time

@@ -2,7 +2,11 @@ import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
+from numpy.random import default_rng
 from utils import diagnosis_pred
+from numpy.linalg import cholesky
+from jax import grad
+from jax.numpy import vectorize
 
 
 def payoff(XT, K):
@@ -41,63 +45,149 @@ def bachelier_eval_wrapper(
     lower_bound: np.array = None,
     upper_bound: np.array = None,
     METHOD: str = "standard_ffn",
+    plots = ["prediction", "gradient"]
 ) -> pd.DataFrame:
+    
+    N_ASSETS = len([x for x in X_df.columns if x.find("asset_") == 0])
     """
-    Prediction Errors
+    1. Prediction Errors
     """
-    fig, ax = plt.subplots(ncols=2, figsize=(10, 4))
-    sns.scatterplot(
-        X_df["basket"], X_df["call_payoff"], label="Sample Sample Payoffs", ax=ax[0]
-    )
-    sns.scatterplot(X_df["basket"], preds, label="Predicted", ax=ax[0])
-    sns.scatterplot(X_df["basket"], X_df["call_analytic"], label="Analytic", ax=ax[0])
-    sns.scatterplot(
-        X_df["basket"],
-        np.maximum(X_df["basket"] - 1.0, 0),
-        label="Lower Bound",
-        ax=ax[0],
-    )
-    ax[0].legend()
-    ax[0].set_title("Predictions vs Basket value")
+    if "prediction" in plots:
+        fig, ax = plt.subplots(ncols=2, figsize=(12, 5))
+        # sns.scatterplot(
+        #     X_df["basket"], X_df["call_payoff"], label="Sample Payoffs", ax=ax[0]
+        # )
+        sns.scatterplot(X_df["basket"], preds, label="Predicted", ax=ax[0], alpha = 0.8)
+        idx = np.argsort(X_df['basket'])
+        sns.lineplot(X_df["basket"].iloc[idx], X_df["call_analytic"].iloc[idx], label="Analytic", ax=ax[0], color = "purple", linewidth=3.0)
+        if lower_bound is not None:
+            sns.lineplot(
+                X_df["basket"].iloc[idx],
+                lower_bound[idx],
+                label="Lower Bound",
+                linestyle="--",
+                color="blue",
+                ax=ax[0],
+            )
+        if upper_bound is not None:
+            sns.lineplot(
+                X_df["basket"].iloc[idx],
+                upper_bound[idx],
+                label="Upper Bound",
+                linestyle="--",
+                color="blue",
+                ax=ax[0],
+            )
 
-    sns.scatterplot(X_df["basket"], preds - X_df["call_analytic"], ax=ax[1])
-    ax[1].set_title("Prediction Error vs Basket Value")
+        ax[0].legend()
+        ax[0].set_title(f"{METHOD} - Predicted Basket Call Option\n vs Basket value ({N_ASSETS} Assets)")
+        ax[0].set_xlabel("Basket Value (Average of {N_ASSETS} Assets)")
+        ax[0].set_ylabel(f"Basket Call Value")
 
-    upper_bound = None
-    lower_bound = np.maximum(X_df["basket"] - 1.0, 0)
+        sns.scatterplot(X_df["basket"], preds - X_df["call_analytic"], ax=ax[1], alpha = 0.8)
+
+        ax[1].set_title(f"{METHOD} - Price Prediction Error vs Basket Value")
+        ax[1].set_xlabel("Basket Value")
+        ax[1].set_ylabel("Pricing Error")
 
     pred_stats = diagnosis_pred(
         X_df["call_analytic"].values, preds, lower_bound, upper_bound, method=METHOD
     ).add_prefix("pred_")
 
-    #     """
-    #     Error in PDE operator (Dynamic Arbitrage)
-    #     """
 
-    #     PDE_err = bs_log_pde_err(moneyness, ttm,
-    #                          grads[:, f_to_i("ttm")],
-    #                          grads[:, f_to_i("log(S/K)")],
-    #                          hessian_moneyness[:, f_to_i("log(S/K)")])
-    #     pde_stats = pd.DataFrame(diagnosis_pde(PDE_err), index = [METHOD]).add_prefix("PDE_")
     """
-    Error in Greeks
+    2. Error in Greeks
     """
-    fig, ax = plt.subplots(ncols=2, figsize=(12, 5))
-    ax[0].scatter(X_df["basket"], grads)
-    ax[0].set_title("Predicted Gradient")
-    N_ASSETS = len([x for x in X_df.columns if x.find("asset_") == 0])
-    ax[1].scatter(X_df["basket"], X_df["call_analytic_delta"] / N_ASSETS - grads)
-    ax[1].set_title("Gradient Error vs Basket value")
+    
     true_factor = X_df["call_analytic_delta"] / N_ASSETS
     grad_stats = diagnosis_pred(
         true_factor, grads, lower_bound=0, method=METHOD
     ).add_prefix("grad_")
+    
+    if "gradient" in plots:
+        ## Greek Plots
+        fig, ax = plt.subplots(ncols=2, figsize=(12, 5))
+        sns.scatterplot(X_df["basket"], grads, ax = ax[0], alpha = 0.8)
+        ax[0].set_title("Predicted Gradient")
+
+        sns.scatterplot(x = X_df["basket"], 
+                        y = X_df["call_analytic_delta"] / N_ASSETS - grads,
+                        ax = ax[1],
+                       alpha = 0.8)
+        ax[1].set_title(f"{METHOD} Gradient Error vs Basket value")
+        ax[1].set_xlabel(f"Basket Value (Average of {N_ASSETS} underlyings)")
+        ax[1].set_ylabel(f"Gradient Error")
+        
+#     """
+#     3. Error in PDE operator (Dynamic Arbitrage)
+#     """
+
+#     PDE_err = bs_log_pde_err(moneyness, ttm,
+#                          grads[:, f_to_i("ttm")],
+#                          grads[:, f_to_i("log(S/K)")],
+#                          hessian_moneyness[:, f_to_i("log(S/K)")])
+#     pde_stats = pd.DataFrame(diagnosis_pde(PDE_err), index = [METHOD]).add_prefix("PDE_")
     """
     Display Statistics
     """
     res = pd.concat([pred_stats, grad_stats], axis=1)
     return res
 
+
+def make_bachelier_dataset(N_SAMPLES, N_ASSETS, F, SEED, T1, T, K, S0, L, w):
+    """
+    Define Brownian Motion
+    """
+    # Simulate St, ST
+    rng = default_rng(SEED)
+    Wt = np.sqrt(T1) * rng.standard_normal((N_SAMPLES, F)) @ L.T
+    St = S0 + Wt
+    WT = (np.sqrt(T) * rng.standard_normal((N_SAMPLES, F))) @ L.T
+
+    """
+    Calculate Sample Payoffs and Gradients
+    """
+    XT = (St + WT) @ w
+    ys = payoff(XT, K)
+    payoff_grad = vectorize(grad(payoff))(XT, K)
+
+    grads = np.zeros((N_SAMPLES, N_ASSETS))
+    for i in tqdm(range(N_SAMPLES)):
+        grads[i, :] = grad(abm_step)(St[i, :], WT[i, :], w)
+    grads = grads * payoff_grad.reshape((-1, 1))
+
+    assert (ys.shape[0] == grads.shape[0]) & (grads.shape[0] == St.shape[0])
+
+    X_df = pd.concat(
+        [
+            pd.DataFrame(St).add_prefix("asset_"),
+            pd.DataFrame(grads).add_prefix("grad_asset"),
+        ],
+        axis=1,
+    )
+    X_df["call_payoff"] = ys
+
+    """
+    Compute analytic price and all greeks
+    """
+    X_df["basket"] = St @ w
+    sigma = np.sqrt(w @ L @ L.T @ w.T)
+
+    X_df["call_analytic"] = bachelier_solution(X_df["basket"].values, K, sigma, T)
+    X_df["call_analytic_theta"] = vectorize(grad(bachelier_solution, argnums=3))(
+        X_df["basket"].values, K, sigma, T
+    )
+    X_df["call_analytic_vega"] = vectorize(grad(bachelier_solution, argnums=2))(
+        X_df["basket"].values, K, sigma, T
+    )
+    X_df["call_analytic_delta"] = vectorize(grad(bachelier_solution, argnums=0))(
+        X_df["basket"].values, K, sigma, T
+    )
+    X_df["call_analytic_gamma"] = vectorize(grad(grad(bachelier_solution, argnums=0)))(
+        X_df["basket"].values, K, sigma, T
+    )
+    
+    return X_df, WT, St
 
 # dataset = tf.data.Dataset.from_tensor_slices((Xs, ys, grads))
 # l = 1

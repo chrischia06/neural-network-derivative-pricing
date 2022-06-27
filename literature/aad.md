@@ -69,3 +69,7 @@ Tensor Processing Units for Financial Monte Carlo
 
 Lecture 1: an introduction to CUDA
 + https://people.maths.ox.ac.uk/gilesm/cuda/lecs/lecs.pdf
+
+Antoine Collas, Option and CVA Greeks with adjoint algorithmic differentiation (2018)
++ https://www.imperial.ac.uk/media/imperial-college/faculty-of-natural-sciences/department-of-mathematics/math-finance/COLLAS_ANTOINE_01425804.pdf
++ MSc Thesis

@@ -16,6 +16,9 @@ import matplotlib.pyplot as plt
 plt.style.use("ggplot")
 
 
+def rbf(x):
+    return tf.math.exp(-0.5 * (x**2))
+
 def make_model(
     n_feats: int,
     hidden_units: int,
@@ -162,7 +165,7 @@ def homogeneity_network(
     model = Model(input_layer, output_layer)
     return model
 
-def train_nn(model, Xs, ys, fit_params, metric_names):
+def train_nn(model, Xs, ys, fit_params, metric_names, METHOD:str=""):
     start = time.time()
     history = model.fit(Xs, ys, **fit_params)
     train_time = time.time() - start
@@ -172,7 +175,7 @@ def train_nn(model, Xs, ys, fit_params, metric_names):
         ax[i].plot(history.history[metric], label="train")
         ax[i].plot(history.history[f"val_{metric}"], label="val")
         ax[i].legend()
-        ax[i].set_title(f"{metric} vs number of Epochs")
+        ax[i].set_title(f"{METHOD} - {metric} vs number of Epochs")
         ax[i].set_xlabel("Epochs")
         ax[i].set_ylabel(f"{metric}, log-scale")
         ax[i].set_yscale("log")
@@ -291,9 +294,9 @@ class DifferentialModel(tf.keras.Model):
     """
     Wrapper to enable differential training
     """
-    def set_params(self, lam = 1, grad_loss = delta_loss):
-        self.lam = 1
-        self.grad_loss = delta_loss
+    def set_params(self, lam, grad_loss_fn):
+        self.lam = lam
+        self.grad_loss_fn = grad_loss_fn
         self.loss_tracker_grad = tf.keras.metrics.Mean(name="grad_loss")
         self.loss_tracker_pred = tf.keras.metrics.Mean(name="pred_loss")
         self.loss_tracker = tf.keras.metrics.Mean(name="loss")
@@ -306,16 +309,16 @@ class DifferentialModel(tf.keras.Model):
             with tf.GradientTape() as grad_tape:
                 grad_tape.watch(x_var)
                 model_pred = self(x_var, training=True)
-            gradients = grad_tape.gradient(model_pred, x_var)
-            grad_loss = self.grad_loss(true_grad, gradients)
+                gradients = grad_tape.gradient(self(x_var), x_var)
+            grad_loss_val = self.grad_loss_fn(true_grad, gradients)
             pred_loss = self.compiled_loss(y, model_pred)
-            loss = self.lam * grad_loss + pred_loss
+            loss = self.lam * grad_loss_val  +  pred_loss
         trainable_vars = self.trainable_variables
         model_grad = model_tape.gradient(loss, trainable_vars)
         self.optimizer.apply_gradients(zip(model_grad, trainable_vars))
         self.compiled_metrics.update_state(y, model_pred)
         self.loss_tracker.update_state(loss)
-        self.loss_tracker_grad.update_state(grad_loss)
+        self.loss_tracker_grad.update_state(grad_loss_val)
         self.loss_tracker_pred.update_state(pred_loss)
         metrics_to_ret = {m.name: m.result() for m in self.metrics}
         metrics_to_ret['loss'] = self.loss_tracker.result()
@@ -330,12 +333,12 @@ class DifferentialModel(tf.keras.Model):
             grad_tape.watch(x_var)
             model_pred = self(x_var, training=False)
             gradients = grad_tape.gradient(model_pred, x_var)
-            grad_loss = self.grad_loss(true_grad, gradients)
+            grad_loss_val = self.grad_loss_fn(true_grad, gradients)
             pred_loss = self.compiled_loss(y, model_pred)
-            loss = self.lam * grad_loss + pred_loss
+            loss = self.lam * grad_loss_val +  pred_loss
         self.compiled_metrics.update_state(y, model_pred)
         self.loss_tracker.update_state(loss)
-        self.loss_tracker_grad.update_state(grad_loss)
+        self.loss_tracker_grad.update_state(grad_loss_val)
         self.loss_tracker_pred.update_state(pred_loss)
         metrics_to_ret = {f"{m.name}": m.result() for m in self.metrics}
         metrics_to_ret['loss'] = self.loss_tracker.result()
@@ -397,9 +400,11 @@ class PDEModel(tf.keras.Model):
     """
     Wrapper to enable differential training
     """
-    def set_params(self, lam = 1, pde_loss = None):
+    def set_params(self, lam = 1.0, pde_loss = None, feat_names = []):
         self.lam = lam
+        self.feat_names = feat_names
         self.pde_loss = pde_loss
+        self.f_to_i = lambda x: feat_names.index(x)
         self.loss_tracker_pde = tf.keras.metrics.Mean(name="pde_loss")
         self.loss_tracker_pred = tf.keras.metrics.Mean(name="pred_loss")
         self.loss_tracker = tf.keras.metrics.Mean(name="loss")
@@ -407,19 +412,12 @@ class PDEModel(tf.keras.Model):
     def train_step(self, data):
         x_var, y = data
         # https://keras.io/guides/customizing_what_happens_in_fit/#going-lowerlevel
-        with tf.GradientTape() as model_tape:
-            with tf.GradientTape() as hessian_tape:
-                with tf.GradientTape() as grad_tape:
-                    grad_tape.watch(x_var)
-                    hessian_tape.watch(x_var)
-                    model_pred = self(x_var, training = True)
-                    gradients = grad_tape.gradient(model_pred, x_var)
-                    hessian = hessian_tape.gradient(gradients[:, 0], x_var)
-                    pde_loss = tf.math.reduce_mean(
-                        tf.math.abs(gradients[:, 1] + x_var[:, 1] * (-hessian[:, 0] + gradients[:, 0]))
-                    )
-                pred_loss = tf.keras.losses.MeanSquaredError()(model_pred, y)
-                loss = pred_loss + self.lam * pde_loss
+        
+        with tf.GradientTape() as model_tape:      
+            pde_loss, model_pred = self.pde_loss(x_var, self, self.f_to_i)
+            pred_loss = tf.keras.losses.MeanSquaredError()(model_pred, y)
+            loss = pred_loss + self.lam * pde_loss
+                
         trainable_vars = self.trainable_variables
         model_grad = model_tape.gradient(loss, trainable_vars)
         self.optimizer.apply_gradients(zip(model_grad, trainable_vars))
@@ -437,16 +435,8 @@ class PDEModel(tf.keras.Model):
     def test_step(self, data):
         x_var, y = data
         # https://keras.io/guides/customizing_what_happens_in_fit/#going-lowerlevel
-        with tf.GradientTape() as hessian_tape:
-            with tf.GradientTape() as grad_tape:
-                grad_tape.watch(x_var)
-                hessian_tape.watch(x_var)
-                model_pred = self(x_var, training = True)
-                gradients = grad_tape.gradient(model_pred, x_var)
-                hessian = hessian_tape.gradient(gradients[:, 0], x_var)
-                pde_loss = tf.math.reduce_mean(tf.math.abs(
-                    (gradients[:, 1] + x_var[:, 1] * (-hessian[:, 0] + gradients[:, 0])))
-                )
+        with tf.GradientTape() as model_tape:      
+            pde_loss, model_pred = self.pde_loss(x_var, self, self.f_to_i)
             pred_loss = tf.keras.losses.MeanSquaredError()(model_pred, y)
             loss = pred_loss + self.lam * pde_loss
         self.compiled_metrics.update_state(y, model_pred)

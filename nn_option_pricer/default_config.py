@@ -5,7 +5,7 @@ from tensorflow_addons.callbacks import TQDMProgressBar
 Neural Network Hyperparameters
 """
 nn_params = {
-    "hidden_units": 64,
+    "hidden_units": 100,
     "n_layers": 2,
     "dropout_ratio": 0.0,
     "hidden_act": "swish",

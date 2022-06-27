@@ -26,9 +26,10 @@ def train_infer_poly(degree, Xs_train, ys_train, Xs_test, ys_test, feat_names, a
         preds2 = all_models[METHOD].predict(Xs_bumped)
         all_model_grads[METHOD][:, f_to_i(feat)] = (preds2 - all_model_preds[METHOD]) / eps
 
-    Xs_bumped2 = Xs_test.copy()
+    
     for feat in [x for x in feat_names if x != moneyness_var] + [moneyness_var]:
-        Xs_bumped2[:, f_to_i(moneyness_var)] -= eps
+        Xs_bumped2 = Xs_test.copy()
+        Xs_bumped2[:, f_to_i(feat)] -= eps
         preds3 = all_models[METHOD].predict(Xs_bumped2)
         all_model_hessian[METHOD][:, f_to_i(feat)] = (
             preds2 - 2 * all_model_preds[METHOD] + preds3

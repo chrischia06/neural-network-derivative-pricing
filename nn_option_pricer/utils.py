@@ -95,12 +95,12 @@ def diagnosis_pde(PDE_err: np.array, method: str = "") -> pd.DataFrame:
 
 
 def diagnosis_grads(
-    hessian, grads, f_to_i: Callable, var_ttm: str, var_money: str, method: str = ""
+    hessian, grads, f_to_i: Callable, var_ttm: str, var_money: str, method: str = "", true_grads = None, true_hessian = None,
 ) -> dict:
     """
     Errors in gradients for call
     """
-    return pd.DataFrame(
+    temp = pd.DataFrame(
         {
             "monotonicity_error": np.mean(grads[:, f_to_i(var_money)] < 0),
             "time_value_error": np.mean(grads[:, f_to_i(var_ttm)] < 0),
@@ -108,6 +108,14 @@ def diagnosis_grads(
         },
         index=[method],
     )
+    if true_grads is not None:
+        l1_norm = np.abs(grads - true_grads).sum(axis = 1)
+        l2_norm = np.sqrt(((grads - true_grads) ** 2).sum(axis = 1))
+        temp['grad_mean_l1_norm'] = np.mean(l1_norm)
+        temp['grad_mean_l2_norm'] = np.mean(l2_norm)
+        temp['grad_max_l1_norm'] = np.max(l1_norm)
+        temp['grad_max_l2_norm'] = np.max(l2_norm)
+    return temp
 
 
 def diagnosis_hedge(pnl: np.array, method: str) -> pd.DataFrame:

@@ -71,3 +71,8 @@ A Probabilistic Approach to Nonparametric Local Volatility
  GP regression for arbitrage-free construction of the swaption
 cube.
 + https://www.nexialog.com/wp-content/uploads/2022/03/Article-Kriging-swaption-cube.pdf
+
+
+Haibo Li: Gaussian process regression: a machine learning approach to derivatives pricing
+
++ https://www.imperial.ac.uk/media/imperial-college/faculty-of-natural-sciences/department-of-mathematics/math-finance/LI_HAIBO_01441128.pdf

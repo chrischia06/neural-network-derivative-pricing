@@ -47,3 +47,8 @@ Aside from using neural networks
 + [Gaussian Processes](literature/gaussian-process): Using Gaussian Process Regression for derivatives pricing and risks
 + [Tensor Methods](literature/tensor-methods): Using tensor methods.
 
+
+# TOdo
+
++ add numeraire, stoch control formulations
++ Abstract
