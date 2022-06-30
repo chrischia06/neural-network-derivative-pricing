@@ -308,7 +308,7 @@ class DifferentialModel(tf.keras.Model):
         with tf.GradientTape() as model_tape:
             with tf.GradientTape() as grad_tape:
                 grad_tape.watch(x_var)
-                model_pred = self(x_var, training=True)
+                model_pred = self(x_var)
                 gradients = grad_tape.gradient(self(x_var), x_var)
             grad_loss_val = self.grad_loss_fn(true_grad, gradients)
             pred_loss = self.compiled_loss(y, model_pred)
@@ -331,7 +331,7 @@ class DifferentialModel(tf.keras.Model):
         # https://keras.io/guides/customizing_what_happens_in_fit/#going-lowerlevel
         with tf.GradientTape() as grad_tape:
             grad_tape.watch(x_var)
-            model_pred = self(x_var, training=False)
+            model_pred = self(x_var)
             gradients = grad_tape.gradient(model_pred, x_var)
             grad_loss_val = self.grad_loss_fn(true_grad, gradients)
             pred_loss = self.compiled_loss(y, model_pred)
@@ -400,6 +400,7 @@ class PDEModel(tf.keras.Model):
     """
     Wrapper to enable differential training
     """
+    
     def set_params(self, lam = 1.0, pde_loss = None, feat_names = []):
         self.lam = lam
         self.feat_names = feat_names

@@ -34,6 +34,7 @@ Athul AR, Richard Obonyo, Modelling and Calibration Techniques For Fractional Bl
 **Medhi Thomas, Pricing and calibration of stochastic models via neural networks**
 + https://www.imperial.ac.uk/media/imperial-college/faculty-of-natural-sciences/department-of-mathematics/math-finance/TOMAS_MEHDI_01390785.pdf
 + Medhi Thomas MSc Thesis
++ Heston, Rough Bergomi settings
 
 **Deep Learning (Rough) Volatility**
 

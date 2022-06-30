@@ -5,10 +5,10 @@ from tensorflow_addons.callbacks import TQDMProgressBar
 Neural Network Hyperparameters
 """
 nn_params = {
-    "hidden_units": 100,
-    "n_layers": 2,
+    "hidden_units": 32,
+    "n_layers": 4,
     "dropout_ratio": 0.0,
-    "hidden_act": "swish",
+    "hidden_act": "softplus",
     "output_act": None,
     "batch_norm": True,
     "kernel_init": "lecun_normal",
@@ -33,7 +33,7 @@ CALLBACKS = [
 ]
 fit_params = {
     "epochs": 30,
-    "batch_size": 32,
+    "batch_size": 1024,
     "verbose": 0,
     "validation_split": 0.2,
     "shuffle": False,

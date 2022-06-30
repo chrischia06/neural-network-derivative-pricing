@@ -14,4 +14,5 @@ A neural network model for estimating option prices (2003)
 + RBF as activation function, RBFs have "best" approximation property Girosi and Poggio (1990), 1 layer hidden neural network
 + Applied on market data (S&P 500)
 + Exploits homogeneity to eliminate one of S, K. In their experiment, sigma appears to be fixed.
++ Considers R^{2} as a metric, and hedge analysis
 

@@ -75,7 +75,7 @@ def PDE_calc(model, f_to_i: Callable, **kwargs):
             * hessian2[:, f_to_i("V")]
         )
 
-    return PDE_err
+    return PDE_erfr
 
 
 def diagnosis_pde(PDE_err: np.array, method: str = "") -> pd.DataFrame:
@@ -109,12 +109,25 @@ def diagnosis_grads(
         index=[method],
     )
     if true_grads is not None:
-        l1_norm = np.abs(grads - true_grads).sum(axis = 1)
-        l2_norm = np.sqrt(((grads - true_grads) ** 2).sum(axis = 1))
-        temp['grad_mean_l1_norm'] = np.mean(l1_norm)
-        temp['grad_mean_l2_norm'] = np.mean(l2_norm)
-        temp['grad_max_l1_norm'] = np.max(l1_norm)
-        temp['grad_max_l2_norm'] = np.max(l2_norm)
+        try:
+            l1_norm = np.abs(grads - true_grads).sum(axis = 1)
+            l2_norm = np.sqrt(((grads - true_grads) ** 2).sum(axis = 1))
+            temp['grad_mean_l1_norm'] = np.mean(l1_norm)
+            temp['grad_mean_l2_norm'] = np.mean(l2_norm)
+            temp['grad_max_l1_norm'] = np.max(l1_norm)
+            temp['grad_max_l2_norm'] = np.max(l2_norm)
+        except:
+            pass
+    if true_hessian is not None:
+        try:
+            l1_norm = np.abs(hessian - true_hessian).sum(axis = 1)
+            l2_norm = np.sqrt(((hessian - true_hessian) ** 2).sum(axis = 1))
+            temp['grad_mean_l1_norm'] = np.mean(l1_norm)
+            temp['grad_mean_l2_norm'] = np.mean(l2_norm)
+            temp['grad_max_l1_norm'] = np.max(l1_norm)
+            temp['grad_max_l2_norm'] = np.max(l2_norm)
+        except:
+            pass
     return temp
 
 
@@ -158,22 +171,23 @@ Plotting utilitiies
 
 
 def plot_preds(
-    moneyness, ttm, true, preds, lower_bound=None, upper_bound=None, method: str = ""
+    moneyness, ttm, true, preds, lower_bound=None, upper_bound=None, method: str = "", ax = None
 ):
     """
     Plot Predictions vs Moneyness and time-to-maturity, and masrk upper and lower bounds if they are known
     """
     # plot predictions vs lower bound
-    fig, ax = plt.subplots(ncols=2, figsize=(12, 5))
-    sns.scatterplot(x = moneyness, y = preds, hue=ttm, label=None, ax=ax[0])
+    if ax is None:
+        fig, ax = plt.subplots(ncols=2, figsize=(12, 5))
+    sns.scatterplot(x = moneyness, y = preds, hue=ttm, label=None, ax=ax[0], alpha = 0.2)
     idx = np.argsort(moneyness)
     if lower_bound is not None:
-        sns.lineplot(x=moneyness[idx], y=lower_bound[idx], label="No-arb lower-bound", ax=ax[0], linestyle="--", color='red')
+        sns.lineplot(x=moneyness[idx], y=lower_bound[idx], label="No-arb lower-bound", ax=ax[0], linestyle="--", linewidth=3.0,color='red')
     if upper_bound is not None:
-        sns.lineplot(x=moneyness[idx], y=upper_bound[idx], label="No-arb upper-bound", ax=ax[0], linestyle="--", color='blue')
-    sns.scatterplot(x = moneyness, y = true - preds, ax=ax[1], hue = ttm)
+        sns.lineplot(x=moneyness[idx], y=upper_bound[idx], label="No-arb upper-bound", ax=ax[0], linewidth=2.5,linestyle="--", color='blue')
+    sns.scatterplot(x = moneyness, y = true - preds, ax=ax[1], hue = ttm, alpha= 0.2)
     ax[0].set_title(f"{method} - Predictions\nColour, time-to-maturity")
-    ax[1].set_title(f"{method} Prediction Error vs Moneyness\nColour, time-to-maturity")
+    ax[1].set_title(f"{method} - Prediction Error vs Moneyness\nColour, time-to-maturity")
     for i in range(2):
         ax[i].set_xlabel("Moneyness")
     ax[0].set_ylabel("Value")

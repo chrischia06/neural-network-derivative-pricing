@@ -81,7 +81,7 @@ Candidate point selection using a self-attention mechanism for generating a smoo
 
 # NNs for SABR
 
-Medhi Thomas, Pricing and calibration of stochastic models via neural networks
+
 
 William Mcghee, An Artificial Neural Network Representation of the SABR Stochastic Volatility Model (2018)
 + https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3288882

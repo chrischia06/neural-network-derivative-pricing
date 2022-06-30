@@ -14,12 +14,13 @@ def bergomi_eval_wrapper(
     X_df: pd.DataFrame,
     true_val: np.array,
     preds: np.array,
-    grads: np.array,
-    hessian_moneyness: np.array,
+    grads: np.array = None,
+    hessian_moneyness: np.array = None,
     feat_names: List[str] = ["log-strike", "ttm", "alpha", "rho", "vol-of-vol"],
     lower_bound: np.array = None,
     upper_bound: np.array = None,
     METHOD: str = "standard_ffn",
+    plots = ['pricing', 'gradients','grad_error']
 ):
     f_to_i = lambda x: feat_names.index(x)
     N_FEATS = len(feat_names) 
@@ -38,86 +39,93 @@ def bergomi_eval_wrapper(
         ],
         axis=1,
     )
-
-    """
-    Pricing Error
-    """
-    fig, ax = plt.subplots(figsize=(12, 5), ncols=2)
-    sns.scatterplot(
-        X_df["log-strike"],
-        true_val - preds,
-        hue=X_df["ttm"],
-        ax=ax[1],
-    )
-    sns.scatterplot(X_df["log-strike"], preds, hue=X_df["ttm"], ax=ax[0])
-
-    ax[0].set_xlabel("log-moneyness")
-    ax[1].set_xlabel("log-moneyness")
-    ax[0].set_ylabel("Predicted Price")
-    ax[1].set_ylabel("Pricing Error vs MC Price")
-    ax[0].set_title(
-        f"{METHOD}: Predicted Price against Moneyness\nColour: time-to-maturity)"
-    )
-    ax[1].set_title(
-        f"{METHOD}: Pricing Error against Moneyness\nColour: time-to-maturity)"
-    )
-
-    """
-    Greeks
-    """
-    fig, ax = plt.subplots(ncols=N_FEATS, nrows = 2, figsize=((N_FEATS + 1)  * 6, 10))
-    for i, x in enumerate(feat_names):
-        sns.scatterplot(
-            X_df["log-strike"],
-            grads[:, f_to_i(x)],
-            hue=X_df["ttm"],
-            ax=ax[0, i],
-        )
-        ax[0, i].set_title(
-            f"{METHOD}\nSensitivity wrt {x}\nagainst log-moneyness\nColour: time-to-maturity"
-        )
-        ax[0, i].set_ylabel(f"Sensitivity wrt {x}")
-        ax[0, i].set_xlabel("log-strike")
-        try:
-            sns.scatterplot(
-                X_df["log-strike"],
-                X_df[f'MC_call_d_{x}'] - grads[:, f_to_i(x)],
-                hue=X_df["ttm"],
-                ax=ax[1, i],
-            )
-            ax[1, i].set_title(
-                f"{METHOD}\nError in Sensitivity wrt {x}\nagainst log-moneyness\nColour: time-to-maturity"
-            )
-            ax[1, i].set_ylabel(f"Error in Sensitivity wrt {x}")
-            ax[1, i].set_xlabel("log-strike")
-        except:
-            pass
-        
-    
-    sns.scatterplot(
-        X_df["log-strike"],
-        hessian_moneyness[:, f_to_i("log-strike")],
-        ax=ax[0, -1],
-        hue=X_df["ttm"],
-    )
     try:
-        sns.scatterplot(
-            X_df["log-strike"],
-            X_df[f"MC_call_d2_{'log-strike'}"] - hessian_moneyness[:, f_to_i("log-strike")],
-            ax=ax[1, -1],
-            hue=X_df["ttm"],
-        )
+        grad_error = grads[:,f_to_i("log-strike")] - X_df['MC_call_d_log-strike']
+        temp['d/dk_l1'] = np.mean(np.abs(grad_error))
+        temp['d/dk_l2'] = np.mean((grad_error) ** 2)
+        temp['d/dk_max'] = np.max(np.abs(grad_error))
     except:
         pass
-    ax[0, -1].set_title(
-        f"{METHOD}\nHessian (Gamma) wrt log-moneyness\nagainst log-moneyness\nColour: time-to-maturity"
-    )
-    ax[0, -1].set_title(
-        f"{METHOD}\nError in Hessian (Gamma) wrt log-moneyness\nagainst log-moneyness\nColour: time-to-maturity"
-    )
-    ax[0, -1].set_ylabel("Gamma")
-    for i in range(2):
-        ax[i, -1].set_xlabel("log-strike")
+    try:
+        hessian_error = hessian_moneyness[:,f_to_i("log-strike")] - X_df['MC_call_d2_log-strike']
+        temp['d/dk^2_l1'] = np.mean(np.abs(hessian_error))
+        temp['d/d^k2_l2'] = np.mean((hessian_error) ** 2)
+        temp['d/d^k_max'] = np.max(np.abs(hessian_error))
+    except:
+        pass
+
+    ### Plot Pricing Errror
+    if 'pricing' in plots:
+        fig, ax = plt.subplots(figsize=(14, 5), ncols=2)
+        sns.scatterplot(
+            X_df["log-strike"],
+            true_val - preds,
+            hue=X_df["ttm"],
+            ax=ax[1],
+        )
+        sns.scatterplot(X_df["log-strike"], preds, hue=X_df["ttm"], ax=ax[0])
+        for i in range(2):
+            ax[0].set_xlabel("log-moneyness")
+        ax[0].set_ylabel("Predicted Price")
+        ax[1].set_ylabel("Pricing Error vs MC Price")
+        ax[0].set_title(
+            f"{METHOD}: Predicted Price against Moneyness\nColour: time-to-maturity"
+        )
+        ax[1].set_title(
+            f"{METHOD}: Pricing Error against Moneyness\nColour: time-to-maturity"
+        )
+
+    ### Plot Greeks
+    if 'gradients' in plots:
+        fig, ax = plt.subplots(ncols=N_FEATS, nrows = 1, figsize=((N_FEATS + 1)  * 7, 6))
+        for i, x in enumerate(feat_names):
+            sns.scatterplot(
+                X_df["log-strike"],
+                grads[:, f_to_i(x)],
+                hue=X_df["ttm"],
+                ax=ax[i],
+            )
+            ax[i].set_title(
+                f"{METHOD} - Gradient wrt {x} vs log-strike\nColour: time-to-maturity"
+            )
+            ax[i].set_ylabel(f"Sensitivity wrt {x}")
+            ax[i].set_xlabel("log-strike")
+
+        sns.scatterplot(
+            X_df["log-strike"],
+            hessian_moneyness[:, f_to_i("log-strike")],
+            ax=ax[-1],
+            hue=X_df["ttm"],
+        )
+        ax[-1].set_title(f"{METHOD} - Hessian wrt {x} vs log-strike\nColour: time-to-maturity")
+
+
+    if 'grad_error' in plots:
+        ### PLOT gradient errors
+        fig, ax = plt.subplots(ncols = 2, figsize=(12, 5))
+        sns.scatterplot(
+            X_df["log-strike"],
+            X_df[f'MC_call_d_log-strike'] - grads[:, f_to_i("log-strike")],
+            hue=X_df["ttm"],
+            ax=ax[0],
+        )
+        ax[0].set_title(
+            f"{METHOD} - Gradient Error wrt log-strike, vs log-strike\nColour: time-to-maturity"
+        )
+        ax[0].set_ylabel(f"Gradient Error wrt log-strike")
+        ax[0].set_xlabel("log-strike")
+
+        ax[1].set_title(
+        f"{METHOD}\nError in Hessian (Gamma) wrt log-moneyness\n vs log-strike\nColour: time-to-maturity"
+        )
+        ax[1].set_ylabel("Gamma")
+        sns.scatterplot(
+        X_df["log-strike"],
+        X_df[f"MC_call_d2_{'log-strike'}"] - hessian_moneyness[:, f_to_i("log-strike")],
+        hue=X_df["ttm"], ax = ax[1])
+
+        for i in range(2):
+            ax[i].set_xlabel("log-strike")
     return temp
 
 

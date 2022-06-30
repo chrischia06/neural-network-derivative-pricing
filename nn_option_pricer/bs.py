@@ -15,7 +15,7 @@ from itertools import product
 
 def jax_bs_call(SK, sigma_tau):
     """
-    SK: Moneyness $log(S/K)$ , log(forward / strike)
+    SK: log(S/K) $log(S/K)$ , log(forward / strike)
     sigma_tau: Time-scaled implied volatility $\sigma \sqrt{\tau} = \sigma \sqrt{T - t}$
 
     return: jax numpy array of BS call price
@@ -44,9 +44,9 @@ def first_order_greeks(moneyness, ttm):
 
 
 def second_order_greek(moneyness, ttm):
-    vec_2 = lambda x, y: grad(grad(jax_bs_call))(x, y)
-    gamma = jnp.vectorize(vec_2)(moneyness, ttm)
-    return gamma
+    vec_2 = lambda x, y: grad(grad(jax_bs_call), argnums=(0 ,1))(x, y)
+    gamma, vanna = jnp.vectorize(vec_2)(moneyness, ttm)
+    return np.array(gamma), np.array(vanna) # gamma, vega
 
 
 def bs_log_pde_err(moneyness, ttm, d_ttm, d_x, d2_x):
@@ -58,7 +58,7 @@ def bs_pde_err(moneyness, ttm, d_ttm, d_x, d2_x):
     fig, ax = plt.subplots()
     PDE_err = -d_ttm + 0.5 * ttm * (moneyness**2) * d2_x
     fig, ax = plt.subplots()
-    sns.scatterplot(x = moneyness, y = PDE_err, alpha = 0.1, ax = ax)
+    sns.scatterplot(x = moneyness, y = PDE_err, alpha = 0.2, ax = ax)
     ax.set_title("PDE Error")
     return PDE_err
 
@@ -81,15 +81,14 @@ def gbm_step(F: float, dt: float, sigma: float, Z: float) -> float:
 
 def bs_eval_wrapper(
     X_df: pd.DataFrame,
-    true_val: np.array,
     preds: np.array,
     grads: np.array,
-    true_grads:np.array,
     hessian_moneyness: np.array,
+    lower_bound = None,
+    upper_bound = None,
     feat_names: List[str] = ["log(S/K)", "ttm"],
-    lower_bound: np.array = None,
-    upper_bound: np.array = None,
     METHOD: str = "",
+    target_name = "true_call"
 ):
     """
     Prediction Error
@@ -98,25 +97,25 @@ def bs_eval_wrapper(
     N_FEATS = len(feat_names)
     moneyness = X_df["log(S/K)"].values
     ttm = X_df["ttm"].values
-
+    true_val = X_df[target_name].values
+    true_grads = X_df[[f"{target_name}_d/d{x}" for x in feat_names]]
     all_stats = []
 
-    try:
-        plot_preds(
-            moneyness=moneyness,
-            ttm=ttm,
-            lower_bound=lower_bound,
-            upper_bound=upper_bound,
-            true=true_val,
-            preds=preds,
-            method=METHOD,
-        )
-        pred_stats = diagnosis_pred(
-            true_val, preds, lower_bound, upper_bound, METHOD
-        ).add_prefix("pred_")
-        all_stats += [pred_stats]
-    except:
-        print("Failed to evaluate prediction errors")
+    fig, ax = plt.subplots(ncols = 3, figsize=(18, 5))
+    plot_preds(
+        moneyness=moneyness,
+        ttm=ttm,
+        lower_bound=lower_bound,
+        upper_bound=upper_bound,
+        true=true_val,
+        preds=preds,
+        method=METHOD,
+        ax = ax
+    )
+    pred_stats = diagnosis_pred(
+        true_val, preds, lower_bound, upper_bound, METHOD
+    ).add_prefix("pred_")
+    all_stats += [pred_stats]
 
     """
     Error in PDE operator (Dynamic Arbitrage)
@@ -130,11 +129,10 @@ def bs_eval_wrapper(
         d2_x = hessian_moneyness[:, f_to_i("log(S/K)")],
     )
     # plot PDE errors
-    fig, ax = plt.subplots()
-    sns.scatterplot(x = moneyness, y = PDE_err, alpha = 0.1, ax = ax, hue = ttm)
-    ax.set_title("PDE Error vs Moneyness\nColour, Time-scaled volatility")
-    ax.set_ylabel("PDE error")
-    ax.set_xlabel("Moneyness")
+    sns.scatterplot(x = moneyness, y = PDE_err, alpha = 0.2, ax = ax[2], hue = ttm)
+    ax[2].set_title(f"{METHOD} - PDE Error vs log(S/K)\nColour, Time-scaled volatility" + r"($\sigma \sqrt{\tau}$)")
+    ax[2].set_ylabel("PDE error")
+    ax[2].set_xlabel("log(S/K)")
     pde_stats = diagnosis_pde(PDE_err, METHOD).add_prefix("PDE_")
     all_stats += [pde_stats]
     # except:
@@ -148,34 +146,41 @@ def bs_eval_wrapper(
     all_stats += [grad_stats]
 
     # Plot Gradient Errors         
-    fig, ax = plt.subplots(nrows=2, ncols=3, figsize=(18, 10))
+    fig, ax = plt.subplots(nrows=2, ncols=3, figsize=(19.5, 12))
     for i in range(N_FEATS):
-        sns.scatterplot(x=moneyness, y=grads[:, i], ax=ax[0, i], alpha = 0.1, hue = ttm)
-        ax[0, i].set_title(f"{METHOD} - Sensitivity to {feat_names[i]} vs Moneyness\nColour, Time-Scaled-Volatility")
+        sns.scatterplot(x=moneyness, y=grads[:, i], ax=ax[0, i], alpha = 0.2, hue = ttm)
+        ax[0, i].set_title(f"{METHOD} - {feat_names[i]} Gradient vs log(S/K)\nColour, Time-Scaled-Volatility" + r"($\sigma \sqrt{\tau}$)")
+        ax[0, 1].set_xlabel("gamma")
     ## plot gamma separately
-    sns.scatterplot(x = X_df["log(S/K)"], y = hessian_moneyness[:, f_to_i("log(S/K)")], alpha = 0.1, ax = ax[0, 2])
-    ax[0, 2].set_title(f"{METHOD} - Gamma vs Moneyness")
+    sns.scatterplot(x = X_df["log(S/K)"], y = hessian_moneyness[:, f_to_i("log(S/K)")], alpha = 0.2, ax = ax[0, 2], hue = ttm)
+    ax[0, 2].set_title(f"{METHOD} - Gamma vs log(S/K)")
+
 
     # Diagnosis function might fail if no true labels for greeks
-    true_first_order = X_df[[f"true_d_{x}" for x in feat_names]].values
+    true_first_order = X_df[[f"{target_name}_d/d{x}" for x in feat_names]].values
     for i in range(N_FEATS):
         sns.scatterplot(
             x=moneyness,
             y=true_first_order[:, i] - grads[:, i],
-            alpha = 0.1,
+            alpha = 0.2,
             ax=ax[1, i],
             hue = ttm
         )
-        ax[1, i].set_title(f"{METHOD} - {feat_names[i]} Gradient Error vs Moneyness\nColour, Time-Scaled Volatility")
+        ax[1, i].set_title(f"{METHOD} - {feat_names[i]} Gradient Error vs log(S/K)\nColour, Time-Scaled Volatility" + r"($\sigma \sqrt{\tau}$)")
+        ax[1, 2].set_xlabel("log(S/K)")
+        ax[1, 2].set_xlabel(f"d/d{feat_names[i]}")
 
-    true_second_order = X_df["true_d2_log(S/K)"].values
+    true_second_order = X_df[f"{target_name}_d2/dlog(S/K)dlog(S/K)"].values
     sns.scatterplot(
         x = moneyness,
         y = true_second_order - hessian_moneyness[:, f_to_i("log(S/K)")],
         ax = ax[1, 2],
-        alpha = 0.1
+        alpha = 0.2,
+        hue = ttm,
     )
-    ax[1, 2].set_title(f"Error - Gamma - {METHOD} vs Moneyness\nColour, Time Scaaled Volatility")
+    ax[1, 2].set_title(f"{METHOD} Gamma Error vs log(S/K)\nColour, Time Scaled Volatility" + r"($\sigma \sqrt{\tau}$)")
+    ax[1, 2].set_xlabel("log(S/K)")
+    ax[1, 2].set_ylabel("d2/dlog(S/K)")
 
     # except:
     #     print("Failed to compute gradient errors")
@@ -192,10 +197,10 @@ def bs_nn_train_pde(x_var, model, f_to_i):
         with tf.GradientTape() as grad_tape:
             grad_tape.watch(x_var)
             hessian_tape.watch(x_var)
-            model_pred = model(x_var, training = True)
+            model_pred = model(x_var)
             gradients = grad_tape.gradient(model_pred, x_var)
             hessian = hessian_tape.gradient(gradients[:, f_to_i("log(S/K)")], x_var)
-    pde_loss = tf.keras.losses.MeanAbsoluteError()(gradients[:, f_to_i("ttm")] / x_var[:, f_to_i("ttm")], 
+    pde_loss = tf.keras.losses.MeanSquaredError()(gradients[:, f_to_i("ttm")] / x_var[:, f_to_i("ttm")], 
                             hessian[:, f_to_i("log(S/K)")] - gradients[:, f_to_i("log(S/K)")])
     return pde_loss, model_pred
 
@@ -272,23 +277,39 @@ def make_GBM_dataset(
     X_df = pd.DataFrame(Xs, columns=feat_names)
     X_df["pathwise_delta"] = deltas[:, :-1].reshape(-1)
     X_df["call_payoff"] = ys
-    X_df["call_true"] = jax_bs_call(Xs[:, 0], Xs[:, 1])
+    X_df["true_call"] = jax_bs_call(Xs[:, 0], Xs[:, 1])
     X_df["digital_payoff"] = (ys > 0) * 1
-    X_df["digital_true"] = jax_bs_digital(Xs[:, 0], Xs[:, 1])
-    X_df["true_d_log(S/K)"], X_df["true_d_ttm"] = first_order_greeks(
+    X_df["true_digital"] = jax_bs_digital(Xs[:, 0], Xs[:, 1])
+    X_df["true_call_d/dlog(S/K)"], X_df["true_call_d/dttm"] = first_order_greeks(
         moneyness=Xs[:, 0], ttm=Xs[:, 1]
     )
-    X_df["true_d2_log(S/K)"] = second_order_greek(moneyness=Xs[:, 0], ttm=Xs[:, 1])
+    X_df["true_call_d2/dlog(S/K)dlog(S/K)"], X_df["true_call_d2/dlog(S/K)dttm"] = second_order_greek(moneyness=Xs[:, 0], ttm=Xs[:, 1])
+    X_df[f'true_call_d/dSK'] = np.exp(-X_df['log(S/K)']) * X_df['true_call_d/dlog(S/K)']
+    X_df[f'true_call_d2/dSKdSK'] = (-np.exp(-X_df['log(S/K)']) * X_df['true_call_d/dlog(S/K)'] + 
+                                np.exp(-X_df['log(S/K)']) * X_df['true_call_d2/dlog(S/K)dlog(S/K)'])
     X_df["path"] = X_df.index // n_times
     return X_df
 
-def bs_model_inference(all_models, all_model_preds, METHOD, all_model_grads, all_model_hessian, X_df_test, Xs_test, true, true_grads, f_to_i, intrinsic_val, upper_bound):
+def bs_model_inference(all_models, 
+                       all_model_preds, 
+                       METHOD:str, 
+                       all_model_grads, 
+                       all_model_hessian, 
+                       X_df_test, 
+                       feat_names,
+                       target_name:str,
+                       lower_bound = None, 
+                       upper_bound = None,
+                      EVAL_BATCH_SIZE = 10**5):
     """
     Compute all predictions, Gradients, Hessian
     """  
+    f_to_i = lambda x: feat_names.index(x)
+    Xs_test = X_df_test[feat_names].values
+    
     start2 = time.time()
     all_model_preds[METHOD] = (
-        all_models[METHOD].predict(Xs_test, batch_size=10**4).reshape(-1)
+        all_models[METHOD].predict(Xs_test, batch_size = EVAL_BATCH_SIZE).reshape(-1)
     )
     X_tensor = tf.Variable(Xs_test)
     with tf.GradientTape() as tape2:
@@ -302,15 +323,15 @@ def bs_model_inference(all_models, all_model_preds, METHOD, all_model_grads, all
 
     temp = bs_eval_wrapper(
         X_df_test,
-        true_val=true,
         preds=all_model_preds[METHOD],
         grads=all_model_grads[METHOD],
         hessian_moneyness=all_model_hessian[METHOD],
-        lower_bound=intrinsic_val,
+        lower_bound=lower_bound,
         upper_bound=upper_bound,
-        true_grads = true_grads,
         METHOD=METHOD,
+        target_name = target_name
     )
+
 
     temp["model_parameters"] = trainable_params(all_models[METHOD])  
     temp["inference_time"] = inference_time

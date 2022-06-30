@@ -43,11 +43,10 @@ def sabr_expansion(F, K, vol, beta, rho, vol_of_vol, ttm):
     ttm: time to maturity
     """
     import jax.numpy as np
-
     F_K = (F * K) ** (1 - beta)
     mon = np.log(F / K)
     z = (vol_of_vol / vol) * (F_K**0.5) * mon
-    x = np.log((np.sqrt(1 - 2 * rho * z + (z**2)) + z - rho) / (1 - rho))
+    x = np.log((np.sqrt(1 - 2 * rho * z + (z**2)) + z - rho) / (1 - rho + 1e-6))
     num = 1 + ttm * (
         ((1 - beta) ** 2) * ((vol**2) / F_K) / 24
         + 0.25 * rho * beta * vol_of_vol * vol / (F_K * 0.5)
@@ -56,8 +55,11 @@ def sabr_expansion(F, K, vol, beta, rho, vol_of_vol, ttm):
     denom = (F_K**0.5) * (
         1 + ((1 - beta) ** 2) / 24 * mon**2 + ((1 - beta) ** 4) / 1920 * mon**4
     )
+    if F == K:
+        return  (np.nan_to_num(z / x) * vol * num / denom) + vol * num / denom
+    else:
+        return (np.nan_to_num(z / x) * vol * num / denom)
 
-    return ((F == K) * vol * num / denom) + (np.nan_to_num(z / x) * vol * num / denom)
 
 
 def sabr_pde_err(

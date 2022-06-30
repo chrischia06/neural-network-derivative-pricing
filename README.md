@@ -51,4 +51,4 @@ Aside from using neural networks
 # TOdo
 
 + add numeraire, stoch control formulations
-+ Abstract
++ Abstractq	j

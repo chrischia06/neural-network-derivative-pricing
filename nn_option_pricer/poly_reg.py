@@ -6,7 +6,12 @@ import math
 import time
 import numpy as np
 
-def train_infer_poly(degree, Xs_train, ys_train, Xs_test, ys_test, feat_names, all_models, all_model_preds, all_model_grads, all_model_hessian, f_to_i, moneyness_var, METHOD="poly_reg", eps=1e-4):
+def train_infer_poly(degree, X_df_train, X_df_test, feat_names, target_name:str, 
+                     all_models, all_model_preds, all_model_grads, all_model_hessian, 
+                     moneyness_var:str, METHOD="poly_reg", eps=1e-4):
+    f_to_i = lambda x: feat_names.index(x)
+    Xs_train, ys_train = X_df_train[feat_names].values, X_df_train[target_name].values
+    Xs_test, ys_test = X_df_test[feat_names].values, X_df_test[target_name].values
     start = time.time()    
     #spline = SplineTransformer(n_knots=5, degree=10, knots="uniform", extrapolation="linear")
     all_models[METHOD] = Pipeline([('poly', PolynomialFeatures(degree = degree)), 

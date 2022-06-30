@@ -53,7 +53,7 @@ def bachelier_eval_wrapper(
     1. Prediction Errors
     """
     if "prediction" in plots:
-        fig, ax = plt.subplots(ncols=2, figsize=(12, 5))
+        fig, ax = plt.subplots(ncols=2, figsize=(12, 6))
         # sns.scatterplot(
         #     X_df["basket"], X_df["call_payoff"], label="Sample Payoffs", ax=ax[0]
         # )
@@ -80,14 +80,14 @@ def bachelier_eval_wrapper(
             )
 
         ax[0].legend()
-        ax[0].set_title(f"{METHOD} - Predicted Basket Call Option\n vs Basket value ({N_ASSETS} Assets)")
-        ax[0].set_xlabel("Basket Value (Average of {N_ASSETS} Assets)")
+        ax[0].set_title(f"{METHOD} - Predicted Basket Call Option\n vs Basket value ({N_ASSETS} underlyings)")
+        ax[0].set_xlabel(f"Basket Value (Average of {N_ASSETS} underylings)")
         ax[0].set_ylabel(f"Basket Call Value")
 
         sns.scatterplot(X_df["basket"], preds - X_df["call_analytic"], ax=ax[1], alpha = 0.8)
 
-        ax[1].set_title(f"{METHOD} - Price Prediction Error vs Basket Value")
-        ax[1].set_xlabel("Basket Value")
+        ax[1].set_title(f"{METHOD} - Basket Call Prediction Error\n vs Basket Value ({N_ASSETS} underlyings)")
+        ax[1].set_xlabel(f"Basket Value (Average of {N_ASSETS} underlyings)")
         ax[1].set_ylabel("Pricing Error")
 
     pred_stats = diagnosis_pred(
@@ -106,15 +106,20 @@ def bachelier_eval_wrapper(
     
     if "gradient" in plots:
         ## Greek Plots
-        fig, ax = plt.subplots(ncols=2, figsize=(12, 5))
-        sns.scatterplot(X_df["basket"], grads, ax = ax[0], alpha = 0.8)
-        ax[0].set_title("Predicted Gradient")
-
+        fig, ax = plt.subplots(ncols=2, figsize=(12, 6))
+        sns.scatterplot(X_df["basket"], grads, ax = ax[0], alpha = 0.8, label=f"{METHOD} predictions")
+        idx = X_df['basket'].sort_values().index
+        sns.lineplot(x = X_df.iloc[idx]['basket'], y = X_df.iloc[idx]['call_analytic_delta'] / N_ASSETS, color = "purple", linewidth=3.0, ax = ax[0], label="Analytic")
+        ax[0].set_title(f"{METHOD} -Predicted Gradient\n vs Basket Value ({N_ASSETS} underlyings)")
+        ax[0].set_xlabel(f"Basket Value (Average of {N_ASSETS} underlyings)")
+        ax[0].set_ylabel(f"Gradient Value")
+        ax[0].legend()
+        
         sns.scatterplot(x = X_df["basket"], 
                         y = X_df["call_analytic_delta"] / N_ASSETS - grads,
                         ax = ax[1],
                        alpha = 0.8)
-        ax[1].set_title(f"{METHOD} Gradient Error vs Basket value")
+        ax[1].set_title(f"{METHOD} - Gradient Error vs Basket Value")
         ax[1].set_xlabel(f"Basket Value (Average of {N_ASSETS} underlyings)")
         ax[1].set_ylabel(f"Gradient Error")
         
