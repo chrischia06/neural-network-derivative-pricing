@@ -50,5 +50,6 @@ Aside from using neural networks
 
 # TOdo
 
-+ add numeraire, stoch control formulations
-+ Abstractq	j
++ Abstract
++ PDE, Longstaff Schwartz
++ Univeral Approximation, NTK

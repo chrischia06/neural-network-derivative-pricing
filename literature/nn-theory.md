@@ -74,6 +74,10 @@ Model-Parallel Fourier Neural Operators as Learned Surrogates for Large-Scale Pa
 Expressivity of Deep Neural Networks
 + https://arxiv.org/abs/2007.04759
 
+Constrained Differential Optimization
+
+https://proceedings.neurips.cc/paper/1987/file/a87ff679a2f3e71d9181a67b7542122c-Paper.pdf
+
 # Neural ODEs
 
 CONSTRAINED NEURAL ORDINARY DIFFERENTIAL EQUATIONS WITH STABILITY GUARANTEES

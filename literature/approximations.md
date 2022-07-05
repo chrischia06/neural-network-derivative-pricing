@@ -160,3 +160,17 @@ Computations in Option Pricing Engines
 
  Using Deep Neural Networks to Price Basket and Rainbow Options
  + https://github.com/christiangruener/MasterThesis
+
+
+Deep calibration of financial models: turning theory into practice
++ https://link.springer.com/content/pdf/10.1007/s11147-021-09183-7.pdf
+
+
+Parameter estimation method of option pricing model based on convolutional neural network in high frequency financial trading
++ https://link.springer.com/article/10.1007/s10479-022-04582-x
+
+RLOP: RL Methods in Option Pricing from a Mathematical Perspective
++ https://arxiv.org/abs/2205.05600
+
+"Ratku, A., Neumann, D. Derivatives of Feed-Forward Neural Networks and their Application in Real-Time Market Risk Management"
++ https://github.com/antalratku/nn_deriv

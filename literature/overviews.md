@@ -57,3 +57,10 @@ Extensive networks would eliminate the demand for pricing formulas
 + For a better goodness-of-fit, one should consider several factors, such as data size, network architecture, and the optimization method. Therefore, we try to reduce the MSFE in our experiment by generating enormous data and tuning various hyperparameters for a considerably accurate fit.
 + "We could not find any mentions about the number of epochs, the batch size, the weight initialization method, and the loss values for the training and test datasets. In particular, the types of neural networks tested in the research are fairly limited because the number of the hidden layers for the networks is fixed at one"
 
+
+
+https://blog.ml-quant.com/p/neural-landscape-for-option-modelling?s=r
+
+New frontiers in deep learning and quantitative finance: an overview Giovanni Faonte
+
+https://cfe.columbia.edu/sites/default/files/content/MLinFin21%20-%20Giovanni%20Faonte_0.pdf

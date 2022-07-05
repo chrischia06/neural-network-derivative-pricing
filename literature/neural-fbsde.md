@@ -34,6 +34,7 @@ A new efficient approximation scheme for solving high-dimensional semilinear PDE
 **Batuhan Güler, Alexis Laignelet, Panos Parpas, Towards Robust and Stable Deep Learning Algorithms for Forward Backward Stochastic Differential Equations (2019)**
 + https://arxiv.org/abs/1910.11623
 + https://github.com/batuhanguler/Deep-BSDE-Solver
++ https://alaignelet.github.io/pdfs/neurips2019_poster.pdf
 
 **Narayan Ganesan, Yajie Yu, Bernhard Hientzsch, Pricing Barrier Options with Deep Backward Stochastic Differential Equation Methods (2020)**
 + https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4061051
@@ -97,4 +98,7 @@ deep signature fbsde
 Deep Learning of High-dimensional Partial Differential Equations
 + MSc Thesis
 + https://www.imperial.ac.uk/media/imperial-college/faculty-of-engineering/computing/public/1819-pg-projects/Deep-Learning-of-High-dimensional-Partial-Differential-Equations.pdf
- 
++ https://www.youtube.com/watch?v=BkPnF8ntYA4
++ https://alaignelet.github.io/pdfs/eth_analytics_club_meetup.pdf
++ https://www.youtube.com/watch?v=tBVArOof6EA
++ https://alaignelet.github.io/pdfs/MLDS_live.pdf

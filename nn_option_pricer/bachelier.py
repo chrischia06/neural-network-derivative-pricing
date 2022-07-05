@@ -7,6 +7,7 @@ from utils import diagnosis_pred
 from numpy.linalg import cholesky
 from jax import grad
 from jax.numpy import vectorize
+from tqdm import tqdm
 
 
 def payoff(XT, K):
